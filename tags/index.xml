@@ -1,33 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Tags on My New Hugo</title>
-    <link>http://augustus2345.github.io/tags/</link>
-    <description>Recent content in Tags on My New Hugo</description>
+    <title>Tags on Augustus</title>
+    <link>https://augustus2345.github.io/tags/</link>
+    <description>Recent content in Tags on Augustus</description>
     <image>
-      <url>http://augustus2345.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>http://augustus2345.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://augustus2345.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://augustus2345.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Wed, 21 Jun 2023 19:07:43 +0800</lastBuildDate><atom:link href="http://augustus2345.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>fir</title>
-      <link>http://augustus2345.github.io/tags/fir/</link>
-      <pubDate>Wed, 21 Jun 2023 19:07:43 +0800</pubDate>
-      
-      <guid>http://augustus2345.github.io/tags/fir/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>first</title>
-      <link>http://augustus2345.github.io/tags/first/</link>
-      <pubDate>Wed, 21 Jun 2023 19:06:44 +0800</pubDate>
-      
-      <guid>http://augustus2345.github.io/tags/first/</guid>
-      <description></description>
-    </item>
-    
+    <language>en-us</language><atom:link href="https://augustus2345.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
