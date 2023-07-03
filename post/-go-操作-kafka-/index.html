@@ -13,15 +13,15 @@ sarama Go 语言中连接 kafka 使用第三方库:github.com/Shopify/sarama。
 # github.com/DataDog/zstd exec: &#34;gcc&#34;:executable file not found in %PATH% 所以在 Windows 平台请使用 v1.19 版本的 sarama。
 连接 kafka 发送消息 package main import ( &#34;fmt&#34; &#34;github.com/Shopify/sarama&#34; ) // 基于sarama第三方库开发的kafka client func main() { config := sarama.NewConfig() config.Producer.RequiredAcks = sarama.WaitForAll // 发送完数据需要leader和follow都确认 config.Producer.Partitioner = sarama.NewRandomPartitioner // 新选出一个partition config.Producer.Return.Successes = true // 成功交付的消息将在success channel返回 // 构造一个消息 msg := &amp;sarama.">
 <meta name="author" content="Augustus">
-<link rel="canonical" href="https://augustus2345.github.io/post/-go-%E6%93%8D%E4%BD%9C-kafka-/" />
+<link rel="canonical" href="https://cjy.ink/post/-go-%E6%93%8D%E4%BD%9C-kafka-/" />
 <link crossorigin="anonymous" href="/assets/css/stylesheet.min.a5ab32f1bb68fb0ae8f28914ef9f0da8dfc31c91a454154a325a727be950a856.css" integrity="sha256-pasy8bto&#43;wro8okU758NqN/DHJGkVBVKMlpye&#43;lQqFY=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.min.b95bacdc39e37a332a9f883b1e78be4abc1fdca2bc1f2641f55e3cd3dabd4d61.js" integrity="sha256-uVus3DnjejMqn4g7Hni&#43;Srwf3KK8HyZB9V4809q9TWE="
     onload="hljs.initHighlightingOnLoad();"></script>
-<link rel="icon" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
-<link rel="icon" type="image/png" sizes="16x16" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
-<link rel="icon" type="image/png" sizes="32x32" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
-<link rel="apple-touch-icon" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
-<link rel="mask-icon" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="icon" href="https://cjy.ink/%3Clink%20/%20abs%20url%3E">
+<link rel="icon" type="image/png" sizes="16x16" href="https://cjy.ink/%3Clink%20/%20abs%20url%3E">
+<link rel="icon" type="image/png" sizes="32x32" href="https://cjy.ink/%3Clink%20/%20abs%20url%3E">
+<link rel="apple-touch-icon" href="https://cjy.ink/%3Clink%20/%20abs%20url%3E">
+<link rel="mask-icon" href="https://cjy.ink/%3Clink%20/%20abs%20url%3E">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <meta name="generator" content="Hugo 0.114.0">
@@ -40,12 +40,12 @@ sarama Go 语言中连接 kafka 使用第三方库:github.com/Shopify/sarama。
 # github.com/DataDog/zstd exec: &#34;gcc&#34;:executable file not found in %PATH% 所以在 Windows 平台请使用 v1.19 版本的 sarama。
 连接 kafka 发送消息 package main import ( &#34;fmt&#34; &#34;github.com/Shopify/sarama&#34; ) // 基于sarama第三方库开发的kafka client func main() { config := sarama.NewConfig() config.Producer.RequiredAcks = sarama.WaitForAll // 发送完数据需要leader和follow都确认 config.Producer.Partitioner = sarama.NewRandomPartitioner // 新选出一个partition config.Producer.Return.Successes = true // 成功交付的消息将在success channel返回 // 构造一个消息 msg := &amp;sarama." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://augustus2345.github.io/post/-go-%E6%93%8D%E4%BD%9C-kafka-/" /><meta property="og:image" content="https://augustus2345.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"/><meta property="article:section" content="post" />
+<meta property="og:url" content="https://cjy.ink/post/-go-%E6%93%8D%E4%BD%9C-kafka-/" /><meta property="og:image" content="https://cjy.ink/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"/><meta property="article:section" content="post" />
 
 <meta property="og:site_name" content="Augustus" />
 
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://augustus2345.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"/>
+<meta name="twitter:image" content="https://cjy.ink/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"/>
 
 <meta name="twitter:title" content="go 语言操作 kafka"/>
 <meta name="twitter:description" content="Kafka 是一种高吞吐量的分布式发布订阅消息系统，它可以处理消费者规模的网站中的所有动作流数据，具有高性能、持久化、多副本备份、横向扩展等特点。本文介绍了如何使用 Go 语言发送和接收 kafka 消息。
@@ -59,18 +59,18 @@ sarama Go 语言中连接 kafka 使用第三方库:github.com/Shopify/sarama。
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Posts",
-      "item": "https://augustus2345.github.io/post/"
-    }, 
+  "itemListElement": [, 
     {
       "@type": "ListItem",
       "position":  2 ,
+      "name": "Posts",
+      "item": "https://cjy.ink/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
       "name": "go 语言操作 kafka",
-      "item": "https://augustus2345.github.io/post/-go-%E6%93%8D%E4%BD%9C-kafka-/"
+      "item": "https://cjy.ink/post/-go-%E6%93%8D%E4%BD%9C-kafka-/"
     }
   ]
 }
@@ -96,14 +96,14 @@ sarama Go 语言中连接 kafka 使用第三方库:github.com/Shopify/sarama。
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://augustus2345.github.io/post/-go-%E6%93%8D%E4%BD%9C-kafka-/"
+    "@id": "https://cjy.ink/post/-go-%E6%93%8D%E4%BD%9C-kafka-/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "Augustus",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E"
+      "url": "https://cjy.ink/%3Clink%20/%20abs%20url%3E"
     }
   }
 }
@@ -121,7 +121,7 @@ sarama Go 语言中连接 kafka 使用第三方库:github.com/Shopify/sarama。
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://augustus2345.github.io/" accesskey="h" title="Augustus (Alt + H)">Augustus</a>
+            <a href="https://cjy.ink" accesskey="h" title="Augustus (Alt + H)">Augustus</a>
             <span class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -153,7 +153,7 @@ sarama Go 语言中连接 kafka 使用第三方库:github.com/Shopify/sarama。
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://augustus2345.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://augustus2345.github.io/post/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://cjy.ink">Home</a>&nbsp;»&nbsp;<a href="https://cjy.ink/post/">Posts</a></div>
     <h1 class="post-title">
       go 语言操作 kafka
     </h1>

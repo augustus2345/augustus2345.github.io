@@ -12,15 +12,15 @@
 如何实现优雅关机？ Go 1.8 版本之后， http.Server 内置的 Shutdown() 方法就支持优雅地关机，具体示例如下：
 // &#43;build go1.8 package main import ( &#34;context&#34; &#34;log&#34; &#34;net/http&#34; &#34;os&#34; &#34;os/signal&#34; &#34;syscall&#34; &#34;time&#34; &#34;github.com/gin-gonic/gin&#34; ) func main() { router := gin.Default() router.GET(&#34;/&#34;, func(c *gin.Context) { time.Sleep(5 * time.Second) c.String(http.StatusOK, &#34;Welcome Gin Server&#34;) }) srv := &amp;http.Server{ Addr: &#34;:8080&#34;, Handler: router, } go func() { // 开启一个goroutine启动服务 if err := srv.ListenAndServe(); err !">
 <meta name="author" content="Augustus">
-<link rel="canonical" href="https://augustus2345.github.io/post/-%E4%BC%98%E9%9B%85%E5%9C%B0%E5%85%B3%E6%9C%BA%E6%88%96%E9%87%8D%E5%90%AF-/" />
+<link rel="canonical" href="https://cjy.ink/post/-%E4%BC%98%E9%9B%85%E5%9C%B0%E5%85%B3%E6%9C%BA%E6%88%96%E9%87%8D%E5%90%AF-/" />
 <link crossorigin="anonymous" href="/assets/css/stylesheet.min.a5ab32f1bb68fb0ae8f28914ef9f0da8dfc31c91a454154a325a727be950a856.css" integrity="sha256-pasy8bto&#43;wro8okU758NqN/DHJGkVBVKMlpye&#43;lQqFY=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.min.b95bacdc39e37a332a9f883b1e78be4abc1fdca2bc1f2641f55e3cd3dabd4d61.js" integrity="sha256-uVus3DnjejMqn4g7Hni&#43;Srwf3KK8HyZB9V4809q9TWE="
     onload="hljs.initHighlightingOnLoad();"></script>
-<link rel="icon" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
-<link rel="icon" type="image/png" sizes="16x16" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
-<link rel="icon" type="image/png" sizes="32x32" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
-<link rel="apple-touch-icon" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
-<link rel="mask-icon" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="icon" href="https://cjy.ink/%3Clink%20/%20abs%20url%3E">
+<link rel="icon" type="image/png" sizes="16x16" href="https://cjy.ink/%3Clink%20/%20abs%20url%3E">
+<link rel="icon" type="image/png" sizes="32x32" href="https://cjy.ink/%3Clink%20/%20abs%20url%3E">
+<link rel="apple-touch-icon" href="https://cjy.ink/%3Clink%20/%20abs%20url%3E">
+<link rel="mask-icon" href="https://cjy.ink/%3Clink%20/%20abs%20url%3E">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <meta name="generator" content="Hugo 0.114.0">
@@ -38,12 +38,12 @@
 如何实现优雅关机？ Go 1.8 版本之后， http.Server 内置的 Shutdown() 方法就支持优雅地关机，具体示例如下：
 // &#43;build go1.8 package main import ( &#34;context&#34; &#34;log&#34; &#34;net/http&#34; &#34;os&#34; &#34;os/signal&#34; &#34;syscall&#34; &#34;time&#34; &#34;github.com/gin-gonic/gin&#34; ) func main() { router := gin.Default() router.GET(&#34;/&#34;, func(c *gin.Context) { time.Sleep(5 * time.Second) c.String(http.StatusOK, &#34;Welcome Gin Server&#34;) }) srv := &amp;http.Server{ Addr: &#34;:8080&#34;, Handler: router, } go func() { // 开启一个goroutine启动服务 if err := srv.ListenAndServe(); err !" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://augustus2345.github.io/post/-%E4%BC%98%E9%9B%85%E5%9C%B0%E5%85%B3%E6%9C%BA%E6%88%96%E9%87%8D%E5%90%AF-/" /><meta property="og:image" content="https://augustus2345.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"/><meta property="article:section" content="post" />
+<meta property="og:url" content="https://cjy.ink/post/-%E4%BC%98%E9%9B%85%E5%9C%B0%E5%85%B3%E6%9C%BA%E6%88%96%E9%87%8D%E5%90%AF-/" /><meta property="og:image" content="https://cjy.ink/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"/><meta property="article:section" content="post" />
 
 <meta property="og:site_name" content="Augustus" />
 
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://augustus2345.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"/>
+<meta name="twitter:image" content="https://cjy.ink/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"/>
 
 <meta name="twitter:title" content="优雅关机与重启"/>
 <meta name="twitter:description" content="我们编写的 Web 项目部署之后，经常会因为需要进行配置变更或功能迭代而重启服务，单纯的 kill -9 pid的方式会强制关闭进程，这样就会导致服务端当前正在处理的请求失败，那有没有更优雅的方式来实现关机或重启呢？
@@ -56,18 +56,18 @@
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Posts",
-      "item": "https://augustus2345.github.io/post/"
-    }, 
+  "itemListElement": [, 
     {
       "@type": "ListItem",
       "position":  2 ,
+      "name": "Posts",
+      "item": "https://cjy.ink/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
       "name": "优雅关机与重启",
-      "item": "https://augustus2345.github.io/post/-%E4%BC%98%E9%9B%85%E5%9C%B0%E5%85%B3%E6%9C%BA%E6%88%96%E9%87%8D%E5%90%AF-/"
+      "item": "https://cjy.ink/post/-%E4%BC%98%E9%9B%85%E5%9C%B0%E5%85%B3%E6%9C%BA%E6%88%96%E9%87%8D%E5%90%AF-/"
     }
   ]
 }
@@ -93,14 +93,14 @@
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://augustus2345.github.io/post/-%E4%BC%98%E9%9B%85%E5%9C%B0%E5%85%B3%E6%9C%BA%E6%88%96%E9%87%8D%E5%90%AF-/"
+    "@id": "https://cjy.ink/post/-%E4%BC%98%E9%9B%85%E5%9C%B0%E5%85%B3%E6%9C%BA%E6%88%96%E9%87%8D%E5%90%AF-/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "Augustus",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E"
+      "url": "https://cjy.ink/%3Clink%20/%20abs%20url%3E"
     }
   }
 }
@@ -118,7 +118,7 @@
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://augustus2345.github.io/" accesskey="h" title="Augustus (Alt + H)">Augustus</a>
+            <a href="https://cjy.ink" accesskey="h" title="Augustus (Alt + H)">Augustus</a>
             <span class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -150,7 +150,7 @@
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://augustus2345.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://augustus2345.github.io/post/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://cjy.ink">Home</a>&nbsp;»&nbsp;<a href="https://cjy.ink/post/">Posts</a></div>
     <h1 class="post-title">
       优雅关机与重启
     </h1>

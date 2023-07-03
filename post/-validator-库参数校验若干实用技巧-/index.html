@@ -11,15 +11,15 @@
 基本示例 首先来看 gin 框架内置使用 validator做参数校验的基本示例。
 package main import ( &#34;net/http&#34; &#34;github.com/gin-gonic/gin&#34; ) type SignUpParam struct { Age uint8 `json:&#34;age&#34; binding:&#34;gte=1,lte=130&#34;` Name string `json:&#34;name&#34; binding:&#34;required&#34;` Email string `json:&#34;email&#34; binding:&#34;required,email&#34;` Password string `json:&#34;password&#34; binding:&#34;required&#34;` RePassword string `json:&#34;re_password&#34; binding:&#34;required,eqfield=Password&#34;` } func main() { r := gin.Default() r.POST(&#34;/signup&#34;, func(c *gin.Context) { var u SignUpParam if err := c.ShouldBind(&amp;u); err != nil { c.JSON(http.StatusOK, gin.">
 <meta name="author" content="Augustus">
-<link rel="canonical" href="https://augustus2345.github.io/post/-validator-%E5%BA%93%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C%E8%8B%A5%E5%B9%B2%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7-/" />
+<link rel="canonical" href="https://cjy.ink/post/-validator-%E5%BA%93%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C%E8%8B%A5%E5%B9%B2%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7-/" />
 <link crossorigin="anonymous" href="/assets/css/stylesheet.min.a5ab32f1bb68fb0ae8f28914ef9f0da8dfc31c91a454154a325a727be950a856.css" integrity="sha256-pasy8bto&#43;wro8okU758NqN/DHJGkVBVKMlpye&#43;lQqFY=" rel="preload stylesheet" as="style">
 <script defer crossorigin="anonymous" src="/assets/js/highlight.min.b95bacdc39e37a332a9f883b1e78be4abc1fdca2bc1f2641f55e3cd3dabd4d61.js" integrity="sha256-uVus3DnjejMqn4g7Hni&#43;Srwf3KK8HyZB9V4809q9TWE="
     onload="hljs.initHighlightingOnLoad();"></script>
-<link rel="icon" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
-<link rel="icon" type="image/png" sizes="16x16" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
-<link rel="icon" type="image/png" sizes="32x32" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
-<link rel="apple-touch-icon" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
-<link rel="mask-icon" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="icon" href="https://cjy.ink/%3Clink%20/%20abs%20url%3E">
+<link rel="icon" type="image/png" sizes="16x16" href="https://cjy.ink/%3Clink%20/%20abs%20url%3E">
+<link rel="icon" type="image/png" sizes="32x32" href="https://cjy.ink/%3Clink%20/%20abs%20url%3E">
+<link rel="apple-touch-icon" href="https://cjy.ink/%3Clink%20/%20abs%20url%3E">
+<link rel="mask-icon" href="https://cjy.ink/%3Clink%20/%20abs%20url%3E">
 <meta name="theme-color" content="#2e2e33">
 <meta name="msapplication-TileColor" content="#2e2e33">
 <meta name="generator" content="Hugo 0.114.0">
@@ -36,12 +36,12 @@ package main import ( &#34;net/http&#34; &#34;github.com/gin-gonic/gin&#34; ) ty
 基本示例 首先来看 gin 框架内置使用 validator做参数校验的基本示例。
 package main import ( &#34;net/http&#34; &#34;github.com/gin-gonic/gin&#34; ) type SignUpParam struct { Age uint8 `json:&#34;age&#34; binding:&#34;gte=1,lte=130&#34;` Name string `json:&#34;name&#34; binding:&#34;required&#34;` Email string `json:&#34;email&#34; binding:&#34;required,email&#34;` Password string `json:&#34;password&#34; binding:&#34;required&#34;` RePassword string `json:&#34;re_password&#34; binding:&#34;required,eqfield=Password&#34;` } func main() { r := gin.Default() r.POST(&#34;/signup&#34;, func(c *gin.Context) { var u SignUpParam if err := c.ShouldBind(&amp;u); err != nil { c.JSON(http.StatusOK, gin." />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://augustus2345.github.io/post/-validator-%E5%BA%93%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C%E8%8B%A5%E5%B9%B2%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7-/" /><meta property="og:image" content="https://augustus2345.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"/><meta property="article:section" content="post" />
+<meta property="og:url" content="https://cjy.ink/post/-validator-%E5%BA%93%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C%E8%8B%A5%E5%B9%B2%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7-/" /><meta property="og:image" content="https://cjy.ink/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"/><meta property="article:section" content="post" />
 
 <meta property="og:site_name" content="Augustus" />
 
 <meta name="twitter:card" content="summary_large_image"/>
-<meta name="twitter:image" content="https://augustus2345.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"/>
+<meta name="twitter:image" content="https://cjy.ink/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"/>
 
 <meta name="twitter:title" content="利用 validator 库进行参数校验"/>
 <meta name="twitter:description" content="gin 框架使用 github.com/go-playground/validator 进行参数校验，目前已经支持 github.com/go-playground/validator/v10了，我们需要在定义结构体时使用 binding tag 标识相关校验规则，可以查看 validator 文档查看支持的所有 tag。
@@ -53,18 +53,18 @@ package main import ( &#34;net/http&#34; &#34;github.com/gin-gonic/gin&#34; ) ty
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
-  "itemListElement": [
-    {
-      "@type": "ListItem",
-      "position":  1 ,
-      "name": "Posts",
-      "item": "https://augustus2345.github.io/post/"
-    }, 
+  "itemListElement": [, 
     {
       "@type": "ListItem",
       "position":  2 ,
+      "name": "Posts",
+      "item": "https://cjy.ink/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
       "name": "利用 validator 库进行参数校验",
-      "item": "https://augustus2345.github.io/post/-validator-%E5%BA%93%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C%E8%8B%A5%E5%B9%B2%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7-/"
+      "item": "https://cjy.ink/post/-validator-%E5%BA%93%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C%E8%8B%A5%E5%B9%B2%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7-/"
     }
   ]
 }
@@ -90,14 +90,14 @@ package main import ( &#34;net/http&#34; &#34;github.com/gin-gonic/gin&#34; ) ty
   },
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "https://augustus2345.github.io/post/-validator-%E5%BA%93%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C%E8%8B%A5%E5%B9%B2%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7-/"
+    "@id": "https://cjy.ink/post/-validator-%E5%BA%93%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C%E8%8B%A5%E5%B9%B2%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7-/"
   },
   "publisher": {
     "@type": "Organization",
     "name": "Augustus",
     "logo": {
       "@type": "ImageObject",
-      "url": "https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E"
+      "url": "https://cjy.ink/%3Clink%20/%20abs%20url%3E"
     }
   }
 }
@@ -115,7 +115,7 @@ package main import ( &#34;net/http&#34; &#34;github.com/gin-gonic/gin&#34; ) ty
 <header class="header">
     <nav class="nav">
         <div class="logo">
-            <a href="https://augustus2345.github.io/" accesskey="h" title="Augustus (Alt + H)">Augustus</a>
+            <a href="https://cjy.ink" accesskey="h" title="Augustus (Alt + H)">Augustus</a>
             <span class="logo-switches">
                 <button id="theme-toggle" accesskey="t" title="(Alt + T)">
                     <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
@@ -147,7 +147,7 @@ package main import ( &#34;net/http&#34; &#34;github.com/gin-gonic/gin&#34; ) ty
 
 <article class="post-single">
   <header class="post-header">
-    <div class="breadcrumbs"><a href="https://augustus2345.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://augustus2345.github.io/post/">Posts</a></div>
+    <div class="breadcrumbs"><a href="https://cjy.ink">Home</a>&nbsp;»&nbsp;<a href="https://cjy.ink/post/">Posts</a></div>
     <h1 class="post-title">
       利用 validator 库进行参数校验
     </h1>

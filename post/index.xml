@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Posts on Augustus</title>
-    <link>https://augustus2345.github.io/post/</link>
+    <link>https://cjy.ink/post/</link>
     <description>Recent content in Posts on Augustus</description>
     <image>
-      <url>https://augustus2345.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://augustus2345.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://cjy.ink/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://cjy.ink/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 20 Mar 2023 15:58:26 +0800</lastBuildDate><atom:link href="https://augustus2345.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 20 Mar 2023 15:58:26 +0800</lastBuildDate><atom:link href="https://cjy.ink/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>makefile 在 go 语言中使用</title>
-      <link>https://augustus2345.github.io/post/-%E4%B8%BA-go-%E9%A1%B9%E7%9B%AE%E7%BC%96%E5%86%99-makefile-/</link>
+      <link>https://cjy.ink/post/-%E4%B8%BA-go-%E9%A1%B9%E7%9B%AE%E7%BC%96%E5%86%99-makefile-/</link>
       <pubDate>Mon, 20 Mar 2023 15:58:26 +0800</pubDate>
       
-      <guid>https://augustus2345.github.io/post/-%E4%B8%BA-go-%E9%A1%B9%E7%9B%AE%E7%BC%96%E5%86%99-makefile-/</guid>
+      <guid>https://cjy.ink/post/-%E4%B8%BA-go-%E9%A1%B9%E7%9B%AE%E7%BC%96%E5%86%99-makefile-/</guid>
       <description>借助 Makefile我们在编译过程中不再需要每次手动输入编译的命令和编译的参数，可以极大简化项目编译过程。
 make 介绍 make是一个构建自动化工具，会在当前目录下寻找 Makefile或 makefile文件。如果存在相应的文件，它就会依据其中定义好的规则完成构建任务。
 Makefile 介绍 我们可以把 Makefile简单理解为它定义了一个项目文件的编译规则。借助 Makefile我们在编译过程中不再需要每次手动输入编译的命令和编译的参数，可以极大简化项目编译过程。同时使用 Makefile也可以在项目中确定具体的编译规则和流程，很多开源项目中都会定义 Makefile文件。
@@ -30,10 +30,10 @@ build: CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o xx 示例 .PHONY: all b
     
     <item>
       <title>《你的灯亮着吗？》书评兼谈我的思考</title>
-      <link>https://augustus2345.github.io/post/%E4%BD%A0%E7%9A%84%E7%81%AF%E4%BA%AE%E7%9D%80%E5%90%97%E4%B9%A6%E8%AF%84%E5%85%BC%E8%B0%88%E6%88%91%E7%9A%84%E7%90%86%E8%A7%A3/</link>
+      <link>https://cjy.ink/post/%E4%BD%A0%E7%9A%84%E7%81%AF%E4%BA%AE%E7%9D%80%E5%90%97%E4%B9%A6%E8%AF%84%E5%85%BC%E8%B0%88%E6%88%91%E7%9A%84%E7%90%86%E8%A7%A3/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://augustus2345.github.io/post/%E4%BD%A0%E7%9A%84%E7%81%AF%E4%BA%AE%E7%9D%80%E5%90%97%E4%B9%A6%E8%AF%84%E5%85%BC%E8%B0%88%E6%88%91%E7%9A%84%E7%90%86%E8%A7%A3/</guid>
+      <guid>https://cjy.ink/post/%E4%BD%A0%E7%9A%84%E7%81%AF%E4%BA%AE%E7%9D%80%E5%90%97%E4%B9%A6%E8%AF%84%E5%85%BC%E8%B0%88%E6%88%91%E7%9A%84%E7%90%86%E8%A7%A3/</guid>
       <description>看了高斯（Donald C.Gause）和温伯格（Gerald.Meinberg）的《你的灯亮着吗？》一书，大脑跟着作者的思路层层解剖，犹抱琵琶半遮面，柳暗花明又一村，原来解决问题可以有很多种不一样的思路，而这些思路拓宽了我想问题的方法。
 问题是什么？
 问题是理想状态和现实状态之间的差别。
@@ -72,10 +72,10 @@ build: CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o xx 示例 .PHONY: all b
     
     <item>
       <title>《学会提问》读后感</title>
-      <link>https://augustus2345.github.io/post/%E5%AD%A6%E4%BC%9A%E6%8F%90%E9%97%AE%E8%AF%BB%E5%90%8E%E6%84%9F/</link>
+      <link>https://cjy.ink/post/%E5%AD%A6%E4%BC%9A%E6%8F%90%E9%97%AE%E8%AF%BB%E5%90%8E%E6%84%9F/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://augustus2345.github.io/post/%E5%AD%A6%E4%BC%9A%E6%8F%90%E9%97%AE%E8%AF%BB%E5%90%8E%E6%84%9F/</guid>
+      <guid>https://cjy.ink/post/%E5%AD%A6%E4%BC%9A%E6%8F%90%E9%97%AE%E8%AF%BB%E5%90%8E%E6%84%9F/</guid>
       <description>微信群里，家人总是时不时发来一些养生文章，“80岁大脑不萎缩不痴呆的秘密！50岁以上的人必看”&amp;hellip;&amp;hellip;
 社会热点，各路新闻媒体出动，网络上充斥着各种讨论、争议、观点和所谓的真相&amp;hellip;&amp;hellip;
 影视公众号迫不及待地想告诉我们哪些影视作品不容错过，哪些不看为妙&amp;hellip;&amp;hellip;
@@ -93,10 +93,10 @@ build: CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o xx 示例 .PHONY: all b
     
     <item>
       <title>《自控力》书评以及思考如何控制自己</title>
-      <link>https://augustus2345.github.io/post/%E8%87%AA%E6%8E%A7%E5%8A%9B%E5%A6%82%E4%BD%95%E6%8E%A7%E5%88%B6%E8%87%AA%E5%B7%B1/</link>
+      <link>https://cjy.ink/post/%E8%87%AA%E6%8E%A7%E5%8A%9B%E5%A6%82%E4%BD%95%E6%8E%A7%E5%88%B6%E8%87%AA%E5%B7%B1/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://augustus2345.github.io/post/%E8%87%AA%E6%8E%A7%E5%8A%9B%E5%A6%82%E4%BD%95%E6%8E%A7%E5%88%B6%E8%87%AA%E5%B7%B1/</guid>
+      <guid>https://cjy.ink/post/%E8%87%AA%E6%8E%A7%E5%8A%9B%E5%A6%82%E4%BD%95%E6%8E%A7%E5%88%B6%E8%87%AA%E5%B7%B1/</guid>
       <description>在这个世界上，我们做了太多的功课去了解别人。我们知道我们的朋友是怎样一个人，他有怎样的性格特征；我们知道我们的父母是怎样一个人，他对一些事物有着怎样的感受；我们甚至知道我们的老师或者领导是怎么一个人，做什么样的事情会让他感到愉悦。
 然而，几乎我们很少很少有人去了解自己，自己到底是什么样的人，自己在面对一件事情一个人到底是一种什么样的感受。我们习惯用常识来定义自己，遵循所谓的“正确规则”来规范自己，但往往适得其反。
 然而，你连自己是什么样的都不知道，怎么能够增加自控力，把一件事情坚持下去呢。
@@ -126,10 +126,10 @@ build: CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o xx 示例 .PHONY: all b
     
     <item>
       <title>air 热加载</title>
-      <link>https://augustus2345.github.io/post/-%E4%BD%BF%E7%94%A8-air-%E5%AE%9E%E7%8E%B0-go-%E7%A8%8B%E5%BA%8F%E5%AE%9E%E6%97%B6%E7%83%AD%E9%87%8D%E8%BD%BD-/</link>
+      <link>https://cjy.ink/post/-%E4%BD%BF%E7%94%A8-air-%E5%AE%9E%E7%8E%B0-go-%E7%A8%8B%E5%BA%8F%E5%AE%9E%E6%97%B6%E7%83%AD%E9%87%8D%E8%BD%BD-/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://augustus2345.github.io/post/-%E4%BD%BF%E7%94%A8-air-%E5%AE%9E%E7%8E%B0-go-%E7%A8%8B%E5%BA%8F%E5%AE%9E%E6%97%B6%E7%83%AD%E9%87%8D%E8%BD%BD-/</guid>
+      <guid>https://cjy.ink/post/-%E4%BD%BF%E7%94%A8-air-%E5%AE%9E%E7%8E%B0-go-%E7%A8%8B%E5%BA%8F%E5%AE%9E%E6%97%B6%E7%83%AD%E9%87%8D%E8%BD%BD-/</guid>
       <description>为什么需要实时加载？ 在使用 HUGO 搭建 Blog 的时候，我发现修改了一些文件内容后，就可以实现实时加载，而不需要关掉服务，然后重新启动程序，使用起来十分方便。
 Air 介绍 Github 上有一个工具：Air。它支持以下特性：
 彩色日志输出 自定义构建或二进制命令 支持忽略子目录 启动后支持监听新目录 更好的构建过程 安装 Air Go 这也是最经典的安装方式：
@@ -139,10 +139,10 @@ docker run -it --rm \ -w &amp;#34;/go/src/github.com/cosmtrek/hub&amp;#34; \ -v 
     
     <item>
       <title>Error 接口和错误处理</title>
-      <link>https://augustus2345.github.io/post/-error-%E6%8E%A5%E5%8F%A3%E5%92%8C%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86-/</link>
+      <link>https://cjy.ink/post/-error-%E6%8E%A5%E5%8F%A3%E5%92%8C%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86-/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://augustus2345.github.io/post/-error-%E6%8E%A5%E5%8F%A3%E5%92%8C%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86-/</guid>
+      <guid>https://cjy.ink/post/-error-%E6%8E%A5%E5%8F%A3%E5%92%8C%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86-/</guid>
       <description>Go 语言中的错误处理与其他语言不太一样，它把错误当成一种值来处理，更强调判断错误、处理错误，而不是一股脑的 catch 捕获异常。
 Error 接口 Go 语言中把错误当成一种特殊的值来处理，不支持其他语言中使用 try/catch捕获异常的方式。
 Error 接口 Go 语言中使用一个名为 error 接口来表示错误类型。
@@ -157,10 +157,10 @@ errors.New 函数签名如下，</description>
     
     <item>
       <title>go 语言 flag 库</title>
-      <link>https://augustus2345.github.io/post/-go-%E8%AF%AD%E8%A8%80%E6%A0%87%E5%87%86%E5%BA%93-flag-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8-/</link>
+      <link>https://cjy.ink/post/-go-%E8%AF%AD%E8%A8%80%E6%A0%87%E5%87%86%E5%BA%93-flag-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8-/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://augustus2345.github.io/post/-go-%E8%AF%AD%E8%A8%80%E6%A0%87%E5%87%86%E5%BA%93-flag-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8-/</guid>
+      <guid>https://cjy.ink/post/-go-%E8%AF%AD%E8%A8%80%E6%A0%87%E5%87%86%E5%BA%93-flag-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8-/</guid>
       <description>Go 语言内置的 flag包实现了命令行参数的解析，flag包使得开发命令行工具更为简单。
 如果你只是简单的想要获取命令行参数，可以像下面的代码示例一样使用 os.Args来获取命令行参数。
 package main import ( &amp;#34;fmt&amp;#34; &amp;#34;os&amp;#34; ) //os.Args demo func main() { //os.Args是一个[]string if len(os.Args) &amp;gt; 0 { for index, arg := range os.Args { fmt.Printf(&amp;#34;args[%d]=%v\n&amp;#34;, index, arg) } } } 将上面的代码执行 go build -o &amp;quot;args_demo&amp;quot;编译之后，执行：
@@ -172,10 +172,10 @@ $ ./args_demo a b c d args[0]=./args_demo args[1]=a args[2]=b args[3]=c args[4]=
     
     <item>
       <title>go 语言 log 库</title>
-      <link>https://augustus2345.github.io/post/-go-%E8%AF%AD%E8%A8%80%E6%A0%87%E5%87%86%E5%BA%93-log-%E4%BB%8B%E7%BB%8D-/</link>
+      <link>https://cjy.ink/post/-go-%E8%AF%AD%E8%A8%80%E6%A0%87%E5%87%86%E5%BA%93-log-%E4%BB%8B%E7%BB%8D-/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://augustus2345.github.io/post/-go-%E8%AF%AD%E8%A8%80%E6%A0%87%E5%87%86%E5%BA%93-log-%E4%BB%8B%E7%BB%8D-/</guid>
+      <guid>https://cjy.ink/post/-go-%E8%AF%AD%E8%A8%80%E6%A0%87%E5%87%86%E5%BA%93-log-%E4%BB%8B%E7%BB%8D-/</guid>
       <description>无论是软件开发的调试阶段还是软件上线之后的运行阶段，日志一直都是非常重要的一个环节，我们也应该养成在程序中记录日志的好习惯。
 Go 语言内置的 log包实现了简单的日志服务。本文介绍了标准库 log的基本使用。
 使用 Logger log 包定义了 Logger 类型，该类型提供了一些格式化输出的方法。本包也提供了一个预定义的 “标准”logger，可以通过调用函数 Print系列(Print|Printf|Println）、Fatal系列（Fatal|Fatalf|Fatalln）、和 Panic系列（Panic|Panicf|Panicln）来使用，比自行创建一个 logger 对象更容易使用。
@@ -189,10 +189,10 @@ func Flags() int func SetFlags(flag int) flag 选项 log标准库提供了如下
     
     <item>
       <title>go 语言 map</title>
-      <link>https://augustus2345.github.io/post/-go-map-/</link>
+      <link>https://cjy.ink/post/-go-map-/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://augustus2345.github.io/post/-go-map-/</guid>
+      <guid>https://cjy.ink/post/-go-map-/</guid>
       <description>Go 语言中提供的映射关系容器为 map，其内部使用 散列表（hash）实现。
 map 是一种无序的基于 key-value的数据结构，Go 语言中的 map 是引用类型，必须初始化才能使用。
 map 定义 Go 语言中 map的定义语法如下：
@@ -207,10 +207,10 @@ func main() { userInfo := map[string]string{ &amp;#34;username&amp;#34;: &amp;#3
     
     <item>
       <title>go 语言 strconv 包</title>
-      <link>https://augustus2345.github.io/post/-go-%E8%AF%AD%E8%A8%80%E5%86%85%E7%BD%AE%E5%8C%85%E4%B9%8B-strconv-/</link>
+      <link>https://cjy.ink/post/-go-%E8%AF%AD%E8%A8%80%E5%86%85%E7%BD%AE%E5%8C%85%E4%B9%8B-strconv-/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://augustus2345.github.io/post/-go-%E8%AF%AD%E8%A8%80%E5%86%85%E7%BD%AE%E5%8C%85%E4%B9%8B-strconv-/</guid>
+      <guid>https://cjy.ink/post/-go-%E8%AF%AD%E8%A8%80%E5%86%85%E7%BD%AE%E5%8C%85%E4%B9%8B-strconv-/</guid>
       <description>string 与 int 类型转换 这一组函数是我们平时编程中用的最多的。
 Atoi() Atoi()函数用于将字符串类型的整数转换为 int 类型，函数签名如下。
 func Atoi(s string) (i int, err error) 如果传入的字符串参数无法转换为 int 类型，就会返回错误。
@@ -221,10 +221,10 @@ i2 := 200 s2 := strconv.Itoa(i2) fmt.Printf(&amp;#34;type:%T value:%#v\n&amp;#34
     
     <item>
       <title>go 语言 time 包</title>
-      <link>https://augustus2345.github.io/post/-go-time-%E5%8C%85-/</link>
+      <link>https://cjy.ink/post/-go-time-%E5%8C%85-/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://augustus2345.github.io/post/-go-time-%E5%8C%85-/</guid>
+      <guid>https://cjy.ink/post/-go-time-%E5%8C%85-/</guid>
       <description>我们在编程中经常会用到时间和日期数据，本文主要介绍了 Go 语言内置的 time 包的基本用法。
 时间和日期是我们编程中经常会用到的，本文主要介绍了 Go 语言内置的 time 包的基本用法。time 包提供了一些关于时间显示和测量用的函数。time 包中日历的计算采用的是公历，不考虑润秒。
 时间类型 Go 语言中使用 time.Time类型表示时间。我们可以通过 time.Now函数获取当前的时间对象，然后从时间对象中可以获取到年、月、日、时、分、秒等信息。
@@ -233,10 +233,10 @@ i2 := 200 s2 := strconv.Itoa(i2) fmt.Printf(&amp;#34;type:%T value:%#v\n&amp;#34
     
     <item>
       <title>go 语言切片</title>
-      <link>https://augustus2345.github.io/post/-go%E5%88%87%E7%89%87-/</link>
+      <link>https://cjy.ink/post/-go%E5%88%87%E7%89%87-/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://augustus2345.github.io/post/-go%E5%88%87%E7%89%87-/</guid>
+      <guid>https://cjy.ink/post/-go%E5%88%87%E7%89%87-/</guid>
       <description>本文主要介绍 Go 语言中切片（slice）及它的基本使用。
 因为数组的长度是固定的并且数组长度属于类型的一部分，所以数组有很多的局限性。 例如：
 func arraySum(x [3]int) int{ sum := 0 for _, v := range x{ sum = sum + v } return sum } 这个求和函数只能接受 [3]int类型，其他的都不支持。 再比如，
@@ -251,10 +251,10 @@ func main() { // 声明切片类型 var a []string //声明一个字符串切片
     
     <item>
       <title>go 语言单元测试</title>
-      <link>https://augustus2345.github.io/post/-go%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95-/</link>
+      <link>https://cjy.ink/post/-go%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95-/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://augustus2345.github.io/post/-go%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95-/</guid>
+      <guid>https://cjy.ink/post/-go%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95-/</guid>
       <description>这篇文章主要介绍下在 Go 语言中如何做单元测试和基准测试。
 Go 语言中的测试依赖 go test命令。编写测试代码和编写普通的 Go 代码过程是类似的，并不需要学习新的语法、规则或工具。
 go test 命令是一个按照一定约定和组织的测试代码的驱动程序。在包目录内，所有以 _test.go为后缀名的源代码文件都是 go test测试的一部分，不会被 go build编译到最终的可执行文件中。
@@ -268,10 +268,10 @@ func (c *T) Error(args ...interface{}) func (c *T) Errorf(format string, args ..
     
     <item>
       <title>go 语言反射</title>
-      <link>https://augustus2345.github.io/post/-go%E5%8F%8D%E5%B0%84-/</link>
+      <link>https://cjy.ink/post/-go%E5%8F%8D%E5%B0%84-/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://augustus2345.github.io/post/-go%E5%8F%8D%E5%B0%84-/</guid>
+      <guid>https://cjy.ink/post/-go%E5%8F%8D%E5%B0%84-/</guid>
       <description>Go 语言中的变量是分为两部分的:
 类型信息：预先定义好的元信息。 值信息：程序运行过程中可动态变化的。 反射是指在程序运行期间对程序本身进行访问和修改的能力。程序在编译时，变量被转换为内存地址，变量名不会被编译器写入到可执行部分。在运行程序时，程序无法获取自身的信息。
 支持反射的语言可以在程序编译期间将变量的反射信息，如字段名称、类型信息、结构体信息等整合到可执行文件中，并给程序提供接口访问反射信息，这样就可以在程序运行期间获取类型的反射信息，并且有能力修改它们。
@@ -284,10 +284,10 @@ package main import ( &amp;#34;fmt&amp;#34; &amp;#34;reflect&amp;#34; ) func ref
     
     <item>
       <title>go 语言并发</title>
-      <link>https://augustus2345.github.io/post/-go%E5%B9%B6%E5%8F%91-/</link>
+      <link>https://cjy.ink/post/-go%E5%B9%B6%E5%8F%91-/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://augustus2345.github.io/post/-go%E5%B9%B6%E5%8F%91-/</guid>
+      <guid>https://cjy.ink/post/-go%E5%B9%B6%E5%8F%91-/</guid>
       <description>基本概念 首先我们先来了解几个与并发编程相关的基本概念。
 串行、并发与并行 串行：我们都是先读小学，小学毕业后再读初中，读完初中再读高中。
 并发：同一时间段内执行多个任务（你在用微信和两个女朋友聊天）。
@@ -304,19 +304,19 @@ Goroutine 是 Go 程序中最基本的并发执行单元。每一个 Go 程序�
     
     <item>
       <title>go 语言排序算法</title>
-      <link>https://augustus2345.github.io/post/-%E5%B8%B8%E8%A7%81%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95-/</link>
+      <link>https://cjy.ink/post/-%E5%B8%B8%E8%A7%81%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95-/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://augustus2345.github.io/post/-%E5%B8%B8%E8%A7%81%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95-/</guid>
+      <guid>https://cjy.ink/post/-%E5%B8%B8%E8%A7%81%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95-/</guid>
       <description>排序算法 快速排序 func quickSort(data []int) { if len(data) &amp;lt;= 1 { return } base := data[0] l, r := 0, len(data)-1 for i := 1; i &amp;lt;= r; { if data[i] &amp;gt; base { data[i], data[r] = data[r], data[i] r-- } else { data[i], data[l] = data[l], data[i] l++ i++ } } quickSort(data[:l]) quickSort(data[l+1:]) } func main() { s := make([]int, 0, 16) for i := 0; i &amp;lt; 16; i++ { s = append(s, rand.</description>
     </item>
     
     <item>
       <title>go 语言操作 kafka</title>
-      <link>https://augustus2345.github.io/post/-go-%E6%93%8D%E4%BD%9C-kafka-/</link>
+      <link>https://cjy.ink/post/-go-%E6%93%8D%E4%BD%9C-kafka-/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://augustus2345.github.io/post/-go-%E6%93%8D%E4%BD%9C-kafka-/</guid>
+      <guid>https://cjy.ink/post/-go-%E6%93%8D%E4%BD%9C-kafka-/</guid>
       <description>Kafka 是一种高吞吐量的分布式发布订阅消息系统，它可以处理消费者规模的网站中的所有动作流数据，具有高性能、持久化、多副本备份、横向扩展等特点。本文介绍了如何使用 Go 语言发送和接收 kafka 消息。
 sarama Go 语言中连接 kafka 使用第三方库:github.com/Shopify/sarama。
 下载及安装 go get github.com/Shopify/sarama 注意事项 sarama v1.20 之后的版本加入了 zstd压缩算法，需要用到 cgo，在 Windows 平台编译时会提示类似如下错误：
@@ -326,10 +326,10 @@ sarama Go 语言中连接 kafka 使用第三方库:github.com/Shopify/sarama。
     
     <item>
       <title>go 项目配置文件管理 viper</title>
-      <link>https://augustus2345.github.io/post/-go-%E8%AF%AD%E8%A8%80%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E7%A5%9E%E5%99%A8viper-%E4%B8%AD%E6%96%87%E6%95%99%E7%A8%8B-/</link>
+      <link>https://cjy.ink/post/-go-%E8%AF%AD%E8%A8%80%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E7%A5%9E%E5%99%A8viper-%E4%B8%AD%E6%96%87%E6%95%99%E7%A8%8B-/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://augustus2345.github.io/post/-go-%E8%AF%AD%E8%A8%80%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E7%A5%9E%E5%99%A8viper-%E4%B8%AD%E6%96%87%E6%95%99%E7%A8%8B-/</guid>
+      <guid>https://cjy.ink/post/-go-%E8%AF%AD%E8%A8%80%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E7%A5%9E%E5%99%A8viper-%E4%B8%AD%E6%96%87%E6%95%99%E7%A8%8B-/</guid>
       <description>Viper 是适用于 Go 应用程序的完整配置解决方案。它被设计用于在应用程序中工作，并且可以处理所有类型的配置需求和格式。
 鉴于 viper库本身的 README 已经写得十分详细，这里就将其翻译成中文，并在最后附上两个项目中使用 viper的示例代码以供参考。
 安装 go get github.com/spf13/viper 什么是 Viper？ Viper 是适用于 Go 应用程序（包括 Twelve-Factor App）的完整配置解决方案。它被设计用于在应用程序中工作，并且可以处理所有类型的配置需求和格式。它支持以下特性：
@@ -344,10 +344,10 @@ viper.SetDefault(&amp;#34;ContentDir&amp;#34;, &amp;#34;content&amp;#34;) viper.
     
     <item>
       <title>JWT</title>
-      <link>https://augustus2345.github.io/post/-%E5%9C%A8-gin-%E6%A1%86%E6%9E%B6%E4%B8%AD%E4%BD%BF%E7%94%A8-jwt-/</link>
+      <link>https://cjy.ink/post/-%E5%9C%A8-gin-%E6%A1%86%E6%9E%B6%E4%B8%AD%E4%BD%BF%E7%94%A8-jwt-/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://augustus2345.github.io/post/-%E5%9C%A8-gin-%E6%A1%86%E6%9E%B6%E4%B8%AD%E4%BD%BF%E7%94%A8-jwt-/</guid>
+      <guid>https://cjy.ink/post/-%E5%9C%A8-gin-%E6%A1%86%E6%9E%B6%E4%B8%AD%E4%BD%BF%E7%94%A8-jwt-/</guid>
       <description>JWT 全称 JSON Web Token 是一种跨域认证解决方案，属于一个开放的标准，它规定了一种 Token 实现方式，目前多用于前后端分离项目和 OAuth2.0 业务场景下。
 什么是 JWT？ JWT 全称 JSON Web Token 是一种跨域认证解决方案，属于一个开放的标准，它规定了一种 Token 实现方式，目前多用于前后端分离项目和 OAuth2.0 业务场景下。
 为什么需要 JWT？ 在之前的一些 web 项目中，我们通常使用的是 Cookie-Session模式实现用户认证。相关流程大致如下：
@@ -360,10 +360,10 @@ JWT 就是一种基于 Token 的轻量级认证模式，服务端认证通过后
     
     <item>
       <title>swagger 生成接口文档</title>
-      <link>https://augustus2345.github.io/post/-%E4%BD%BF%E7%94%A8-swagger-%E7%94%9F%E6%88%90%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3-/</link>
+      <link>https://cjy.ink/post/-%E4%BD%BF%E7%94%A8-swagger-%E7%94%9F%E6%88%90%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3-/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://augustus2345.github.io/post/-%E4%BD%BF%E7%94%A8-swagger-%E7%94%9F%E6%88%90%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3-/</guid>
+      <guid>https://cjy.ink/post/-%E4%BD%BF%E7%94%A8-swagger-%E7%94%9F%E6%88%90%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3-/</guid>
       <description>swagger 介绍 Swagger 本质上是一种用于描述使用 JSON 表示的 RESTful API 的接口描述语言。Swagger 与一组开源软件工具一起使用，以设计、构建、记录和使用 RESTful Web 服务。Swagger 包括自动文档，代码生成和测试用例生成。
 在前后端分离的项目开发过程中，如果后端同学能够提供一份清晰明了的接口文档，那么就能极大地提高大家的沟通效率和开发效率。可是编写接口文档历来都是令人头痛的，而且后续接口文档的维护也十分耗费精力。
 最好是有一种方案能够既满足我们输出文档的需要又能随代码的变更自动更新，而 Swagger 正是那种能帮我们解决接口文档问题的工具。
@@ -379,10 +379,10 @@ go get -u github.com/swaggo/swag/cmd/swag 在项目根目录执行以下命令�
     
     <item>
       <title>web 项目限流策略-漏桶与令牌桶</title>
-      <link>https://augustus2345.github.io/post/-%E5%B8%B8%E7%94%A8%E9%99%90%E6%B5%81%E7%AD%96%E7%95%A5%E6%BC%8F%E6%A1%B6%E4%B8%8E%E4%BB%A4%E7%89%8C%E6%A1%B6%E4%BB%8B%E7%BB%8D-/</link>
+      <link>https://cjy.ink/post/-%E5%B8%B8%E7%94%A8%E9%99%90%E6%B5%81%E7%AD%96%E7%95%A5%E6%BC%8F%E6%A1%B6%E4%B8%8E%E4%BB%A4%E7%89%8C%E6%A1%B6%E4%BB%8B%E7%BB%8D-/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://augustus2345.github.io/post/-%E5%B8%B8%E7%94%A8%E9%99%90%E6%B5%81%E7%AD%96%E7%95%A5%E6%BC%8F%E6%A1%B6%E4%B8%8E%E4%BB%A4%E7%89%8C%E6%A1%B6%E4%BB%8B%E7%BB%8D-/</guid>
+      <guid>https://cjy.ink/post/-%E5%B8%B8%E7%94%A8%E9%99%90%E6%B5%81%E7%AD%96%E7%95%A5%E6%BC%8F%E6%A1%B6%E4%B8%8E%E4%BB%A4%E7%89%8C%E6%A1%B6%E4%BB%8B%E7%BB%8D-/</guid>
       <description>限流又称为流量控制（流控），通常是指限制到达系统的并发请求数，本文列举了常见的限流策略，并以 gin 框架为例演示了如何为项目添加限流组件。
 限流 限流又称为流量控制（流控），通常是指限制到达系统的并发请求数。
 我们生活中也会经常遇到限流的场景，比如：某景区限制每日进入景区的游客数量为 8 万人；沙河地铁站早高峰通过站外排队逐一放行的方式限制同一时间进入车站的旅客数量等。
@@ -396,10 +396,10 @@ import ( &amp;#34;fmt&amp;#34; &amp;#34;time&amp;#34; &amp;#34;go.uber.org/ratel
     
     <item>
       <title>zap 日志库的使用</title>
-      <link>https://augustus2345.github.io/post/-%E5%9C%A8-go-%E8%AF%AD%E8%A8%80%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8-zap-%E6%97%A5%E5%BF%97%E5%BA%93-/</link>
+      <link>https://cjy.ink/post/-%E5%9C%A8-go-%E8%AF%AD%E8%A8%80%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8-zap-%E6%97%A5%E5%BF%97%E5%BA%93-/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://augustus2345.github.io/post/-%E5%9C%A8-go-%E8%AF%AD%E8%A8%80%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8-zap-%E6%97%A5%E5%BF%97%E5%BA%93-/</guid>
+      <guid>https://cjy.ink/post/-%E5%9C%A8-go-%E8%AF%AD%E8%A8%80%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8-zap-%E6%97%A5%E5%BF%97%E5%BA%93-/</guid>
       <description>本文先介绍了 Go 语言原生的日志库的使用，然后详细介绍了非常流行的 Uber 开源的 zap 日志库，同时介绍了如何搭配 Lumberjack 实现日志的切割和归档。
 介绍 在许多 Go 语言项目中，我们需要一个好的日志记录器能够提供下面这些功能：
 能够将事件记录到文件中，而不是应用程序控制台。 日志切割 - 能够根据文件大小、时间或间隔等来切割日志文件。 支持不同的日志级别。例如 INFO，DEBUG，ERROR 等。 能够打印基本信息，如调用文件 / 函数名和行号，日志时间等。 默认的 Go Logger 在介绍 Uber-go 的 zap 包之前，让我们先看看 Go 语言提供的基本日志功能。Go 语言提供的默认日志包是 https://golang.org/pkg/log/。
@@ -412,10 +412,10 @@ func simpleHttpGet(url string) { resp, err := http.</description>
     
     <item>
       <title>优雅关机与重启</title>
-      <link>https://augustus2345.github.io/post/-%E4%BC%98%E9%9B%85%E5%9C%B0%E5%85%B3%E6%9C%BA%E6%88%96%E9%87%8D%E5%90%AF-/</link>
+      <link>https://cjy.ink/post/-%E4%BC%98%E9%9B%85%E5%9C%B0%E5%85%B3%E6%9C%BA%E6%88%96%E9%87%8D%E5%90%AF-/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://augustus2345.github.io/post/-%E4%BC%98%E9%9B%85%E5%9C%B0%E5%85%B3%E6%9C%BA%E6%88%96%E9%87%8D%E5%90%AF-/</guid>
+      <guid>https://cjy.ink/post/-%E4%BC%98%E9%9B%85%E5%9C%B0%E5%85%B3%E6%9C%BA%E6%88%96%E9%87%8D%E5%90%AF-/</guid>
       <description>我们编写的 Web 项目部署之后，经常会因为需要进行配置变更或功能迭代而重启服务，单纯的 kill -9 pid的方式会强制关闭进程，这样就会导致服务端当前正在处理的请求失败，那有没有更优雅的方式来实现关机或重启呢？
 优雅地关机 什么是优雅关机？ 优雅关机就是服务端关机命令发出后不是立即关机，而是等待当前还在处理的请求全部处理完毕后再退出程序，是一种对客户端友好的关机方式。而执行 Ctrl+C关闭服务端时，会强制结束进程导致正在访问的请求出现问题。
 如何实现优雅关机？ Go 1.8 版本之后， http.Server 内置的 Shutdown() 方法就支持优雅地关机，具体示例如下：
@@ -424,10 +424,10 @@ func simpleHttpGet(url string) { resp, err := http.</description>
     
     <item>
       <title>利用 validator 库进行参数校验</title>
-      <link>https://augustus2345.github.io/post/-validator-%E5%BA%93%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C%E8%8B%A5%E5%B9%B2%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7-/</link>
+      <link>https://cjy.ink/post/-validator-%E5%BA%93%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C%E8%8B%A5%E5%B9%B2%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7-/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://augustus2345.github.io/post/-validator-%E5%BA%93%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C%E8%8B%A5%E5%B9%B2%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7-/</guid>
+      <guid>https://cjy.ink/post/-validator-%E5%BA%93%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C%E8%8B%A5%E5%B9%B2%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7-/</guid>
       <description>gin 框架使用 github.com/go-playground/validator 进行参数校验，目前已经支持 github.com/go-playground/validator/v10了，我们需要在定义结构体时使用 binding tag 标识相关校验规则，可以查看 validator 文档查看支持的所有 tag。
 基本示例 首先来看 gin 框架内置使用 validator做参数校验的基本示例。
 package main import ( &amp;#34;net/http&amp;#34; &amp;#34;github.com/gin-gonic/gin&amp;#34; ) type SignUpParam struct { Age uint8 `json:&amp;#34;age&amp;#34; binding:&amp;#34;gte=1,lte=130&amp;#34;` Name string `json:&amp;#34;name&amp;#34; binding:&amp;#34;required&amp;#34;` Email string `json:&amp;#34;email&amp;#34; binding:&amp;#34;required,email&amp;#34;` Password string `json:&amp;#34;password&amp;#34; binding:&amp;#34;required&amp;#34;` RePassword string `json:&amp;#34;re_password&amp;#34; binding:&amp;#34;required,eqfield=Password&amp;#34;` } func main() { r := gin.Default() r.POST(&amp;#34;/signup&amp;#34;, func(c *gin.Context) { var u SignUpParam if err := c.ShouldBind(&amp;amp;u); err != nil { c.JSON(http.StatusOK, gin.</description>
