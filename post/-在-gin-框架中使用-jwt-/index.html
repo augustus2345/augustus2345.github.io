@@ -5,16 +5,16 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 <meta name="robots" content="index, follow">
-<title>Augustus</title>
+<title>JWT | Augustus</title>
 <meta name="keywords" content="" />
-<meta name="description" content="title: JWT date: 2023-03-130T11:17:26&#43;08:00
-JWT 全称 JSON Web Token 是一种跨域认证解决方案，属于一个开放的标准，它规定了一种 Token 实现方式，目前多用于前后端分离项目和 OAuth2.0 业务场景下。
+<meta name="description" content="JWT 全称 JSON Web Token 是一种跨域认证解决方案，属于一个开放的标准，它规定了一种 Token 实现方式，目前多用于前后端分离项目和 OAuth2.0 业务场景下。
 什么是 JWT？ JWT 全称 JSON Web Token 是一种跨域认证解决方案，属于一个开放的标准，它规定了一种 Token 实现方式，目前多用于前后端分离项目和 OAuth2.0 业务场景下。
 为什么需要 JWT？ 在之前的一些 web 项目中，我们通常使用的是 Cookie-Session模式实现用户认证。相关流程大致如下：
 用户在浏览器端填写用户名和密码，并发送给服务端 服务端对用户名和密码校验通过后会生成一份保存当前用户相关信息的 session 数据和一个与之对应的标识（通常称为 session_id） 服务端返回响应时将上一步的 session_id 写入用户浏览器的 Cookie 后续用户来自该浏览器的每次请求都会自动携带包含 session_id 的 Cookie 服务端通过请求中的 session_id 就能找到之前保存的该用户那份 session 数据，从而获取该用户的相关信息。 这种方案依赖于客户端（浏览器）保存 Cookie，并且需要在服务端存储用户的 session 数据。
 在移动互联网时代，我们的用户可能使用浏览器也可能使用 APP 来访问我们的服务，我们的 web 应用可能是前后端分开部署在不同的端口，有时候我们还需要支持第三方登录，这下 Cookie-Session的模式就有些力不从心了。
 JWT 就是一种基于 Token 的轻量级认证模式，服务端认证通过后，会生成一个 JSON 对象，经过签名后得到一个 Token（令牌）再发回给用户，用户后续请求只需要带上这个 Token，服务端解密之后就能获取该用户的相关信息了。
-想要了解 JWT 的原理，推荐大家阅读：阮一峰的 JWT 入门教程">
+想要了解 JWT 的原理，推荐大家阅读：阮一峰的 JWT 入门教程
+安装 我们使用 Go 语言社区中的 jwt 相关库来构建我们的应用，例如：https://github.">
 <meta name="author" content="Augustus">
 <link rel="canonical" href="https://augustus2345.github.io/post/-%E5%9C%A8-gin-%E6%A1%86%E6%9E%B6%E4%B8%AD%E4%BD%BF%E7%94%A8-jwt-/" />
 <link crossorigin="anonymous" href="/assets/css/stylesheet.min.a5ab32f1bb68fb0ae8f28914ef9f0da8dfc31c91a454154a325a727be950a856.css" integrity="sha256-pasy8bto&#43;wro8okU758NqN/DHJGkVBVKMlpye&#43;lQqFY=" rel="preload stylesheet" as="style">
@@ -36,15 +36,15 @@ JWT 就是一种基于 Token 的轻量级认证模式，服务端认证通过后
         }
 
     </style>
-</noscript><meta property="og:title" content="" />
-<meta property="og:description" content="title: JWT date: 2023-03-130T11:17:26&#43;08:00
-JWT 全称 JSON Web Token 是一种跨域认证解决方案，属于一个开放的标准，它规定了一种 Token 实现方式，目前多用于前后端分离项目和 OAuth2.0 业务场景下。
+</noscript><meta property="og:title" content="JWT" />
+<meta property="og:description" content="JWT 全称 JSON Web Token 是一种跨域认证解决方案，属于一个开放的标准，它规定了一种 Token 实现方式，目前多用于前后端分离项目和 OAuth2.0 业务场景下。
 什么是 JWT？ JWT 全称 JSON Web Token 是一种跨域认证解决方案，属于一个开放的标准，它规定了一种 Token 实现方式，目前多用于前后端分离项目和 OAuth2.0 业务场景下。
 为什么需要 JWT？ 在之前的一些 web 项目中，我们通常使用的是 Cookie-Session模式实现用户认证。相关流程大致如下：
 用户在浏览器端填写用户名和密码，并发送给服务端 服务端对用户名和密码校验通过后会生成一份保存当前用户相关信息的 session 数据和一个与之对应的标识（通常称为 session_id） 服务端返回响应时将上一步的 session_id 写入用户浏览器的 Cookie 后续用户来自该浏览器的每次请求都会自动携带包含 session_id 的 Cookie 服务端通过请求中的 session_id 就能找到之前保存的该用户那份 session 数据，从而获取该用户的相关信息。 这种方案依赖于客户端（浏览器）保存 Cookie，并且需要在服务端存储用户的 session 数据。
 在移动互联网时代，我们的用户可能使用浏览器也可能使用 APP 来访问我们的服务，我们的 web 应用可能是前后端分开部署在不同的端口，有时候我们还需要支持第三方登录，这下 Cookie-Session的模式就有些力不从心了。
 JWT 就是一种基于 Token 的轻量级认证模式，服务端认证通过后，会生成一个 JSON 对象，经过签名后得到一个 Token（令牌）再发回给用户，用户后续请求只需要带上这个 Token，服务端解密之后就能获取该用户的相关信息了。
-想要了解 JWT 的原理，推荐大家阅读：阮一峰的 JWT 入门教程" />
+想要了解 JWT 的原理，推荐大家阅读：阮一峰的 JWT 入门教程
+安装 我们使用 Go 语言社区中的 jwt 相关库来构建我们的应用，例如：https://github." />
 <meta property="og:type" content="article" />
 <meta property="og:url" content="https://augustus2345.github.io/post/-%E5%9C%A8-gin-%E6%A1%86%E6%9E%B6%E4%B8%AD%E4%BD%BF%E7%94%A8-jwt-/" /><meta property="og:image" content="https://augustus2345.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"/><meta property="article:section" content="post" />
 
@@ -53,15 +53,15 @@ JWT 就是一种基于 Token 的轻量级认证模式，服务端认证通过后
 <meta name="twitter:card" content="summary_large_image"/>
 <meta name="twitter:image" content="https://augustus2345.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"/>
 
-<meta name="twitter:title" content=""/>
-<meta name="twitter:description" content="title: JWT date: 2023-03-130T11:17:26&#43;08:00
-JWT 全称 JSON Web Token 是一种跨域认证解决方案，属于一个开放的标准，它规定了一种 Token 实现方式，目前多用于前后端分离项目和 OAuth2.0 业务场景下。
+<meta name="twitter:title" content="JWT"/>
+<meta name="twitter:description" content="JWT 全称 JSON Web Token 是一种跨域认证解决方案，属于一个开放的标准，它规定了一种 Token 实现方式，目前多用于前后端分离项目和 OAuth2.0 业务场景下。
 什么是 JWT？ JWT 全称 JSON Web Token 是一种跨域认证解决方案，属于一个开放的标准，它规定了一种 Token 实现方式，目前多用于前后端分离项目和 OAuth2.0 业务场景下。
 为什么需要 JWT？ 在之前的一些 web 项目中，我们通常使用的是 Cookie-Session模式实现用户认证。相关流程大致如下：
 用户在浏览器端填写用户名和密码，并发送给服务端 服务端对用户名和密码校验通过后会生成一份保存当前用户相关信息的 session 数据和一个与之对应的标识（通常称为 session_id） 服务端返回响应时将上一步的 session_id 写入用户浏览器的 Cookie 后续用户来自该浏览器的每次请求都会自动携带包含 session_id 的 Cookie 服务端通过请求中的 session_id 就能找到之前保存的该用户那份 session 数据，从而获取该用户的相关信息。 这种方案依赖于客户端（浏览器）保存 Cookie，并且需要在服务端存储用户的 session 数据。
 在移动互联网时代，我们的用户可能使用浏览器也可能使用 APP 来访问我们的服务，我们的 web 应用可能是前后端分开部署在不同的端口，有时候我们还需要支持第三方登录，这下 Cookie-Session的模式就有些力不从心了。
 JWT 就是一种基于 Token 的轻量级认证模式，服务端认证通过后，会生成一个 JSON 对象，经过签名后得到一个 Token（令牌）再发回给用户，用户后续请求只需要带上这个 Token，服务端解密之后就能获取该用户的相关信息了。
-想要了解 JWT 的原理，推荐大家阅读：阮一峰的 JWT 入门教程"/>
+想要了解 JWT 的原理，推荐大家阅读：阮一峰的 JWT 入门教程
+安装 我们使用 Go 语言社区中的 jwt 相关库来构建我们的应用，例如：https://github."/>
 
 
 <script type="application/ld+json">
@@ -78,7 +78,7 @@ JWT 就是一种基于 Token 的轻量级认证模式，服务端认证通过后
     {
       "@type": "ListItem",
       "position":  2 ,
-      "name": "",
+      "name": "JWT",
       "item": "https://augustus2345.github.io/post/-%E5%9C%A8-gin-%E6%A1%86%E6%9E%B6%E4%B8%AD%E4%BD%BF%E7%94%A8-jwt-/"
     }
   ]
@@ -88,14 +88,14 @@ JWT 就是一种基于 Token 的轻量级认证模式，服务端认证通过后
 {
   "@context": "https://schema.org",
   "@type": "BlogPosting",
-  "headline": "",
-  "name": "",
-  "description": "title: JWT date: 2023-03-130T11:17:26+08:00\nJWT 全称 JSON Web Token 是一种跨域认证解决方案，属于一个开放的标准，它规定了一种 Token 实现方式，目前多用于前后端分离项目和 OAuth2.0 业务场景下。\n什么是 JWT？ JWT 全称 JSON Web Token 是一种跨域认证解决方案，属于一个开放的标准，它规定了一种 Token 实现方式，目前多用于前后端分离项目和 OAuth2.0 业务场景下。\n为什么需要 JWT？ 在之前的一些 web 项目中，我们通常使用的是 Cookie-Session模式实现用户认证。相关流程大致如下：\n用户在浏览器端填写用户名和密码，并发送给服务端 服务端对用户名和密码校验通过后会生成一份保存当前用户相关信息的 session 数据和一个与之对应的标识（通常称为 session_id） 服务端返回响应时将上一步的 session_id 写入用户浏览器的 Cookie 后续用户来自该浏览器的每次请求都会自动携带包含 session_id 的 Cookie 服务端通过请求中的 session_id 就能找到之前保存的该用户那份 session 数据，从而获取该用户的相关信息。 这种方案依赖于客户端（浏览器）保存 Cookie，并且需要在服务端存储用户的 session 数据。\n在移动互联网时代，我们的用户可能使用浏览器也可能使用 APP 来访问我们的服务，我们的 web 应用可能是前后端分开部署在不同的端口，有时候我们还需要支持第三方登录，这下 Cookie-Session的模式就有些力不从心了。\nJWT 就是一种基于 Token 的轻量级认证模式，服务端认证通过后，会生成一个 JSON 对象，经过签名后得到一个 Token（令牌）再发回给用户，用户后续请求只需要带上这个 Token，服务端解密之后就能获取该用户的相关信息了。\n想要了解 JWT 的原理，推荐大家阅读：阮一峰的 JWT 入门教程",
+  "headline": "JWT",
+  "name": "JWT",
+  "description": "JWT 全称 JSON Web Token 是一种跨域认证解决方案，属于一个开放的标准，它规定了一种 Token 实现方式，目前多用于前后端分离项目和 OAuth2.0 业务场景下。\n什么是 JWT？ JWT 全称 JSON Web Token 是一种跨域认证解决方案，属于一个开放的标准，它规定了一种 Token 实现方式，目前多用于前后端分离项目和 OAuth2.0 业务场景下。\n为什么需要 JWT？ 在之前的一些 web 项目中，我们通常使用的是 Cookie-Session模式实现用户认证。相关流程大致如下：\n用户在浏览器端填写用户名和密码，并发送给服务端 服务端对用户名和密码校验通过后会生成一份保存当前用户相关信息的 session 数据和一个与之对应的标识（通常称为 session_id） 服务端返回响应时将上一步的 session_id 写入用户浏览器的 Cookie 后续用户来自该浏览器的每次请求都会自动携带包含 session_id 的 Cookie 服务端通过请求中的 session_id 就能找到之前保存的该用户那份 session 数据，从而获取该用户的相关信息。 这种方案依赖于客户端（浏览器）保存 Cookie，并且需要在服务端存储用户的 session 数据。\n在移动互联网时代，我们的用户可能使用浏览器也可能使用 APP 来访问我们的服务，我们的 web 应用可能是前后端分开部署在不同的端口，有时候我们还需要支持第三方登录，这下 Cookie-Session的模式就有些力不从心了。\nJWT 就是一种基于 Token 的轻量级认证模式，服务端认证通过后，会生成一个 JSON 对象，经过签名后得到一个 Token（令牌）再发回给用户，用户后续请求只需要带上这个 Token，服务端解密之后就能获取该用户的相关信息了。\n想要了解 JWT 的原理，推荐大家阅读：阮一峰的 JWT 入门教程\n安装 我们使用 Go 语言社区中的 jwt 相关库来构建我们的应用，例如：https://github.",
   "keywords": [
     
   ],
-  "articleBody": "title: JWT date: 2023-03-130T11:17:26+08:00\nJWT 全称 JSON Web Token 是一种跨域认证解决方案，属于一个开放的标准，它规定了一种 Token 实现方式，目前多用于前后端分离项目和 OAuth2.0 业务场景下。\n什么是 JWT？ JWT 全称 JSON Web Token 是一种跨域认证解决方案，属于一个开放的标准，它规定了一种 Token 实现方式，目前多用于前后端分离项目和 OAuth2.0 业务场景下。\n为什么需要 JWT？ 在之前的一些 web 项目中，我们通常使用的是 Cookie-Session模式实现用户认证。相关流程大致如下：\n用户在浏览器端填写用户名和密码，并发送给服务端 服务端对用户名和密码校验通过后会生成一份保存当前用户相关信息的 session 数据和一个与之对应的标识（通常称为 session_id） 服务端返回响应时将上一步的 session_id 写入用户浏览器的 Cookie 后续用户来自该浏览器的每次请求都会自动携带包含 session_id 的 Cookie 服务端通过请求中的 session_id 就能找到之前保存的该用户那份 session 数据，从而获取该用户的相关信息。 这种方案依赖于客户端（浏览器）保存 Cookie，并且需要在服务端存储用户的 session 数据。\n在移动互联网时代，我们的用户可能使用浏览器也可能使用 APP 来访问我们的服务，我们的 web 应用可能是前后端分开部署在不同的端口，有时候我们还需要支持第三方登录，这下 Cookie-Session的模式就有些力不从心了。\nJWT 就是一种基于 Token 的轻量级认证模式，服务端认证通过后，会生成一个 JSON 对象，经过签名后得到一个 Token（令牌）再发回给用户，用户后续请求只需要带上这个 Token，服务端解密之后就能获取该用户的相关信息了。\n想要了解 JWT 的原理，推荐大家阅读：阮一峰的 JWT 入门教程\n安装 我们使用 Go 语言社区中的 jwt 相关库来构建我们的应用，例如：https://github.com/golang-jwt/jwt。\ngo get github.com/golang-jwt/jwt/v4 本文将使用这个库来实现我们生成 JWT 和解析 JWT 的功能。\n使用 默认 Claim 如果我们直接使用 JWT 中默认的字段，没有其他定制化的需求则可以直接使用这个包中的和方法快速生成和解析 token。\n// 用于签名的字符串 var mySigningKey = []byte(\"liwenzhou.com\") // GenRegisteredClaims 使用默认声明创建jwt func GenRegisteredClaims() (string, error) { // 创建 Claims claims := \u0026jwt.RegisteredClaims{ ExpiresAt: jwt.NewNumericDate(time.Now().Add(time.Hour * 24)), // 过期时间 Issuer: \"qimi\", // 签发人 } // 生成token对象 token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims) // 生成签名字符串 return token.SignedString(mySigningKey) } // ParseRegisteredClaims 解析jwt func ValidateRegisteredClaims(tokenString string) bool { // 解析token token, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) { return mySigningKey, nil }) if err != nil { // 解析token失败 return false } return token.Valid } 自定义 Claims 我们需要定制自己的需求来决定 JWT 中保存哪些数据，比如我们规定在 JWT 中要存储 username信息，那么我们就定义一个 MyClaims结构体如下：\n// CustomClaims 自定义声明类型 并内嵌jwt.RegisteredClaims // jwt包自带的jwt.RegisteredClaims只包含了官方字段 // 假设我们这里需要额外记录一个username字段，所以要自定义结构体 // 如果想要保存更多信息，都可以添加到这个结构体中 type CustomClaims struct { // 可根据需要自行添加字段 Username string `json:\"username\"` jwt.RegisteredClaims // 内嵌标准的声明 } 然后我们定义 JWT 的过期时间，这里以 24 小时为例：\nconst TokenExpireDuration = time.Hour * 24 接下来还需要定义一个用于签名的字符串：\n// CustomSecret 用于加盐的字符串 var CustomSecret = []byte(\"夏天夏天悄悄过去\") 生成 JWT 我们可以根据自己的业务需要封装一个生成 token 的函数。\n// GenToken 生成JWT func GenToken(username string) (string, error) { // 创建一个我们自己的声明 claims := CustomClaims{ username, // 自定义字段 jwt.RegisteredClaims{ ExpiresAt: jwt.NewNumericDate(time.Now().Add(TokenExpireDuration)), Issuer: \"my-project\", // 签发人 }, } // 使用指定的签名方法创建签名对象 token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims) // 使用指定的secret签名并获得完整的编码后的字符串token return token.SignedString(CustomSecret) } 解析 JWT 根据给定的 JWT 字符串，解析出数据。\n// ParseToken 解析JWT func ParseToken(tokenString string) (*CustomClaims, error) { // 解析token // 如果是自定义Claim结构体则需要使用 ParseWithClaims 方法 token, err := jwt.ParseWithClaims(tokenString, \u0026CustomClaims{}, func(token *jwt.Token) (i interface{}, err error) { // 直接使用标准的Claim则可以直接使用Parse方法 //token, err := jwt.Parse(tokenString, func(token *jwt.Token) (i interface{}, err error) { return CustomSecret, nil }) if err != nil { return nil, err } // 对token对象中的Claim进行类型断言 if claims, ok := token.Claims.(*CustomClaims); ok \u0026\u0026 token.Valid { // 校验token return claims, nil } return nil, errors.New(\"invalid token\") } 在 gin 框架中使用 JWT 首先我们注册一条路由 /auth，对外提供获取 Token 的渠道：\nr.POST(\"/auth\", authHandler) 我们的 authHandler定义如下：\nfunc authHandler(c *gin.Context) { // 用户发送用户名和密码过来 var user UserInfo err := c.ShouldBind(\u0026user) if err != nil { c.JSON(http.StatusOK, gin.H{ \"code\": 2001, \"msg\": \"无效的参数\", }) return } // 校验用户名和密码是否正确 if user.Username == \"q1mi\" \u0026\u0026 user.Password == \"q1mi123\" { // 生成Token tokenString, _ := GenToken(user.Username) c.JSON(http.StatusOK, gin.H{ \"code\": 2000, \"msg\": \"success\", \"data\": gin.H{\"token\": tokenString}, }) return } c.JSON(http.StatusOK, gin.H{ \"code\": 2002, \"msg\": \"鉴权失败\", }) return } 用户通过上面的接口获取 Token 之后，后续就会携带着 Token 再来请求我们的其他接口，这个时候就需要对这些请求的 Token 进行校验操作了，很显然我们应该实现一个检验 Token 的中间件，具体实现如下：\n// JWTAuthMiddleware 基于JWT的认证中间件 func JWTAuthMiddleware() func(c *gin.Context) { return func(c *gin.Context) { // 客户端携带Token有三种方式 1.放在请求头 2.放在请求体 3.放在URI // 这里假设Token放在Header的Authorization中，并使用Bearer开头 // 这里的具体实现方式要依据你的实际业务情况决定 authHeader := c.Request.Header.Get(\"Authorization\") if authHeader == \"\" { c.JSON(http.StatusOK, gin.H{ \"code\": 2003, \"msg\": \"请求头中auth为空\", }) c.Abort() return } // 按空格分割 parts := strings.SplitN(authHeader, \" \", 2) if !(len(parts) == 2 \u0026\u0026 parts[0] == \"Bearer\") { c.JSON(http.StatusOK, gin.H{ \"code\": 2004, \"msg\": \"请求头中auth格式有误\", }) c.Abort() return } // parts[1]是获取到的tokenString，我们使用之前定义好的解析JWT的函数来解析它 mc, err := ParseToken(parts[1]) if err != nil { c.JSON(http.StatusOK, gin.H{ \"code\": 2005, \"msg\": \"无效的Token\", }) c.Abort() return } // 将当前请求的username信息保存到请求的上下文c上 c.Set(\"username\", mc.Username) c.Next() // 后续的处理函数可以用过c.Get(\"username\")来获取当前请求的用户信息 } } 注册一个 /home路由，发个请求验证一下吧。\nr.GET(\"/home\", JWTAuthMiddleware(), homeHandler) func homeHandler(c *gin.Context) { username := c.MustGet(\"username\").(string) c.JSON(http.StatusOK, gin.H{ \"code\": 2000, \"msg\": \"success\", \"data\": gin.H{\"username\": username}, }) } 如果不想自己实现上述功能，你也可以使用 Github 上别人封装好的包，比如 https://github.com/appleboy/gin-jwt。\nrefresh token 在某些业务场景下，我们可能还需要使用 refresh token。\n这里可以参考 RFC 6749 OAuth2.0 中关于 refresh token 的介绍\n",
-  "wordCount" : "566",
+  "articleBody": "JWT 全称 JSON Web Token 是一种跨域认证解决方案，属于一个开放的标准，它规定了一种 Token 实现方式，目前多用于前后端分离项目和 OAuth2.0 业务场景下。\n什么是 JWT？ JWT 全称 JSON Web Token 是一种跨域认证解决方案，属于一个开放的标准，它规定了一种 Token 实现方式，目前多用于前后端分离项目和 OAuth2.0 业务场景下。\n为什么需要 JWT？ 在之前的一些 web 项目中，我们通常使用的是 Cookie-Session模式实现用户认证。相关流程大致如下：\n用户在浏览器端填写用户名和密码，并发送给服务端 服务端对用户名和密码校验通过后会生成一份保存当前用户相关信息的 session 数据和一个与之对应的标识（通常称为 session_id） 服务端返回响应时将上一步的 session_id 写入用户浏览器的 Cookie 后续用户来自该浏览器的每次请求都会自动携带包含 session_id 的 Cookie 服务端通过请求中的 session_id 就能找到之前保存的该用户那份 session 数据，从而获取该用户的相关信息。 这种方案依赖于客户端（浏览器）保存 Cookie，并且需要在服务端存储用户的 session 数据。\n在移动互联网时代，我们的用户可能使用浏览器也可能使用 APP 来访问我们的服务，我们的 web 应用可能是前后端分开部署在不同的端口，有时候我们还需要支持第三方登录，这下 Cookie-Session的模式就有些力不从心了。\nJWT 就是一种基于 Token 的轻量级认证模式，服务端认证通过后，会生成一个 JSON 对象，经过签名后得到一个 Token（令牌）再发回给用户，用户后续请求只需要带上这个 Token，服务端解密之后就能获取该用户的相关信息了。\n想要了解 JWT 的原理，推荐大家阅读：阮一峰的 JWT 入门教程\n安装 我们使用 Go 语言社区中的 jwt 相关库来构建我们的应用，例如：https://github.com/golang-jwt/jwt。\ngo get github.com/golang-jwt/jwt/v4 本文将使用这个库来实现我们生成 JWT 和解析 JWT 的功能。\n使用 默认 Claim 如果我们直接使用 JWT 中默认的字段，没有其他定制化的需求则可以直接使用这个包中的和方法快速生成和解析 token。\n// 用于签名的字符串 var mySigningKey = []byte(\"liwenzhou.com\") // GenRegisteredClaims 使用默认声明创建jwt func GenRegisteredClaims() (string, error) { // 创建 Claims claims := \u0026jwt.RegisteredClaims{ ExpiresAt: jwt.NewNumericDate(time.Now().Add(time.Hour * 24)), // 过期时间 Issuer: \"qimi\", // 签发人 } // 生成token对象 token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims) // 生成签名字符串 return token.SignedString(mySigningKey) } // ParseRegisteredClaims 解析jwt func ValidateRegisteredClaims(tokenString string) bool { // 解析token token, err := jwt.Parse(tokenString, func(token *jwt.Token) (interface{}, error) { return mySigningKey, nil }) if err != nil { // 解析token失败 return false } return token.Valid } 自定义 Claims 我们需要定制自己的需求来决定 JWT 中保存哪些数据，比如我们规定在 JWT 中要存储 username信息，那么我们就定义一个 MyClaims结构体如下：\n// CustomClaims 自定义声明类型 并内嵌jwt.RegisteredClaims // jwt包自带的jwt.RegisteredClaims只包含了官方字段 // 假设我们这里需要额外记录一个username字段，所以要自定义结构体 // 如果想要保存更多信息，都可以添加到这个结构体中 type CustomClaims struct { // 可根据需要自行添加字段 Username string `json:\"username\"` jwt.RegisteredClaims // 内嵌标准的声明 } 然后我们定义 JWT 的过期时间，这里以 24 小时为例：\nconst TokenExpireDuration = time.Hour * 24 接下来还需要定义一个用于签名的字符串：\n// CustomSecret 用于加盐的字符串 var CustomSecret = []byte(\"夏天夏天悄悄过去\") 生成 JWT 我们可以根据自己的业务需要封装一个生成 token 的函数。\n// GenToken 生成JWT func GenToken(username string) (string, error) { // 创建一个我们自己的声明 claims := CustomClaims{ username, // 自定义字段 jwt.RegisteredClaims{ ExpiresAt: jwt.NewNumericDate(time.Now().Add(TokenExpireDuration)), Issuer: \"my-project\", // 签发人 }, } // 使用指定的签名方法创建签名对象 token := jwt.NewWithClaims(jwt.SigningMethodHS256, claims) // 使用指定的secret签名并获得完整的编码后的字符串token return token.SignedString(CustomSecret) } 解析 JWT 根据给定的 JWT 字符串，解析出数据。\n// ParseToken 解析JWT func ParseToken(tokenString string) (*CustomClaims, error) { // 解析token // 如果是自定义Claim结构体则需要使用 ParseWithClaims 方法 token, err := jwt.ParseWithClaims(tokenString, \u0026CustomClaims{}, func(token *jwt.Token) (i interface{}, err error) { // 直接使用标准的Claim则可以直接使用Parse方法 //token, err := jwt.Parse(tokenString, func(token *jwt.Token) (i interface{}, err error) { return CustomSecret, nil }) if err != nil { return nil, err } // 对token对象中的Claim进行类型断言 if claims, ok := token.Claims.(*CustomClaims); ok \u0026\u0026 token.Valid { // 校验token return claims, nil } return nil, errors.New(\"invalid token\") } 在 gin 框架中使用 JWT 首先我们注册一条路由 /auth，对外提供获取 Token 的渠道：\nr.POST(\"/auth\", authHandler) 我们的 authHandler定义如下：\nfunc authHandler(c *gin.Context) { // 用户发送用户名和密码过来 var user UserInfo err := c.ShouldBind(\u0026user) if err != nil { c.JSON(http.StatusOK, gin.H{ \"code\": 2001, \"msg\": \"无效的参数\", }) return } // 校验用户名和密码是否正确 if user.Username == \"q1mi\" \u0026\u0026 user.Password == \"q1mi123\" { // 生成Token tokenString, _ := GenToken(user.Username) c.JSON(http.StatusOK, gin.H{ \"code\": 2000, \"msg\": \"success\", \"data\": gin.H{\"token\": tokenString}, }) return } c.JSON(http.StatusOK, gin.H{ \"code\": 2002, \"msg\": \"鉴权失败\", }) return } 用户通过上面的接口获取 Token 之后，后续就会携带着 Token 再来请求我们的其他接口，这个时候就需要对这些请求的 Token 进行校验操作了，很显然我们应该实现一个检验 Token 的中间件，具体实现如下：\n// JWTAuthMiddleware 基于JWT的认证中间件 func JWTAuthMiddleware() func(c *gin.Context) { return func(c *gin.Context) { // 客户端携带Token有三种方式 1.放在请求头 2.放在请求体 3.放在URI // 这里假设Token放在Header的Authorization中，并使用Bearer开头 // 这里的具体实现方式要依据你的实际业务情况决定 authHeader := c.Request.Header.Get(\"Authorization\") if authHeader == \"\" { c.JSON(http.StatusOK, gin.H{ \"code\": 2003, \"msg\": \"请求头中auth为空\", }) c.Abort() return } // 按空格分割 parts := strings.SplitN(authHeader, \" \", 2) if !(len(parts) == 2 \u0026\u0026 parts[0] == \"Bearer\") { c.JSON(http.StatusOK, gin.H{ \"code\": 2004, \"msg\": \"请求头中auth格式有误\", }) c.Abort() return } // parts[1]是获取到的tokenString，我们使用之前定义好的解析JWT的函数来解析它 mc, err := ParseToken(parts[1]) if err != nil { c.JSON(http.StatusOK, gin.H{ \"code\": 2005, \"msg\": \"无效的Token\", }) c.Abort() return } // 将当前请求的username信息保存到请求的上下文c上 c.Set(\"username\", mc.Username) c.Next() // 后续的处理函数可以用过c.Get(\"username\")来获取当前请求的用户信息 } } 注册一个 /home路由，发个请求验证一下吧。\nr.GET(\"/home\", JWTAuthMiddleware(), homeHandler) func homeHandler(c *gin.Context) { username := c.MustGet(\"username\").(string) c.JSON(http.StatusOK, gin.H{ \"code\": 2000, \"msg\": \"success\", \"data\": gin.H{\"username\": username}, }) } 如果不想自己实现上述功能，你也可以使用 Github 上别人封装好的包，比如 https://github.com/appleboy/gin-jwt。\nrefresh token 在某些业务场景下，我们可能还需要使用 refresh token。\n这里可以参考 RFC 6749 OAuth2.0 中关于 refresh token 的介绍\n",
+  "wordCount" : "562",
   "inLanguage": "en",
   "datePublished": "0001-01-01T00:00:00Z",
   "dateModified": "0001-01-01T00:00:00Z",
@@ -164,7 +164,7 @@ JWT 就是一种基于 Token 的轻量级认证模式，服务端认证通过后
   <header class="post-header">
     <div class="breadcrumbs"><a href="https://augustus2345.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://augustus2345.github.io/post/">Posts</a></div>
     <h1 class="post-title">
-      
+      JWT
     </h1>
     <div class="post-meta">Augustus
 
@@ -268,9 +268,7 @@ JWT 就是一种基于 Token 的轻量级认证模式，服务端认证通过后
     }
 </script>
 
-  <div class="post-content"><p>title: JWT
-date: 2023-03-130T11:17:26+08:00</p>
-<p>JWT 全称 JSON Web Token 是一种跨域认证解决方案，属于一个开放的标准，它规定了一种 Token 实现方式，目前多用于前后端分离项目和 OAuth2.0 业务场景下。</p>
+  <div class="post-content"><p>JWT 全称 JSON Web Token 是一种跨域认证解决方案，属于一个开放的标准，它规定了一种 Token 实现方式，目前多用于前后端分离项目和 OAuth2.0 业务场景下。</p>
 <h2 id="什么是-jwt">什么是 JWT？<a hidden class="anchor" aria-hidden="true" href="#什么是-jwt">#</a></h2>
 <p>JWT 全称 JSON Web Token 是一种跨域认证解决方案，属于一个开放的标准，它规定了一种 Token 实现方式，目前多用于前后端分离项目和 OAuth2.0 业务场景下。</p>
 <h2 id="为什么需要-jwt">为什么需要 JWT？<a hidden class="anchor" aria-hidden="true" href="#为什么需要-jwt">#</a></h2>

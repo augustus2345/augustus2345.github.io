@@ -152,25 +152,6 @@ build: CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o xx 示例 .PHONY: all b
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2>
-    </h2>
-  </header>
-  <section class="entry-content">
-    <p>title: JWT date: 2023-03-130T11:17:26&#43;08:00
-JWT 全称 JSON Web Token 是一种跨域认证解决方案，属于一个开放的标准，它规定了一种 Token 实现方式，目前多用于前后端分离项目和 OAuth2.0 业务场景下。
-什么是 JWT？ JWT 全称 JSON Web Token 是一种跨域认证解决方案，属于一个开放的标准，它规定了一种 Token 实现方式，目前多用于前后端分离项目和 OAuth2.0 业务场景下。
-为什么需要 JWT？ 在之前的一些 web 项目中，我们通常使用的是 Cookie-Session模式实现用户认证。相关流程大致如下：
-用户在浏览器端填写用户名和密码，并发送给服务端 服务端对用户名和密码校验通过后会生成一份保存当前用户相关信息的 session 数据和一个与之对应的标识（通常称为 session_id） 服务端返回响应时将上一步的 session_id 写入用户浏览器的 Cookie 后续用户来自该浏览器的每次请求都会自动携带包含 session_id 的 Cookie 服务端通过请求中的 session_id 就能找到之前保存的该用户那份 session 数据，从而获取该用户的相关信息。 这种方案依赖于客户端（浏览器）保存 Cookie，并且需要在服务端存储用户的 session 数据。
-在移动互联网时代，我们的用户可能使用浏览器也可能使用 APP 来访问我们的服务，我们的 web 应用可能是前后端分开部署在不同的端口，有时候我们还需要支持第三方登录，这下 Cookie-Session的模式就有些力不从心了。
-JWT 就是一种基于 Token 的轻量级认证模式，服务端认证通过后，会生成一个 JSON 对象，经过签名后得到一个 Token（令牌）再发回给用户，用户后续请求只需要带上这个 Token，服务端解密之后就能获取该用户的相关信息了。
-想要了解 JWT 的原理，推荐大家阅读：阮一峰的 JWT 入门教程...</p>
-  </section>
-  <footer class="entry-footer">Augustus</footer>
-  <a class="entry-link" aria-label="post link to " href="https://augustus2345.github.io/post/-%E5%9C%A8-gin-%E6%A1%86%E6%9E%B6%E4%B8%AD%E4%BD%BF%E7%94%A8-jwt-/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
     <h2>《你的灯亮着吗？》书评兼谈我的思考
     </h2>
   </header>
@@ -288,6 +269,27 @@ docker run -it --rm \ -w &#34;/go/src/github.com/cosmtrek/hub&#34; \ -v $(pwd):/
   </section>
   <footer class="entry-footer">Augustus</footer>
   <a class="entry-link" aria-label="post link to air 热加载" href="https://augustus2345.github.io/post/-%E4%BD%BF%E7%94%A8-air-%E5%AE%9E%E7%8E%B0-go-%E7%A8%8B%E5%BA%8F%E5%AE%9E%E6%97%B6%E7%83%AD%E9%87%8D%E8%BD%BD-/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>Error 接口和错误处理
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>Go 语言中的错误处理与其他语言不太一样，它把错误当成一种值来处理，更强调判断错误、处理错误，而不是一股脑的 catch 捕获异常。
+Error 接口 Go 语言中把错误当成一种特殊的值来处理，不支持其他语言中使用 try/catch捕获异常的方式。
+Error 接口 Go 语言中使用一个名为 error 接口来表示错误类型。
+type error interface { Error() string } error 接口只包含一个方法——Error，这个函数需要返回一个描述错误信息的字符串。
+当一个函数或方法需要返回错误时，我们通常是把错误作为最后一个返回值。例如下面标准库 os 中打开文件的函数。
+func Open(name string) (*File, error) { return OpenFile(name, O_RDONLY, 0) } 由于 error 是一个接口类型，默认零值为 nil。所以我们通常将调用函数返回的错误与 nil进行比较，以此来判断函数是否返回错误。例如你会经常看到类似下面的错误判断代码。
+file, err := os.Open(&#34;./xx.go&#34;) if err != nil { fmt.Println(&#34;打开文件失败,err:&#34;, err) return } 注意
+当我们使用 fmt包打印错误时会自动调用 error 类型的 Error 方法，也就是会打印出错误的描述信息。
+创建错误 我们可以根据需求自定义 error，最简单的方式是使用 errors 包提供的 New函数创建一个错误。
+errors.New 函数签名如下，...</p>
+  </section>
+  <footer class="entry-footer">Augustus</footer>
+  <a class="entry-link" aria-label="post link to Error 接口和错误处理" href="https://augustus2345.github.io/post/-error-%E6%8E%A5%E5%8F%A3%E5%92%8C%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86-/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

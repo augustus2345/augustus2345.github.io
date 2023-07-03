@@ -102,23 +102,21 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
-    <h2>go 项目配置文件管理 viper
+    <h2>JWT
     </h2>
   </header>
   <section class="entry-content">
-    <p>Viper 是适用于 Go 应用程序的完整配置解决方案。它被设计用于在应用程序中工作，并且可以处理所有类型的配置需求和格式。
-鉴于 viper库本身的 README 已经写得十分详细，这里就将其翻译成中文，并在最后附上两个项目中使用 viper的示例代码以供参考。
-安装 go get github.com/spf13/viper 什么是 Viper？ Viper 是适用于 Go 应用程序（包括 Twelve-Factor App）的完整配置解决方案。它被设计用于在应用程序中工作，并且可以处理所有类型的配置需求和格式。它支持以下特性：
-设置默认值 从 JSON、TOML、YAML、HCL、envfile和 Java properties格式的配置文件读取配置信息 实时监控和重新读取配置文件（可选） 从环境变量中读取 从远程配置系统（etcd 或 Consul）读取并监控配置变化 从命令行参数读取配置 从 buffer 读取配置 显式配置值 为什么选择 Viper? 在构建现代应用程序时，你无需担心配置文件格式；你想要专注于构建出色的软件。Viper 的出现就是为了在这方面帮助你的。
-Viper 能够为你执行下列操作：
-查找、加载和反序列化 JSON、TOML、YAML、HCL、INI、envfile和 Java properties格式的配置文件。 提供一种机制为你的不同配置选项设置默认值。 提供一种机制来通过命令行参数覆盖指定选项的值。 提供别名系统，以便在不破坏现有代码的情况下轻松重命名参数。 当用户提供了与默认值相同的命令行或配置文件时，可以很容易地分辨出它们之间的区别。 Viper 会按照下面的优先级。每个项目的优先级都高于它下面的项目:
-显示调用 Set设置值 命令行参数（flag） 环境变量 配置文件 key/value 存储 默认值 重要： 目前 Viper 配置的键（Key）是大小写不敏感的。目前正在讨论是否将这一选项设为可选。
-把值存入 Viper 建立默认值 一个好的配置系统应该支持默认值。键不需要默认值，但如果没有通过配置文件、环境变量、远程配置或命令行标志（flag）设置键，则默认值非常有用。
-例如：
-viper.SetDefault(&#34;ContentDir&#34;, &#34;content&#34;) viper....</p>
+    <p>JWT 全称 JSON Web Token 是一种跨域认证解决方案，属于一个开放的标准，它规定了一种 Token 实现方式，目前多用于前后端分离项目和 OAuth2.0 业务场景下。
+什么是 JWT？ JWT 全称 JSON Web Token 是一种跨域认证解决方案，属于一个开放的标准，它规定了一种 Token 实现方式，目前多用于前后端分离项目和 OAuth2.0 业务场景下。
+为什么需要 JWT？ 在之前的一些 web 项目中，我们通常使用的是 Cookie-Session模式实现用户认证。相关流程大致如下：
+用户在浏览器端填写用户名和密码，并发送给服务端 服务端对用户名和密码校验通过后会生成一份保存当前用户相关信息的 session 数据和一个与之对应的标识（通常称为 session_id） 服务端返回响应时将上一步的 session_id 写入用户浏览器的 Cookie 后续用户来自该浏览器的每次请求都会自动携带包含 session_id 的 Cookie 服务端通过请求中的 session_id 就能找到之前保存的该用户那份 session 数据，从而获取该用户的相关信息。 这种方案依赖于客户端（浏览器）保存 Cookie，并且需要在服务端存储用户的 session 数据。
+在移动互联网时代，我们的用户可能使用浏览器也可能使用 APP 来访问我们的服务，我们的 web 应用可能是前后端分开部署在不同的端口，有时候我们还需要支持第三方登录，这下 Cookie-Session的模式就有些力不从心了。
+JWT 就是一种基于 Token 的轻量级认证模式，服务端认证通过后，会生成一个 JSON 对象，经过签名后得到一个 Token（令牌）再发回给用户，用户后续请求只需要带上这个 Token，服务端解密之后就能获取该用户的相关信息了。
+想要了解 JWT 的原理，推荐大家阅读：阮一峰的 JWT 入门教程
+安装 我们使用 Go 语言社区中的 jwt 相关库来构建我们的应用，例如：https://github....</p>
   </section>
   <footer class="entry-footer">Augustus</footer>
-  <a class="entry-link" aria-label="post link to go 项目配置文件管理 viper" href="https://augustus2345.github.io/post/-go-%E8%AF%AD%E8%A8%80%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E7%A5%9E%E5%99%A8viper-%E4%B8%AD%E6%96%87%E6%95%99%E7%A8%8B-/"></a>
+  <a class="entry-link" aria-label="post link to JWT" href="https://augustus2345.github.io/post/-%E5%9C%A8-gin-%E6%A1%86%E6%9E%B6%E4%B8%AD%E4%BD%BF%E7%94%A8-jwt-/"></a>
 </article>
 
 <article class="post-entry"> 
