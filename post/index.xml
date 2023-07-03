@@ -1,118 +1,436 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>Posts on My New Hugo</title>
-    <link>http://augustus2345.github.io/post/</link>
-    <description>Recent content in Posts on My New Hugo</description>
+    <title>Posts on Augustus</title>
+    <link>https://augustus2345.github.io/post/</link>
+    <description>Recent content in Posts on Augustus</description>
     <image>
-      <url>http://augustus2345.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>http://augustus2345.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://augustus2345.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://augustus2345.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 21 Jun 2023 19:08:24 +0800</lastBuildDate><atom:link href="http://augustus2345.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 20 Mar 2023 15:58:26 +0800</lastBuildDate><atom:link href="https://augustus2345.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Hello World7</title>
-      <link>http://augustus2345.github.io/post/hello-world7/</link>
-      <pubDate>Wed, 21 Jun 2023 19:08:24 +0800</pubDate>
+      <title>makefile 在 go 语言中使用</title>
+      <link>https://augustus2345.github.io/post/-%E4%B8%BA-go-%E9%A1%B9%E7%9B%AE%E7%BC%96%E5%86%99-makefile-/</link>
+      <pubDate>Mon, 20 Mar 2023 15:58:26 +0800</pubDate>
       
-      <guid>http://augustus2345.github.io/post/hello-world7/</guid>
-      <description>我们都知道, 只要有意义, 那么就必须慎重考虑.一般来说, 了解清楚随机一段废话到底是一种怎么样的存在, 是解决一切问题的关键.随机一段废话因何而发生? 我们一般认为, 抓住了问题的关键, 其他一切则会迎刃而解.既然如此, 问题的关键究竟为何? 我认为, 了解清楚随机一段废话到底是一种怎么样的存在, 是解决一切问题的关键.随机一段废话因何而发生?我们不妨可以这样来想: 我认为, 一般来说,
-随机一段废话似乎是一种巧合，但如果我们从一个更大的角度看待问题，这似乎是一种不可避免的事实. 每个人都不得不面对这些问题. 在面对这种问题时, 对我个人而言，随机一段废话不仅仅是一个重大的事件，还可能会改变我的人生. 可是，即使是这样，随机一段废话的出现仍然代表了一定的意义. 富兰克林在不经意间这样说过, 你热爱生命吗？那么别浪费时间，因为时间是组成生命的材料。这不禁令我深思. 我们不妨可以这
-可是，即使是这样，随机一段废话的出现仍然代表了一定的意义. 既然如何, 那么, 从这个角度来看, 既然如此, 一般来说, 随机一段废话的发生, 到底需要如何做到, 不随机一段废话的发生, 又会如何产生. 在这种困难的抉择下, 本人思来想去, 寝食难安.本人也是经过了深思熟虑,在每个日日夜夜思考这个问题. 生活中, 若随机一段废话出现了, 我们就不得不考虑它出现了的事实. 我们不妨可以这
-随机一段废话因何而发生?本人也是经过了深思熟虑,在每个日日夜夜思考这个问题. 本人也是经过了深思熟虑,在每个日日夜夜思考这个问题. 随机一段废话的发生, 到底需要如何做到, 不随机一段废话的发生, 又会如何产生. 一般来讲, 我们都必须务必慎重的考虑考虑. 就我个人来说, 随机一段废话对我的意义, 不能不说非常重大. 随机一段废话, 到底应该如何实现. 这种事实对本人来说意义重大, 相信对
-我们一般认为, 抓住了问题的关键, 其他一切则会迎刃而解.在这种不可避免的冲突下，我们必须解决这个问题. 经过上述讨论, 从这个角度来看, 这种事实对本人来说意义重大, 相信对这个世界也是有一定意义的.在这种不可避免的冲突下，我们必须解决这个问题. 我认为, 生活中, 若随机一段废话出现了, 我们就不得不考虑它出现了的事实. 随机一段废话似乎是一种巧合，但如果我们从一个更大的角度看待问题，这似乎是</description>
+      <guid>https://augustus2345.github.io/post/-%E4%B8%BA-go-%E9%A1%B9%E7%9B%AE%E7%BC%96%E5%86%99-makefile-/</guid>
+      <description>借助 Makefile我们在编译过程中不再需要每次手动输入编译的命令和编译的参数，可以极大简化项目编译过程。
+make 介绍 make是一个构建自动化工具，会在当前目录下寻找 Makefile或 makefile文件。如果存在相应的文件，它就会依据其中定义好的规则完成构建任务。
+Makefile 介绍 我们可以把 Makefile简单理解为它定义了一个项目文件的编译规则。借助 Makefile我们在编译过程中不再需要每次手动输入编译的命令和编译的参数，可以极大简化项目编译过程。同时使用 Makefile也可以在项目中确定具体的编译规则和流程，很多开源项目中都会定义 Makefile文件。
+本文不会详细介绍 Makefile的各种规则，只会给出 Go 项目中常用的 Makefile示例。关于 Makefile的详细内容推荐阅读 Makefile 教程。
+规则概述 Makefile由多条规则组成，每条规则主要由两个部分组成，分别是依赖的关系和执行的命令。
+其结构如下所示：
+[target] ... : [prerequisites] ... &amp;lt;tab&amp;gt;[command] ... ... 其中：
+targets：规则的目标 prerequisites：可选的要生成 targets 需要的文件或者是目标。 command：make 需要执行的命令（任意的 shell 命令）。可以有多条命令，每一条命令占一行。 举个例子：
+build: CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o xx 示例 .PHONY: all build run gotool clean help BINARY=&amp;#34;bluebell&amp;#34; all: gotool build build: CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o ${BINARY} run: @go run .</description>
     </item>
     
     <item>
-      <title>Hello World6</title>
-      <link>http://augustus2345.github.io/post/hello-world6/</link>
-      <pubDate>Wed, 21 Jun 2023 19:08:15 +0800</pubDate>
+      <title></title>
+      <link>https://augustus2345.github.io/post/-%E5%9C%A8-gin-%E6%A1%86%E6%9E%B6%E4%B8%AD%E4%BD%BF%E7%94%A8-jwt-/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://augustus2345.github.io/post/hello-world6/</guid>
-      <description>我们都知道, 只要有意义, 那么就必须慎重考虑.一般来说, 了解清楚随机一段废话到底是一种怎么样的存在, 是解决一切问题的关键.随机一段废话因何而发生? 我们一般认为, 抓住了问题的关键, 其他一切则会迎刃而解.既然如此, 问题的关键究竟为何? 我认为, 了解清楚随机一段废话到底是一种怎么样的存在, 是解决一切问题的关键.随机一段废话因何而发生?我们不妨可以这样来想: 我认为, 一般来说,
-随机一段废话似乎是一种巧合，但如果我们从一个更大的角度看待问题，这似乎是一种不可避免的事实. 每个人都不得不面对这些问题. 在面对这种问题时, 对我个人而言，随机一段废话不仅仅是一个重大的事件，还可能会改变我的人生. 可是，即使是这样，随机一段废话的出现仍然代表了一定的意义. 富兰克林在不经意间这样说过, 你热爱生命吗？那么别浪费时间，因为时间是组成生命的材料。这不禁令我深思. 我们不妨可以这
-可是，即使是这样，随机一段废话的出现仍然代表了一定的意义. 既然如何, 那么, 从这个角度来看, 既然如此, 一般来说, 随机一段废话的发生, 到底需要如何做到, 不随机一段废话的发生, 又会如何产生. 在这种困难的抉择下, 本人思来想去, 寝食难安.本人也是经过了深思熟虑,在每个日日夜夜思考这个问题. 生活中, 若随机一段废话出现了, 我们就不得不考虑它出现了的事实. 我们不妨可以这
-随机一段废话因何而发生?本人也是经过了深思熟虑,在每个日日夜夜思考这个问题. 本人也是经过了深思熟虑,在每个日日夜夜思考这个问题. 随机一段废话的发生, 到底需要如何做到, 不随机一段废话的发生, 又会如何产生. 一般来讲, 我们都必须务必慎重的考虑考虑. 就我个人来说, 随机一段废话对我的意义, 不能不说非常重大. 随机一段废话, 到底应该如何实现. 这种事实对本人来说意义重大, 相信对
-我们一般认为, 抓住了问题的关键, 其他一切则会迎刃而解.在这种不可避免的冲突下，我们必须解决这个问题. 经过上述讨论, 从这个角度来看, 这种事实对本人来说意义重大, 相信对这个世界也是有一定意义的.在这种不可避免的冲突下，我们必须解决这个问题. 我认为, 生活中, 若随机一段废话出现了, 我们就不得不考虑它出现了的事实. 随机一段废话似乎是一种巧合，但如果我们从一个更大的角度看待问题，这似乎是</description>
+      <guid>https://augustus2345.github.io/post/-%E5%9C%A8-gin-%E6%A1%86%E6%9E%B6%E4%B8%AD%E4%BD%BF%E7%94%A8-jwt-/</guid>
+      <description>title: JWT date: 2023-03-130T11:17:26+08:00
+JWT 全称 JSON Web Token 是一种跨域认证解决方案，属于一个开放的标准，它规定了一种 Token 实现方式，目前多用于前后端分离项目和 OAuth2.0 业务场景下。
+什么是 JWT？ JWT 全称 JSON Web Token 是一种跨域认证解决方案，属于一个开放的标准，它规定了一种 Token 实现方式，目前多用于前后端分离项目和 OAuth2.0 业务场景下。
+为什么需要 JWT？ 在之前的一些 web 项目中，我们通常使用的是 Cookie-Session模式实现用户认证。相关流程大致如下：
+用户在浏览器端填写用户名和密码，并发送给服务端 服务端对用户名和密码校验通过后会生成一份保存当前用户相关信息的 session 数据和一个与之对应的标识（通常称为 session_id） 服务端返回响应时将上一步的 session_id 写入用户浏览器的 Cookie 后续用户来自该浏览器的每次请求都会自动携带包含 session_id 的 Cookie 服务端通过请求中的 session_id 就能找到之前保存的该用户那份 session 数据，从而获取该用户的相关信息。 这种方案依赖于客户端（浏览器）保存 Cookie，并且需要在服务端存储用户的 session 数据。
+在移动互联网时代，我们的用户可能使用浏览器也可能使用 APP 来访问我们的服务，我们的 web 应用可能是前后端分开部署在不同的端口，有时候我们还需要支持第三方登录，这下 Cookie-Session的模式就有些力不从心了。
+JWT 就是一种基于 Token 的轻量级认证模式，服务端认证通过后，会生成一个 JSON 对象，经过签名后得到一个 Token（令牌）再发回给用户，用户后续请求只需要带上这个 Token，服务端解密之后就能获取该用户的相关信息了。
+想要了解 JWT 的原理，推荐大家阅读：阮一峰的 JWT 入门教程</description>
     </item>
     
     <item>
-      <title>Hello World5</title>
-      <link>http://augustus2345.github.io/post/hello-world5/</link>
-      <pubDate>Wed, 21 Jun 2023 19:08:08 +0800</pubDate>
+      <title>《你的灯亮着吗？》书评兼谈我的思考</title>
+      <link>https://augustus2345.github.io/post/%E4%BD%A0%E7%9A%84%E7%81%AF%E4%BA%AE%E7%9D%80%E5%90%97%E4%B9%A6%E8%AF%84%E5%85%BC%E8%B0%88%E6%88%91%E7%9A%84%E7%90%86%E8%A7%A3/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://augustus2345.github.io/post/hello-world5/</guid>
-      <description>我们都知道, 只要有意义, 那么就必须慎重考虑.一般来说, 了解清楚随机一段废话到底是一种怎么样的存在, 是解决一切问题的关键.随机一段废话因何而发生? 我们一般认为, 抓住了问题的关键, 其他一切则会迎刃而解.既然如此, 问题的关键究竟为何? 我认为, 了解清楚随机一段废话到底是一种怎么样的存在, 是解决一切问题的关键.随机一段废话因何而发生?我们不妨可以这样来想: 我认为, 一般来说,
-随机一段废话似乎是一种巧合，但如果我们从一个更大的角度看待问题，这似乎是一种不可避免的事实. 每个人都不得不面对这些问题. 在面对这种问题时, 对我个人而言，随机一段废话不仅仅是一个重大的事件，还可能会改变我的人生. 可是，即使是这样，随机一段废话的出现仍然代表了一定的意义. 富兰克林在不经意间这样说过, 你热爱生命吗？那么别浪费时间，因为时间是组成生命的材料。这不禁令我深思. 我们不妨可以这
-可是，即使是这样，随机一段废话的出现仍然代表了一定的意义. 既然如何, 那么, 从这个角度来看, 既然如此, 一般来说, 随机一段废话的发生, 到底需要如何做到, 不随机一段废话的发生, 又会如何产生. 在这种困难的抉择下, 本人思来想去, 寝食难安.本人也是经过了深思熟虑,在每个日日夜夜思考这个问题. 生活中, 若随机一段废话出现了, 我们就不得不考虑它出现了的事实. 我们不妨可以这
-随机一段废话因何而发生?本人也是经过了深思熟虑,在每个日日夜夜思考这个问题. 本人也是经过了深思熟虑,在每个日日夜夜思考这个问题. 随机一段废话的发生, 到底需要如何做到, 不随机一段废话的发生, 又会如何产生. 一般来讲, 我们都必须务必慎重的考虑考虑. 就我个人来说, 随机一段废话对我的意义, 不能不说非常重大. 随机一段废话, 到底应该如何实现. 这种事实对本人来说意义重大, 相信对
-我们一般认为, 抓住了问题的关键, 其他一切则会迎刃而解.在这种不可避免的冲突下，我们必须解决这个问题. 经过上述讨论, 从这个角度来看, 这种事实对本人来说意义重大, 相信对这个世界也是有一定意义的.在这种不可避免的冲突下，我们必须解决这个问题. 我认为, 生活中, 若随机一段废话出现了, 我们就不得不考虑它出现了的事实. 随机一段废话似乎是一种巧合，但如果我们从一个更大的角度看待问题，这似乎是</description>
+      <guid>https://augustus2345.github.io/post/%E4%BD%A0%E7%9A%84%E7%81%AF%E4%BA%AE%E7%9D%80%E5%90%97%E4%B9%A6%E8%AF%84%E5%85%BC%E8%B0%88%E6%88%91%E7%9A%84%E7%90%86%E8%A7%A3/</guid>
+      <description>看了高斯（Donald C.Gause）和温伯格（Gerald.Meinberg）的《你的灯亮着吗？》一书，大脑跟着作者的思路层层解剖，犹抱琵琶半遮面，柳暗花明又一村，原来解决问题可以有很多种不一样的思路，而这些思路拓宽了我想问题的方法。
+问题是什么？
+问题是理想状态和现实状态之间的差别。
+以前我从未想过，一个问题的出现，意味着什么？问题是理想和现实之间的差别，可不是嘛，一旦理想状态和现实状态出现矛盾和冲突，自己所幻想的和现在之间出现差距，问题就来了。这个解释可谓一针见血。
+问题到底是什么？
+每一个解决方案都是新的一个问题。
+某些问题最困难的部分就在于发现问题所在。
+至少想出问题的三个出错的地方。
+借助外国人、盲人、儿童来检验你给出的定义，让自己设身处地到他们的角度上来检验。
+每转换一次视角，都会发现新的不协调之处。
+即便选了一个新的解决方案，也会随之而来一个新的问题，问题永远存在，只要现实和理想状态之间有差距，问题就会伴随而来。真正解决问题的方案是发现问题所在，要至少发现问题三个以上出错的地方，要借助别人的视线或者角度，去站在平时没有考虑到的角度去思考问题。
+解决的问题是什么？
+把问题描述成文字，做文字游戏。
+当别人可以自己解决问题时，不要插手。
+让解决问题者，亲身体验到问题带来的困扰。
+试着把责任归到自己身上。
+可以把问题转化为文字或者表格或者统计数字，来运用一些技巧去解决问题；如果一个解决问题的人，并没有面临遇到这个问题的困扰，那就让他亲身体验一下这个问题带来的困扰，这样他才会更有责任感去解决问题。
+问题从哪里来的？
+大多数情况下，问题的根源在你自己身上。
+要知道自己想要什么。
+问题为什么存在？大多数是自己想出来的，自己制造出来的，根源在自己身上，要清楚自己想要什么，问题就好解决了。
+解决问题第一步：
+不要仓促下结论，也不要忽视第一印象。
+别去帮缺乏幽默感的人解决问题。
+不要参考别人的解决方法。解决方案不是问题的定义。
+即使问题已经解决，也不一定是对的。永远不要停止寻找另一个方案的脚步。
+问题的解决方案永远有更好的解决方案，永远不要停止思考的脚步。
+如何解决问题？
+反面: 没做好，重新来过。
+不知道要什么，后悔。
+正面: 对自己要忠实。
+接近一个解决方案，考虑道德问题，抛弃感性因素。
+对自己要忠实，要知道自己想要什么，找到接近自己想要的那个方案。
+理想和现实状态出现差距——问题出现——要知道自己想要什么——设身处地去思考问题——对自己要忠实。</description>
     </item>
     
     <item>
-      <title>Hello World4</title>
-      <link>http://augustus2345.github.io/post/hello-world4/</link>
-      <pubDate>Wed, 21 Jun 2023 19:08:02 +0800</pubDate>
+      <title>《学会提问》读后感</title>
+      <link>https://augustus2345.github.io/post/%E5%AD%A6%E4%BC%9A%E6%8F%90%E9%97%AE%E8%AF%BB%E5%90%8E%E6%84%9F/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://augustus2345.github.io/post/hello-world4/</guid>
-      <description>我们都知道, 只要有意义, 那么就必须慎重考虑.一般来说, 了解清楚随机一段废话到底是一种怎么样的存在, 是解决一切问题的关键.随机一段废话因何而发生? 我们一般认为, 抓住了问题的关键, 其他一切则会迎刃而解.既然如此, 问题的关键究竟为何? 我认为, 了解清楚随机一段废话到底是一种怎么样的存在, 是解决一切问题的关键.随机一段废话因何而发生?我们不妨可以这样来想: 我认为, 一般来说,
-随机一段废话似乎是一种巧合，但如果我们从一个更大的角度看待问题，这似乎是一种不可避免的事实. 每个人都不得不面对这些问题. 在面对这种问题时, 对我个人而言，随机一段废话不仅仅是一个重大的事件，还可能会改变我的人生. 可是，即使是这样，随机一段废话的出现仍然代表了一定的意义. 富兰克林在不经意间这样说过, 你热爱生命吗？那么别浪费时间，因为时间是组成生命的材料。这不禁令我深思. 我们不妨可以这
-可是，即使是这样，随机一段废话的出现仍然代表了一定的意义. 既然如何, 那么, 从这个角度来看, 既然如此, 一般来说, 随机一段废话的发生, 到底需要如何做到, 不随机一段废话的发生, 又会如何产生. 在这种困难的抉择下, 本人思来想去, 寝食难安.本人也是经过了深思熟虑,在每个日日夜夜思考这个问题. 生活中, 若随机一段废话出现了, 我们就不得不考虑它出现了的事实. 我们不妨可以这
-随机一段废话因何而发生?本人也是经过了深思熟虑,在每个日日夜夜思考这个问题. 本人也是经过了深思熟虑,在每个日日夜夜思考这个问题. 随机一段废话的发生, 到底需要如何做到, 不随机一段废话的发生, 又会如何产生. 一般来讲, 我们都必须务必慎重的考虑考虑. 就我个人来说, 随机一段废话对我的意义, 不能不说非常重大. 随机一段废话, 到底应该如何实现. 这种事实对本人来说意义重大, 相信对
-我们一般认为, 抓住了问题的关键, 其他一切则会迎刃而解.在这种不可避免的冲突下，我们必须解决这个问题. 经过上述讨论, 从这个角度来看, 这种事实对本人来说意义重大, 相信对这个世界也是有一定意义的.在这种不可避免的冲突下，我们必须解决这个问题. 我认为, 生活中, 若随机一段废话出现了, 我们就不得不考虑它出现了的事实. 随机一段废话似乎是一种巧合，但如果我们从一个更大的角度看待问题，这似乎是</description>
+      <guid>https://augustus2345.github.io/post/%E5%AD%A6%E4%BC%9A%E6%8F%90%E9%97%AE%E8%AF%BB%E5%90%8E%E6%84%9F/</guid>
+      <description>微信群里，家人总是时不时发来一些养生文章，“80岁大脑不萎缩不痴呆的秘密！50岁以上的人必看”&amp;hellip;&amp;hellip;
+社会热点，各路新闻媒体出动，网络上充斥着各种讨论、争议、观点和所谓的真相&amp;hellip;&amp;hellip;
+影视公众号迫不及待地想告诉我们哪些影视作品不容错过，哪些不看为妙&amp;hellip;&amp;hellip;
+信息时代带来了很多便利，同时也充斥着各种嘈杂，我们被越来越多五花八门的看法、“事实”所包裹，恐慌、焦虑或者迷茫，我究竟该相信谁？
+独立的思考和判断变得愈加重要和宝贵，而批判性思维便是一个实用的利器，它帮助我们在这以贩卖观点以获取流量的时代保留些许自我的空间，给与我们鉴别和筛选信息的能力。
+这本书是针对批判性思维的一种提醒，也提供了实用而全面的指导意见。但遗憾的是中文版由于翻译的原因，以及文化背景的差异，读起来不是那么顺畅以及接地气，有些长句显得生硬和别扭。但总体来说仍是一本值得好好学习的方法论书籍，每一章以问题出发，告诫和指导我们如果识别论证中的陷阱，最后还附有思维练习，可以马上学以致用，无论是评价别人的观点还是自己写作所需。
+首先，最直接的，判断在讨论什么，是描述性论题（是什么）还是规定性论题（该不该）；结论是什么，理由是什么。挖掘结论和理由背后隐藏的价值观假设（价值取向会影响理由的选择和观点的形成）和描述性假设（有某个隐藏的前提假设会影响理由和结论之间的联系）。
+警惕理由中意思不明确的词语、数据的欺骗性以及被选择性忽略的重要信息。这里数据欺骗性是指统计样本是否有代表性、相对数和绝对数的差异、平均数与中位数的差异等，尽管数据有天然的权威性，但很多时候数据可以任意“调整”成结论所需要的样子。
+重要的一环是识别推理中是否存在谬误，比如常见的人身攻击谬误、诉诸情感谬误、虚拟两难选择谬误等等（这些具体的定义可以在文章中找到）。建议常常回顾，以提醒我们保持警惕。
+证据的效力往往影响结论的可信程度，因此我们需要对所谓的论据保持警惕。
+导致事件发生的原因很多时候不是是唯一的，我们可以尝试寻找是否存在其他原因是否存在乙问题的直接解决方案。比如有人认为应该关闭市中心的酒吧，因为自从那些酒吧开业以来有十几个年轻大学生酒精中毒。或许我们可以有其他的解决方式，比如严格执行饮酒年龄的限制。
+很多问题并不是非黑即白的，要撇清二分式思维的障碍，添加限定条件（when where why）让你的结论多元化。
+希望我能时刻提醒自己并刻意的练习批判性思维，最终形成一种自然的条件反射，不会被轻易误导或是人云亦云；对各种观点包容但不趋同，能够用批判的视角评估所有的断言和看法，尤其是自己的看法。</description>
     </item>
     
     <item>
-      <title>Hello World3</title>
-      <link>http://augustus2345.github.io/post/hello-world3/</link>
-      <pubDate>Wed, 21 Jun 2023 19:07:55 +0800</pubDate>
+      <title>《自控力》书评以及思考如何控制自己</title>
+      <link>https://augustus2345.github.io/post/%E8%87%AA%E6%8E%A7%E5%8A%9B%E5%A6%82%E4%BD%95%E6%8E%A7%E5%88%B6%E8%87%AA%E5%B7%B1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://augustus2345.github.io/post/hello-world3/</guid>
-      <description>我们都知道, 只要有意义, 那么就必须慎重考虑.一般来说, 了解清楚随机一段废话到底是一种怎么样的存在, 是解决一切问题的关键.随机一段废话因何而发生? 我们一般认为, 抓住了问题的关键, 其他一切则会迎刃而解.既然如此, 问题的关键究竟为何? 我认为, 了解清楚随机一段废话到底是一种怎么样的存在, 是解决一切问题的关键.随机一段废话因何而发生?我们不妨可以这样来想: 我认为, 一般来说,
-随机一段废话似乎是一种巧合，但如果我们从一个更大的角度看待问题，这似乎是一种不可避免的事实. 每个人都不得不面对这些问题. 在面对这种问题时, 对我个人而言，随机一段废话不仅仅是一个重大的事件，还可能会改变我的人生. 可是，即使是这样，随机一段废话的出现仍然代表了一定的意义. 富兰克林在不经意间这样说过, 你热爱生命吗？那么别浪费时间，因为时间是组成生命的材料。这不禁令我深思. 我们不妨可以这
-可是，即使是这样，随机一段废话的出现仍然代表了一定的意义. 既然如何, 那么, 从这个角度来看, 既然如此, 一般来说, 随机一段废话的发生, 到底需要如何做到, 不随机一段废话的发生, 又会如何产生. 在这种困难的抉择下, 本人思来想去, 寝食难安.本人也是经过了深思熟虑,在每个日日夜夜思考这个问题. 生活中, 若随机一段废话出现了, 我们就不得不考虑它出现了的事实. 我们不妨可以这
-随机一段废话因何而发生?本人也是经过了深思熟虑,在每个日日夜夜思考这个问题. 本人也是经过了深思熟虑,在每个日日夜夜思考这个问题. 随机一段废话的发生, 到底需要如何做到, 不随机一段废话的发生, 又会如何产生. 一般来讲, 我们都必须务必慎重的考虑考虑. 就我个人来说, 随机一段废话对我的意义, 不能不说非常重大. 随机一段废话, 到底应该如何实现. 这种事实对本人来说意义重大, 相信对
-我们一般认为, 抓住了问题的关键, 其他一切则会迎刃而解.在这种不可避免的冲突下，我们必须解决这个问题. 经过上述讨论, 从这个角度来看, 这种事实对本人来说意义重大, 相信对这个世界也是有一定意义的.在这种不可避免的冲突下，我们必须解决这个问题. 我认为, 生活中, 若随机一段废话出现了, 我们就不得不考虑它出现了的事实. 随机一段废话似乎是一种巧合，但如果我们从一个更大的角度看待问题，这似乎是</description>
+      <guid>https://augustus2345.github.io/post/%E8%87%AA%E6%8E%A7%E5%8A%9B%E5%A6%82%E4%BD%95%E6%8E%A7%E5%88%B6%E8%87%AA%E5%B7%B1/</guid>
+      <description>在这个世界上，我们做了太多的功课去了解别人。我们知道我们的朋友是怎样一个人，他有怎样的性格特征；我们知道我们的父母是怎样一个人，他对一些事物有着怎样的感受；我们甚至知道我们的老师或者领导是怎么一个人，做什么样的事情会让他感到愉悦。
+然而，几乎我们很少很少有人去了解自己，自己到底是什么样的人，自己在面对一件事情一个人到底是一种什么样的感受。我们习惯用常识来定义自己，遵循所谓的“正确规则”来规范自己，但往往适得其反。
+然而，你连自己是什么样的都不知道，怎么能够增加自控力，把一件事情坚持下去呢。
+有一个学心理学的朋友，除了我们平时看到的市面上的心理学书，她们也会跟小白鼠做实验，找人做实验。翻看她的朋友圈，你可以看到很多剖析自己的文章，自己对某一件事情的感受是什么样的，自己心理突然升起的某种情绪是怎么形成的。
+但是，现实的我们却把好多情绪藏了起来，以为这个坎翻过去了，事实上这个情绪却会不时的出来，扰乱掉你的一切计划，甚至在某个时刻将你打回原形。而自控力这件事情，更是如此。
+我们的心理都住着两个自我，一个是冲动的自我，一个是明智的自我。冲动的自我告诉你要及时行乐，明智的自我告诉你要坚持下去。无时无刻，这两个自我都在做斗争。但是，弄清楚自己的，对你能够在这场斗争中取胜至关重要。
+每当我们做出一个决定的时候，我们的脑袋里就会分泌出多巴胺，这种多巴胺会让我们产生兴奋。但事实上，得到那件东西却不会让人感觉到快乐。比如一个坚持减肥的人，当你决定要吃一块巧克力蛋糕的时候，你会感觉很兴奋，但是当你真正吃到那块蛋糕的时候，你却会因为没有坚持减肥而极度愧疚和焦虑。当你告诉自己“自己就是很想吃蛋糕”的时候，可能下次再面对巧克力蛋糕的时候，就没有那么有吸引力了。
+而当你心里产生负罪感的时候，你为了消除负罪感，通常做的是吃更多，玩更多。然而，你以为自己会好受一点，但实际上你却更加难受。你的心情并不会按照你想要的方向去发展。明明是你“不想要”的东西，但是你的心里却一遍又一遍的重复那个东西，导致最终屈服于它。
+所以，当每次情绪产生波动的时候，记录下自己情绪的变化。决定做一件事情的时候，你到底是快乐幸福还是焦虑的，当你做了这件事情之后，你的情绪发生了什么变化。而当下次你再面对这样的情景时，那个明智的自己很有可能就会获胜。这是最简单也是最实用的了解自己的方法。
+我们要做的是，对内要接受自己的感受，对外控制自己的行为。而当你接受了自己的感受，控制行为将变得比以前更加容易。
+在《自控力》一书中提出，自控力其实就跟肌肉一样是可以锻炼的，所以了解好自己之后，这些小方法，可能会帮助你提高自己的自控力。
+1.冥想
+冥想非常有利于训练自己控制自己的思维，而且效果非常明显。冥想的最高境界就是什么都不想，每天花上五分钟，在一个不被打扰的环境，精力完全放在自己的呼吸上。
+2.做一些平常不会控制的小事
+自控力就跟肌肉训练营一样，做一些平常不会控制的小事，难度小，但是却可以增加自控力的活跃度，更重要的还能让乏味的生活，偶尔有趣。比如，惯用右手的人，使用左手来吃饭；比如，平时说是的地方，强迫自己说是的；比如，穿鞋子你习惯先穿左边，从现在开始先穿右边……
+3.等待十分钟
+每次你要做“破功”的事情的时候，等待十分钟。这样一来，我们可以把即时的奖励变成要长期才能拿到的奖励，这件事情对我们的吸引力会增加。另外，等待十分钟再做，就算做了也能降低我们的负罪感，减少我们继续做“破功”的事情。
+4.给未来的自己写邮件
+我相信，让你设想的未来的自己，一定都是肤白人瘦钱多，还积极向上。所以，每次抑郁的时候给未来的自己写写邮件，发发信息。这样，能让你对现在的状态有清楚的了解，也能用“美好的未来”给自己激励。
+5.把“我不要”的事情，变成“我想要”
+人就是很奇怪，让你尝试五分钟不要想冰淇淋，但是这五分钟里你除了冰淇淋什么其他的东西都想不到。所以，当你告诉自己不要吃零食，不要打游戏，不要出去浪的时候，头脑里其实在一次又一次的提醒你做这些事情。所以，面临这些情况的时候，应该想我想要什么。我想要吃健康的食物，我想要好好读一本书，我想成为一个牛人……
+6.问问自己到底想要的是什么？
+每次做一个决定的时候，问问自己到底想要的是什么。当你想买冰淇淋的时候，问问自己真正想要的吃冰淇淋，还是要一个魔鬼身材；当你期末复习想玩的时候，问问自己想要的是跟大家一起嗨，还是想要奖学金……
+好像，又回到了“了解自己”。
+所以，感受每一次自己的感受，你永远比自己想象的奇妙，你也永远比自己想象的强大。</description>
     </item>
     
     <item>
-      <title>Hello World2</title>
-      <link>http://augustus2345.github.io/post/hello-world2/</link>
-      <pubDate>Wed, 21 Jun 2023 19:07:49 +0800</pubDate>
+      <title>air 热加载</title>
+      <link>https://augustus2345.github.io/post/-%E4%BD%BF%E7%94%A8-air-%E5%AE%9E%E7%8E%B0-go-%E7%A8%8B%E5%BA%8F%E5%AE%9E%E6%97%B6%E7%83%AD%E9%87%8D%E8%BD%BD-/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://augustus2345.github.io/post/hello-world2/</guid>
-      <description>我们都知道, 只要有意义, 那么就必须慎重考虑.一般来说, 了解清楚随机一段废话到底是一种怎么样的存在, 是解决一切问题的关键.随机一段废话因何而发生? 我们一般认为, 抓住了问题的关键, 其他一切则会迎刃而解.既然如此, 问题的关键究竟为何? 我认为, 了解清楚随机一段废话到底是一种怎么样的存在, 是解决一切问题的关键.随机一段废话因何而发生?我们不妨可以这样来想: 我认为, 一般来说,
-随机一段废话似乎是一种巧合，但如果我们从一个更大的角度看待问题，这似乎是一种不可避免的事实. 每个人都不得不面对这些问题. 在面对这种问题时, 对我个人而言，随机一段废话不仅仅是一个重大的事件，还可能会改变我的人生. 可是，即使是这样，随机一段废话的出现仍然代表了一定的意义. 富兰克林在不经意间这样说过, 你热爱生命吗？那么别浪费时间，因为时间是组成生命的材料。这不禁令我深思. 我们不妨可以这
-可是，即使是这样，随机一段废话的出现仍然代表了一定的意义. 既然如何, 那么, 从这个角度来看, 既然如此, 一般来说, 随机一段废话的发生, 到底需要如何做到, 不随机一段废话的发生, 又会如何产生. 在这种困难的抉择下, 本人思来想去, 寝食难安.本人也是经过了深思熟虑,在每个日日夜夜思考这个问题. 生活中, 若随机一段废话出现了, 我们就不得不考虑它出现了的事实. 我们不妨可以这
-随机一段废话因何而发生?本人也是经过了深思熟虑,在每个日日夜夜思考这个问题. 本人也是经过了深思熟虑,在每个日日夜夜思考这个问题. 随机一段废话的发生, 到底需要如何做到, 不随机一段废话的发生, 又会如何产生. 一般来讲, 我们都必须务必慎重的考虑考虑. 就我个人来说, 随机一段废话对我的意义, 不能不说非常重大. 随机一段废话, 到底应该如何实现. 这种事实对本人来说意义重大, 相信对
-我们一般认为, 抓住了问题的关键, 其他一切则会迎刃而解.在这种不可避免的冲突下，我们必须解决这个问题. 经过上述讨论, 从这个角度来看, 这种事实对本人来说意义重大, 相信对这个世界也是有一定意义的.在这种不可避免的冲突下，我们必须解决这个问题. 我认为, 生活中, 若随机一段废话出现了, 我们就不得不考虑它出现了的事实. 随机一段废话似乎是一种巧合，但如果我们从一个更大的角度看待问题，这似乎是</description>
+      <guid>https://augustus2345.github.io/post/-%E4%BD%BF%E7%94%A8-air-%E5%AE%9E%E7%8E%B0-go-%E7%A8%8B%E5%BA%8F%E5%AE%9E%E6%97%B6%E7%83%AD%E9%87%8D%E8%BD%BD-/</guid>
+      <description>为什么需要实时加载？ 在使用 HUGO 搭建 Blog 的时候，我发现修改了一些文件内容后，就可以实现实时加载，而不需要关掉服务，然后重新启动程序，使用起来十分方便。
+Air 介绍 Github 上有一个工具：Air。它支持以下特性：
+彩色日志输出 自定义构建或二进制命令 支持忽略子目录 启动后支持监听新目录 更好的构建过程 安装 Air Go 这也是最经典的安装方式：
+go get -u github.com/cosmtrek/air Windows curl -fLo air.exe https://git.io/windows_air Docker docker run -it --rm \ -w &amp;#34;&amp;lt;PROJECT&amp;gt;&amp;#34; \ -e &amp;#34;air_wd=&amp;lt;PROJECT&amp;gt;&amp;#34; \ -v $(pwd):&amp;lt;PROJECT&amp;gt; \ -p &amp;lt;PORT&amp;gt;:&amp;lt;APP SERVER PORT&amp;gt; \ cosmtrek/air -c &amp;lt;CONF&amp;gt; 然后按照下面的方式在 docker 中运行你的项目：
+docker run -it --rm \ -w &amp;#34;/go/src/github.com/cosmtrek/hub&amp;#34; \ -v $(pwd):/go/src/github.com/cosmtrek/hub \ -p 9090:9090 \ cosmtrek/air 使用 Air 为了敲命令时更简单更方便，你应该把 alias air=&#39;~/.</description>
     </item>
     
     <item>
-      <title>Hello World1</title>
-      <link>http://augustus2345.github.io/post/hello-world1/</link>
-      <pubDate>Wed, 21 Jun 2023 19:07:43 +0800</pubDate>
+      <title>Error 接口和错误处理</title>
+      <link>https://augustus2345.github.io/post/-error-%E6%8E%A5%E5%8F%A3%E5%92%8C%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86-/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://augustus2345.github.io/post/hello-world1/</guid>
-      <description>我们都知道, 只要有意义, 那么就必须慎重考虑.一般来说, 了解清楚随机一段废话到底是一种怎么样的存在, 是解决一切问题的关键.随机一段废话因何而发生? 我们一般认为, 抓住了问题的关键, 其他一切则会迎刃而解.既然如此, 问题的关键究竟为何? 我认为, 了解清楚随机一段废话到底是一种怎么样的存在, 是解决一切问题的关键.随机一段废话因何而发生?我们不妨可以这样来想: 我认为, 一般来说,
-随机一段废话似乎是一种巧合，但如果我们从一个更大的角度看待问题，这似乎是一种不可避免的事实. 每个人都不得不面对这些问题. 在面对这种问题时, 对我个人而言，随机一段废话不仅仅是一个重大的事件，还可能会改变我的人生. 可是，即使是这样，随机一段废话的出现仍然代表了一定的意义. 富兰克林在不经意间这样说过, 你热爱生命吗？那么别浪费时间，因为时间是组成生命的材料。这不禁令我深思. 我们不妨可以这
-可是，即使是这样，随机一段废话的出现仍然代表了一定的意义. 既然如何, 那么, 从这个角度来看, 既然如此, 一般来说, 随机一段废话的发生, 到底需要如何做到, 不随机一段废话的发生, 又会如何产生. 在这种困难的抉择下, 本人思来想去, 寝食难安.本人也是经过了深思熟虑,在每个日日夜夜思考这个问题. 生活中, 若随机一段废话出现了, 我们就不得不考虑它出现了的事实. 我们不妨可以这
-随机一段废话因何而发生?本人也是经过了深思熟虑,在每个日日夜夜思考这个问题. 本人也是经过了深思熟虑,在每个日日夜夜思考这个问题. 随机一段废话的发生, 到底需要如何做到, 不随机一段废话的发生, 又会如何产生. 一般来讲, 我们都必须务必慎重的考虑考虑. 就我个人来说, 随机一段废话对我的意义, 不能不说非常重大. 随机一段废话, 到底应该如何实现. 这种事实对本人来说意义重大, 相信对
-我们一般认为, 抓住了问题的关键, 其他一切则会迎刃而解.在这种不可避免的冲突下，我们必须解决这个问题. 经过上述讨论, 从这个角度来看, 这种事实对本人来说意义重大, 相信对这个世界也是有一定意义的.在这种不可避免的冲突下，我们必须解决这个问题. 我认为, 生活中, 若随机一段废话出现了, 我们就不得不考虑它出现了的事实. 随机一段废话似乎是一种巧合，但如果我们从一个更大的角度看待问题，这似乎是</description>
+      <guid>https://augustus2345.github.io/post/-error-%E6%8E%A5%E5%8F%A3%E5%92%8C%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86-/</guid>
+      <description>Go 语言中的错误处理与其他语言不太一样，它把错误当成一种值来处理，更强调判断错误、处理错误，而不是一股脑的 catch 捕获异常。
+Error 接口 Go 语言中把错误当成一种特殊的值来处理，不支持其他语言中使用 try/catch捕获异常的方式。
+Error 接口 Go 语言中使用一个名为 error 接口来表示错误类型。
+type error interface { Error() string } error 接口只包含一个方法——Error，这个函数需要返回一个描述错误信息的字符串。
+当一个函数或方法需要返回错误时，我们通常是把错误作为最后一个返回值。例如下面标准库 os 中打开文件的函数。
+func Open(name string) (*File, error) { return OpenFile(name, O_RDONLY, 0) } 由于 error 是一个接口类型，默认零值为 nil。所以我们通常将调用函数返回的错误与 nil进行比较，以此来判断函数是否返回错误。例如你会经常看到类似下面的错误判断代码。
+file, err := os.Open(&amp;#34;./xx.go&amp;#34;) if err != nil { fmt.Println(&amp;#34;打开文件失败,err:&amp;#34;, err) return } 注意
+当我们使用 fmt包打印错误时会自动调用 error 类型的 Error 方法，也就是会打印出错误的描述信息。
+创建错误 我们可以根据需求自定义 error，最简单的方式是使用 errors 包提供的 New函数创建一个错误。
+errors.New 函数签名如下，</description>
     </item>
     
     <item>
-      <title>Hello World</title>
-      <link>http://augustus2345.github.io/post/hello-world/</link>
-      <pubDate>Wed, 21 Jun 2023 19:06:44 +0800</pubDate>
+      <title>go 语言 flag 库</title>
+      <link>https://augustus2345.github.io/post/-go-%E8%AF%AD%E8%A8%80%E6%A0%87%E5%87%86%E5%BA%93-flag-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8-/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>http://augustus2345.github.io/post/hello-world/</guid>
-      <description>test 我们都知道, 只要有意义, 那么就必须慎重考虑.一般来说, 了解清楚随机一段废话到底是一种怎么样的存在, 是解决一切问题的关键.随机一段废话因何而发生? 我们一般认为, 抓住了问题的关键, 其他一切则会迎刃而解.既然如此, 问题的关键究竟为何? 我认为, 了解清楚随机一段废话到底是一种怎么样的存在, 是解决一切问题的关键.随机一段废话因何而发生?我们不妨可以这样来想: 我认为, 一般来说,
-test 随机一段废话似乎是一种巧合，但如果我们从一个更大的角度看待问题，这似乎是一种不可避免的事实. 每个人都不得不面对这些问题. 在面对这种问题时, 对我个人而言，随机一段废话不仅仅是一个重大的事件，还可能会改变我的人生. 可是，即使是这样，随机一段废话的出现仍然代表了一定的意义. 富兰克林在不经意间这样说过, 你热爱生命吗？那么别浪费时间，因为时间是组成生命的材料。这不禁令我深思. 我们不妨可以这
-sijimu 可是，即使是这样，随机一段废话的出现仍然代表了一定的意义. 既然如何, 那么, 从这个角度来看, 既然如此, 一般来说, 随机一段废话的发生, 到底需要如何做到, 不随机一段废话的发生, 又会如何产生. 在这种困难的抉择下, 本人思来想去, 寝食难安.本人也是经过了深思熟虑,在每个日日夜夜思考这个问题. 生活中, 若随机一段废话出现了, 我们就不得不考虑它出现了的事实. 我们不妨可以这
-sdfa 随机一段废话因何而发生?本人也是经过了深思熟虑,在每个日日夜夜思考这个问题. 本人也是经过了深思熟虑,在每个日日夜夜思考这个问题. 随机一段废话的发生, 到底需要如何做到, 不随机一段废话的发生, 又会如何产生. 一般来讲, 我们都必须务必慎重的考虑考虑. 就我个人来说, 随机一段废话对我的意义, 不能不说非常重大. 随机一段废话, 到底应该如何实现. 这种事实对本人来说意义重大, 相信对
-dsaf 我们一般认为, 抓住了问题的关键, 其他一切则会迎刃而解.在这种不可避免的冲突下，我们必须解决这个问题. 经过上述讨论, 从这个角度来看, 这种事实对本人来说意义重大, 相信对这个世界也是有一定意义的.在这种不可避免的冲突下，我们必须解决这个问题. 我认为, 生活中, 若随机一段废话出现了, 我们就不得不考虑它出现了的事实. 随机一段废话似乎是一种巧合，但如果我们从一个更大的角度看待问题，这似乎是</description>
+      <guid>https://augustus2345.github.io/post/-go-%E8%AF%AD%E8%A8%80%E6%A0%87%E5%87%86%E5%BA%93-flag-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8-/</guid>
+      <description>Go 语言内置的 flag包实现了命令行参数的解析，flag包使得开发命令行工具更为简单。
+如果你只是简单的想要获取命令行参数，可以像下面的代码示例一样使用 os.Args来获取命令行参数。
+package main import ( &amp;#34;fmt&amp;#34; &amp;#34;os&amp;#34; ) //os.Args demo func main() { //os.Args是一个[]string if len(os.Args) &amp;gt; 0 { for index, arg := range os.Args { fmt.Printf(&amp;#34;args[%d]=%v\n&amp;#34;, index, arg) } } } 将上面的代码执行 go build -o &amp;quot;args_demo&amp;quot;编译之后，执行：
+$ ./args_demo a b c d args[0]=./args_demo args[1]=a args[2]=b args[3]=c args[4]=d os.Args是一个存储命令行参数的字符串切片，它的第一个元素是执行文件的名称。
+本文介绍了 flag 包的常用函数和基本用法，更详细的内容请查看官方文档。
+导入 flag 包 import flag flag 参数类型 flag 包支持的命令行参数类型有 bool、int、int64、uint、uint64、float float64、string、duration。
+定义命令行 flag 参数 有以下两种常用的定义命令行 flag参数的方法。</description>
+    </item>
+    
+    <item>
+      <title>go 语言 log 库</title>
+      <link>https://augustus2345.github.io/post/-go-%E8%AF%AD%E8%A8%80%E6%A0%87%E5%87%86%E5%BA%93-log-%E4%BB%8B%E7%BB%8D-/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://augustus2345.github.io/post/-go-%E8%AF%AD%E8%A8%80%E6%A0%87%E5%87%86%E5%BA%93-log-%E4%BB%8B%E7%BB%8D-/</guid>
+      <description>无论是软件开发的调试阶段还是软件上线之后的运行阶段，日志一直都是非常重要的一个环节，我们也应该养成在程序中记录日志的好习惯。
+Go 语言内置的 log包实现了简单的日志服务。本文介绍了标准库 log的基本使用。
+使用 Logger log 包定义了 Logger 类型，该类型提供了一些格式化输出的方法。本包也提供了一个预定义的 “标准”logger，可以通过调用函数 Print系列(Print|Printf|Println）、Fatal系列（Fatal|Fatalf|Fatalln）、和 Panic系列（Panic|Panicf|Panicln）来使用，比自行创建一个 logger 对象更容易使用。
+例如，我们可以像下面的代码一样直接通过 log包来调用上面提到的方法，默认它们会将日志信息打印到终端界面：
+package main import ( &amp;#34;log&amp;#34; ) func main() { log.Println(&amp;#34;这是一条很普通的日志。&amp;#34;) v := &amp;#34;很普通的&amp;#34; log.Printf(&amp;#34;这是一条%s日志。\n&amp;#34;, v) log.Fatalln(&amp;#34;这是一条会触发fatal的日志。&amp;#34;) log.Panicln(&amp;#34;这是一条会触发panic的日志。&amp;#34;) } 编译并执行上面的代码会得到如下输出：
+2017/06/19 14:04:17 这是一条很普通的日志。 2017/06/19 14:04:17 这是一条很普通的日志。 2017/06/19 14:04:17 这是一条会触发fatal的日志。 logger 会打印每条日志信息的日期、时间，默认输出到系统的标准错误。Fatal 系列函数会在写入日志信息后调用 os.Exit(1)。Panic 系列函数会在写入日志信息后 panic。
+配置 logger 标准 logger 的配置 默认情况下的 logger 只会提供日志的时间信息，但是很多情况下我们希望得到更多信息，比如记录该日志的文件名和行号等。log标准库中为我们提供了定制这些设置的方法。
+log标准库中的 Flags函数会返回标准 logger 的输出配置，而 SetFlags函数用来设置标准 logger 的输出配置。
+func Flags() int func SetFlags(flag int) flag 选项 log标准库提供了如下的 flag 选项，它们是一系列定义好的常量。</description>
+    </item>
+    
+    <item>
+      <title>go 语言 map</title>
+      <link>https://augustus2345.github.io/post/-go-map-/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://augustus2345.github.io/post/-go-map-/</guid>
+      <description>Go 语言中提供的映射关系容器为 map，其内部使用 散列表（hash）实现。
+map 是一种无序的基于 key-value的数据结构，Go 语言中的 map 是引用类型，必须初始化才能使用。
+map 定义 Go 语言中 map的定义语法如下：
+map[KeyType]ValueType 其中，
+KeyType: 表示键的类型。 ValueType: 表示键对应的值的类型。 map 类型的变量默认初始值为 nil，需要使用 make() 函数来分配内存。语法为：
+make(map[KeyType]ValueType, [cap]) 其中 cap 表示 map 的容量，该参数虽然不是必须的，但是我们应该在初始化 map 的时候就为其指定一个合适的容量。
+map 基本使用 map 中的数据都是成对出现的，map 的基本使用示例代码如下：
+func main() { scoreMap := make(map[string]int, 8) scoreMap[&amp;#34;张三&amp;#34;] = 90 scoreMap[&amp;#34;小明&amp;#34;] = 100 fmt.Println(scoreMap) fmt.Println(scoreMap[&amp;#34;小明&amp;#34;]) fmt.Printf(&amp;#34;type of a:%T\n&amp;#34;, scoreMap) } 输出：
+map[小明:100 张三:90] type of a:map[string]int map 也支持在声明的时候填充元素，例如：
+func main() { userInfo := map[string]string{ &amp;#34;username&amp;#34;: &amp;#34;沙河小王子&amp;#34;, &amp;#34;password&amp;#34;: &amp;#34;123456&amp;#34;, } fmt.</description>
+    </item>
+    
+    <item>
+      <title>go 语言 strconv 包</title>
+      <link>https://augustus2345.github.io/post/-go-%E8%AF%AD%E8%A8%80%E5%86%85%E7%BD%AE%E5%8C%85%E4%B9%8B-strconv-/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://augustus2345.github.io/post/-go-%E8%AF%AD%E8%A8%80%E5%86%85%E7%BD%AE%E5%8C%85%E4%B9%8B-strconv-/</guid>
+      <description>string 与 int 类型转换 这一组函数是我们平时编程中用的最多的。
+Atoi() Atoi()函数用于将字符串类型的整数转换为 int 类型，函数签名如下。
+func Atoi(s string) (i int, err error) 如果传入的字符串参数无法转换为 int 类型，就会返回错误。
+s1 := &amp;#34;100&amp;#34; i1, err := strconv.Atoi(s1) if err != nil { fmt.Println(&amp;#34;can&amp;#39;t convert to int&amp;#34;) } else { fmt.Printf(&amp;#34;type:%T value:%#v\n&amp;#34;, i1, i1) //type:int value:100 } Itoa() Itoa()函数用于将 int 类型数据转换为对应的字符串表示，具体的函数签名如下。
+func Itoa(i int) string 示例代码如下：
+i2 := 200 s2 := strconv.Itoa(i2) fmt.Printf(&amp;#34;type:%T value:%#v\n&amp;#34;, s2, s2) //type:string value:&amp;#34;200&amp;#34; a 的典故 【扩展阅读】这是 C 语言遗留下的典故。C 语言中没有 string 类型而是用字符数组 (array) 表示字符串，所以 Itoa对很多 C 系的程序员很好理解。</description>
+    </item>
+    
+    <item>
+      <title>go 语言 time 包</title>
+      <link>https://augustus2345.github.io/post/-go-time-%E5%8C%85-/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://augustus2345.github.io/post/-go-time-%E5%8C%85-/</guid>
+      <description>我们在编程中经常会用到时间和日期数据，本文主要介绍了 Go 语言内置的 time 包的基本用法。
+时间和日期是我们编程中经常会用到的，本文主要介绍了 Go 语言内置的 time 包的基本用法。time 包提供了一些关于时间显示和测量用的函数。time 包中日历的计算采用的是公历，不考虑润秒。
+时间类型 Go 语言中使用 time.Time类型表示时间。我们可以通过 time.Now函数获取当前的时间对象，然后从时间对象中可以获取到年、月、日、时、分、秒等信息。
+// timeDemo 时间对象的年月日时分秒 func timeDemo() { now := time.Now() // 获取当前时间 fmt.Printf(&amp;#34;current time:%v\n&amp;#34;, now) year := now.Year() // 年 month := now.Month() // 月 day := now.Day() // 日 hour := now.Hour() // 小时 minute := now.Minute() // 分钟 second := now.Second() // 秒 fmt.Println(year, month, day, hour, minute, second) } Location 和 time zone Go 语言中使用 location 来映射具体的时区。时区（Time Zone）是根据世界各国家与地区不同的经度而划分的时间定义，全球共分为 24 个时区。中国差不多跨 5 个时区，但为了使用方便只用东八时区的标准时即北京时间为准。</description>
+    </item>
+    
+    <item>
+      <title>go 语言切片</title>
+      <link>https://augustus2345.github.io/post/-go%E5%88%87%E7%89%87-/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://augustus2345.github.io/post/-go%E5%88%87%E7%89%87-/</guid>
+      <description>本文主要介绍 Go 语言中切片（slice）及它的基本使用。
+因为数组的长度是固定的并且数组长度属于类型的一部分，所以数组有很多的局限性。 例如：
+func arraySum(x [3]int) int{ sum := 0 for _, v := range x{ sum = sum + v } return sum } 这个求和函数只能接受 [3]int类型，其他的都不支持。 再比如，
+a := [3]int{1, 2, 3} 数组 a 中已经有三个元素了，我们不能再继续往数组 a 中添加新元素了。
+切片（Slice）是一个拥有相同类型元素的可变长度的序列。它是基于数组类型做的一层封装。它非常灵活，支持自动扩容。
+切片是一个引用类型，它的内部结构包含 地址、长度和 容量。切片一般用于快速地操作一块数据集合。
+切片的定义 声明切片类型的基本语法如下：
+var name []T 其中，
+name: 表示变量名 T: 表示切片中的元素类型 举个例子：
+func main() { // 声明切片类型 var a []string //声明一个字符串切片 var b = []int{} //声明一个整型切片并初始化 var c = []bool{false, true} //声明一个布尔切片并初始化 var d = []bool{false, true} //声明一个布尔切片并初始化 fmt.</description>
+    </item>
+    
+    <item>
+      <title>go 语言单元测试</title>
+      <link>https://augustus2345.github.io/post/-go%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95-/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://augustus2345.github.io/post/-go%E5%8D%95%E5%85%83%E6%B5%8B%E8%AF%95-/</guid>
+      <description>这篇文章主要介绍下在 Go 语言中如何做单元测试和基准测试。
+Go 语言中的测试依赖 go test命令。编写测试代码和编写普通的 Go 代码过程是类似的，并不需要学习新的语法、规则或工具。
+go test 命令是一个按照一定约定和组织的测试代码的驱动程序。在包目录内，所有以 _test.go为后缀名的源代码文件都是 go test测试的一部分，不会被 go build编译到最终的可执行文件中。
+在 *_test.go文件中有三种类型的函数，单元测试函数、基准测试函数和示例函数。
+go test命令会遍历所有的 *_test.go文件中符合上述命名规则的函数，然后生成一个临时的 main 包用于调用相应的测试函数，然后构建并运行、报告测试结果，最后清理测试中生成的临时文件。
+测试函数的格式 每个测试函数必须导入 testing包，测试函数的基本格式（签名）如下：
+func TestName(t *testing.T){ // ... } 测试函数的名字必须以 Test开头，可选的后缀名必须以大写字母开头，举几个例子：
+func TestAdd(t *testing.T){ ... } func TestSum(t *testing.T){ ... } func TestLog(t *testing.T){ ... } 其中参数 t用于报告测试失败和附加的日志信息。 testing.T的拥有的方法如下：
+func (c *T) Error(args ...interface{}) func (c *T) Errorf(format string, args ...interface{}) func (c *T) Fail() func (c *T) FailNow() func (c *T) Failed() bool func (c *T) Fatal(args .</description>
+    </item>
+    
+    <item>
+      <title>go 语言反射</title>
+      <link>https://augustus2345.github.io/post/-go%E5%8F%8D%E5%B0%84-/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://augustus2345.github.io/post/-go%E5%8F%8D%E5%B0%84-/</guid>
+      <description>Go 语言中的变量是分为两部分的:
+类型信息：预先定义好的元信息。 值信息：程序运行过程中可动态变化的。 反射是指在程序运行期间对程序本身进行访问和修改的能力。程序在编译时，变量被转换为内存地址，变量名不会被编译器写入到可执行部分。在运行程序时，程序无法获取自身的信息。
+支持反射的语言可以在程序编译期间将变量的反射信息，如字段名称、类型信息、结构体信息等整合到可执行文件中，并给程序提供接口访问反射信息，这样就可以在程序运行期间获取类型的反射信息，并且有能力修改它们。
+Go 程序在运行期间使用 reflect 包访问程序的反射信息。
+在上一篇博客中我们介绍了空接口。 空接口可以存储任意类型的变量，那我们如何知道这个空接口保存的数据是什么呢？ 反射就是在运行时动态的获取一个变量的类型信息和值信息。
+在 Go 语言的反射机制中，任何接口值都由是 一个具体类型和 具体类型的值两部分组成的 (我们在上一篇接口的博客中有介绍相关概念)。 在 Go 语言中反射的相关功能由内置的 reflect 包提供，任意接口值在反射中都可以理解为由 reflect.Type和 reflect.Value两部分组成，并且 reflect 包提供了 reflect.TypeOf和 reflect.ValueOf两个函数来获取任意对象的 Value 和 Type。
+TypeOf 在 Go 语言中，使用 reflect.TypeOf()函数可以获得任意值的类型对象（reflect.Type），程序通过类型对象可以访问任意值的类型信息。
+package main import ( &amp;#34;fmt&amp;#34; &amp;#34;reflect&amp;#34; ) func reflectType(x interface{}) { v := reflect.TypeOf(x) fmt.Printf(&amp;#34;type:%v\n&amp;#34;, v) } func main() { var a float32 = 3.14 reflectType(a) // type:float32 var b int64 = 100 reflectType(b) // type:int64 } type name 和 type kind 在反射中关于类型还划分为两种：类型（Type）和 种类（Kind）。因为在 Go 语言中我们可以使用 type 关键字构造很多自定义类型，而 种类（Kind）就是指底层的类型，但在反射中，当需要区分指针、结构体等大品种的类型时，就会用到 种类（Kind）。 举个例子，我们定义了两个指针类型和两个结构体类型，通过反射查看它们的类型和种类。</description>
+    </item>
+    
+    <item>
+      <title>go 语言并发</title>
+      <link>https://augustus2345.github.io/post/-go%E5%B9%B6%E5%8F%91-/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://augustus2345.github.io/post/-go%E5%B9%B6%E5%8F%91-/</guid>
+      <description>基本概念 首先我们先来了解几个与并发编程相关的基本概念。
+串行、并发与并行 串行：我们都是先读小学，小学毕业后再读初中，读完初中再读高中。
+并发：同一时间段内执行多个任务（你在用微信和两个女朋友聊天）。
+并行：同一时刻执行多个任务（你和你朋友都在用微信和女朋友聊天）。
+进程、线程和协程 进程（process）：程序在操作系统中的一次执行过程，系统进行资源分配和调度的一个独立单位。
+线程（thread）：操作系统基于进程开启的轻量级进程，是操作系统调度执行的最小单位。
+协程（coroutine）：非操作系统提供而是由用户自行创建和控制的用户态‘线程’，比线程更轻量级。
+并发模型 业界将如何实现并发编程总结归纳为各式各样的并发模型，常见的并发模型有以下几种：
+线程 &amp;amp; 锁模型 Actor 模型 CSP 模型 Fork&amp;amp;Join 模型 Go 语言中的并发程序主要是通过基于 CSP（communicating sequential processes）的 goroutine 和 channel 来实现，当然也支持使用传统的多线程共享内存的并发方式。
+goroutine Goroutine 是 Go 语言支持并发的核心，在一个 Go 程序中同时创建成百上千个 goroutine 是非常普遍的，一个 goroutine 会以一个很小的栈开始其生命周期，一般只需要 2KB。区别于操作系统线程由系统内核进行调度， goroutine 是由 Go 运行时（runtime）负责调度。例如 Go 运行时会智能地将 m 个 goroutine 合理地分配给 n 个操作系统线程，实现类似 m:n 的调度机制，不再需要 Go 开发者自行在代码层面维护一个线程池。
+Goroutine 是 Go 程序中最基本的并发执行单元。每一个 Go 程序都至少包含一个 goroutine——main goroutine，当 Go 程序启动时它会自动创建。
+在 Go 语言编程中你不需要去自己写进程、线程、协程，你的技能包里只有一个技能——goroutine，当你需要让某个任务并发执行的时候，你只需要把这个任务包装成一个函数，开启一个 goroutine 去执行这个函数就可以了，就是这么简单粗暴。</description>
+    </item>
+    
+    <item>
+      <title>go 语言排序算法</title>
+      <link>https://augustus2345.github.io/post/-%E5%B8%B8%E8%A7%81%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95-/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://augustus2345.github.io/post/-%E5%B8%B8%E8%A7%81%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95-/</guid>
+      <description>排序算法 快速排序 func quickSort(data []int) { if len(data) &amp;lt;= 1 { return } base := data[0] l, r := 0, len(data)-1 for i := 1; i &amp;lt;= r; { if data[i] &amp;gt; base { data[i], data[r] = data[r], data[i] r-- } else { data[i], data[l] = data[l], data[i] l++ i++ } } quickSort(data[:l]) quickSort(data[l+1:]) } func main() { s := make([]int, 0, 16) for i := 0; i &amp;lt; 16; i++ { s = append(s, rand.</description>
+    </item>
+    
+    <item>
+      <title>go 语言操作 kafka</title>
+      <link>https://augustus2345.github.io/post/-go-%E6%93%8D%E4%BD%9C-kafka-/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://augustus2345.github.io/post/-go-%E6%93%8D%E4%BD%9C-kafka-/</guid>
+      <description>Kafka 是一种高吞吐量的分布式发布订阅消息系统，它可以处理消费者规模的网站中的所有动作流数据，具有高性能、持久化、多副本备份、横向扩展等特点。本文介绍了如何使用 Go 语言发送和接收 kafka 消息。
+sarama Go 语言中连接 kafka 使用第三方库:github.com/Shopify/sarama。
+下载及安装 go get github.com/Shopify/sarama 注意事项 sarama v1.20 之后的版本加入了 zstd压缩算法，需要用到 cgo，在 Windows 平台编译时会提示类似如下错误：
+# github.com/DataDog/zstd exec: &amp;#34;gcc&amp;#34;:executable file not found in %PATH% 所以在 Windows 平台请使用 v1.19 版本的 sarama。
+连接 kafka 发送消息 package main import ( &amp;#34;fmt&amp;#34; &amp;#34;github.com/Shopify/sarama&amp;#34; ) // 基于sarama第三方库开发的kafka client func main() { config := sarama.NewConfig() config.Producer.RequiredAcks = sarama.WaitForAll // 发送完数据需要leader和follow都确认 config.Producer.Partitioner = sarama.NewRandomPartitioner // 新选出一个partition config.Producer.Return.Successes = true // 成功交付的消息将在success channel返回 // 构造一个消息 msg := &amp;amp;sarama.</description>
+    </item>
+    
+    <item>
+      <title>go 项目配置文件管理 viper</title>
+      <link>https://augustus2345.github.io/post/-go-%E8%AF%AD%E8%A8%80%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E7%A5%9E%E5%99%A8viper-%E4%B8%AD%E6%96%87%E6%95%99%E7%A8%8B-/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://augustus2345.github.io/post/-go-%E8%AF%AD%E8%A8%80%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E7%A5%9E%E5%99%A8viper-%E4%B8%AD%E6%96%87%E6%95%99%E7%A8%8B-/</guid>
+      <description>Viper 是适用于 Go 应用程序的完整配置解决方案。它被设计用于在应用程序中工作，并且可以处理所有类型的配置需求和格式。
+鉴于 viper库本身的 README 已经写得十分详细，这里就将其翻译成中文，并在最后附上两个项目中使用 viper的示例代码以供参考。
+安装 go get github.com/spf13/viper 什么是 Viper？ Viper 是适用于 Go 应用程序（包括 Twelve-Factor App）的完整配置解决方案。它被设计用于在应用程序中工作，并且可以处理所有类型的配置需求和格式。它支持以下特性：
+设置默认值 从 JSON、TOML、YAML、HCL、envfile和 Java properties格式的配置文件读取配置信息 实时监控和重新读取配置文件（可选） 从环境变量中读取 从远程配置系统（etcd 或 Consul）读取并监控配置变化 从命令行参数读取配置 从 buffer 读取配置 显式配置值 为什么选择 Viper? 在构建现代应用程序时，你无需担心配置文件格式；你想要专注于构建出色的软件。Viper 的出现就是为了在这方面帮助你的。
+Viper 能够为你执行下列操作：
+查找、加载和反序列化 JSON、TOML、YAML、HCL、INI、envfile和 Java properties格式的配置文件。 提供一种机制为你的不同配置选项设置默认值。 提供一种机制来通过命令行参数覆盖指定选项的值。 提供别名系统，以便在不破坏现有代码的情况下轻松重命名参数。 当用户提供了与默认值相同的命令行或配置文件时，可以很容易地分辨出它们之间的区别。 Viper 会按照下面的优先级。每个项目的优先级都高于它下面的项目:
+显示调用 Set设置值 命令行参数（flag） 环境变量 配置文件 key/value 存储 默认值 重要： 目前 Viper 配置的键（Key）是大小写不敏感的。目前正在讨论是否将这一选项设为可选。
+把值存入 Viper 建立默认值 一个好的配置系统应该支持默认值。键不需要默认值，但如果没有通过配置文件、环境变量、远程配置或命令行标志（flag）设置键，则默认值非常有用。
+例如：
+viper.SetDefault(&amp;#34;ContentDir&amp;#34;, &amp;#34;content&amp;#34;) viper.</description>
+    </item>
+    
+    <item>
+      <title>swagger 生成接口文档</title>
+      <link>https://augustus2345.github.io/post/-%E4%BD%BF%E7%94%A8-swagger-%E7%94%9F%E6%88%90%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3-/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://augustus2345.github.io/post/-%E4%BD%BF%E7%94%A8-swagger-%E7%94%9F%E6%88%90%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3-/</guid>
+      <description>swagger 介绍 Swagger 本质上是一种用于描述使用 JSON 表示的 RESTful API 的接口描述语言。Swagger 与一组开源软件工具一起使用，以设计、构建、记录和使用 RESTful Web 服务。Swagger 包括自动文档，代码生成和测试用例生成。
+在前后端分离的项目开发过程中，如果后端同学能够提供一份清晰明了的接口文档，那么就能极大地提高大家的沟通效率和开发效率。可是编写接口文档历来都是令人头痛的，而且后续接口文档的维护也十分耗费精力。
+最好是有一种方案能够既满足我们输出文档的需要又能随代码的变更自动更新，而 Swagger 正是那种能帮我们解决接口文档问题的工具。
+这里以 gin 框架为例，使用 gin-swagger 库以使用 Swagger 2.0 自动生成 RESTful API 文档。
+gin-swagger 实战 想要使用 gin-swagger为你的代码自动生成接口文档，一般需要下面三个步骤：
+按照 swagger 要求给接口代码添加声明式注释，具体参照声明式注释格式。 使用 swag 工具扫描代码自动生成 API 接口文档数据 使用 gin-swagger 渲染在线接口文档页面 第一步：添加注释 在程序入口 main 函数上以注释的方式写下项目相关介绍信息。
+在你代码中处理请求的接口函数（通常位于 controller 层）按如下方式写上注释：
+上面注释中参数类型使用了 object，models.ParamPostList具体定义如下：
+响应数据类型也使用的 object，我个人习惯在 controller 层专门定义一个 docs_models.go文件来存储文档中使用的响应数据 model。
+第二步：生成接口文档数据 编写完注释后，使用以下命令安装 swag 工具：
+go get -u github.com/swaggo/swag/cmd/swag 在项目根目录执行以下命令，使用 swag 工具生成接口文档数据。</description>
+    </item>
+    
+    <item>
+      <title>web 项目限流策略-漏桶与令牌桶</title>
+      <link>https://augustus2345.github.io/post/-%E5%B8%B8%E7%94%A8%E9%99%90%E6%B5%81%E7%AD%96%E7%95%A5%E6%BC%8F%E6%A1%B6%E4%B8%8E%E4%BB%A4%E7%89%8C%E6%A1%B6%E4%BB%8B%E7%BB%8D-/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://augustus2345.github.io/post/-%E5%B8%B8%E7%94%A8%E9%99%90%E6%B5%81%E7%AD%96%E7%95%A5%E6%BC%8F%E6%A1%B6%E4%B8%8E%E4%BB%A4%E7%89%8C%E6%A1%B6%E4%BB%8B%E7%BB%8D-/</guid>
+      <description>限流又称为流量控制（流控），通常是指限制到达系统的并发请求数，本文列举了常见的限流策略，并以 gin 框架为例演示了如何为项目添加限流组件。
+限流 限流又称为流量控制（流控），通常是指限制到达系统的并发请求数。
+我们生活中也会经常遇到限流的场景，比如：某景区限制每日进入景区的游客数量为 8 万人；沙河地铁站早高峰通过站外排队逐一放行的方式限制同一时间进入车站的旅客数量等。
+限流虽然会影响部分用户的使用体验，但是却能在一定程度上报障系统的稳定性，不至于崩溃（大家都没了用户体验）。
+而互联网上类似需要限流的业务场景也有很多，比如电商系统的秒杀、微博上突发热点新闻、双十一购物节、12306 抢票等等。这些场景下的用户请求量通常会激增，远远超过平时正常的请求量，此时如果不加任何限制很容易就会将后端服务打垮，影响服务的稳定性。
+此外，一些厂商公开的 API 服务通常也会限制用户的请求次数，比如百度地图开放平台等会根据用户的付费情况来限制用户的请求数等。 常用的限流策略 漏桶 漏桶法限流很好理解，假设我们有一个水桶按固定的速率向下方滴落一滴水，无论有多少请求，请求的速率有多大，都按照固定的速率流出，对应到系统中就是按照固定的速率处理请求。
+漏桶法的关键点在于漏桶始终按照固定的速率运行，但是它并不能很好的处理有大量突发请求的场景，毕竟在某些场景下我们可能需要提高系统的处理效率，而不是一味的按照固定速率处理请求。
+关于漏桶的实现，uber 团队有一个开源的 github.com/uber-go/ratelimit 库。 这个库的使用方法比较简单，Take() 方法会返回漏桶下一次滴水的时间。
+import ( &amp;#34;fmt&amp;#34; &amp;#34;time&amp;#34; &amp;#34;go.uber.org/ratelimit&amp;#34; ) func main() { rl := ratelimit.New(100) // per second prev := time.Now() for i := 0; i &amp;lt; 10; i++ { now := rl.Take() fmt.Println(i, now.Sub(prev)) prev = now } // Output: // 0 0 // 1 10ms // 2 10ms // 3 10ms // 4 10ms // 5 10ms // 6 10ms // 7 10ms // 8 10ms // 9 10ms } 它的源码实现也比较简单，这里大致说一下关键的地方，有兴趣的同学可以自己去看一下完整的源码。</description>
+    </item>
+    
+    <item>
+      <title>zap 日志库的使用</title>
+      <link>https://augustus2345.github.io/post/-%E5%9C%A8-go-%E8%AF%AD%E8%A8%80%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8-zap-%E6%97%A5%E5%BF%97%E5%BA%93-/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://augustus2345.github.io/post/-%E5%9C%A8-go-%E8%AF%AD%E8%A8%80%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8-zap-%E6%97%A5%E5%BF%97%E5%BA%93-/</guid>
+      <description>本文先介绍了 Go 语言原生的日志库的使用，然后详细介绍了非常流行的 Uber 开源的 zap 日志库，同时介绍了如何搭配 Lumberjack 实现日志的切割和归档。
+介绍 在许多 Go 语言项目中，我们需要一个好的日志记录器能够提供下面这些功能：
+能够将事件记录到文件中，而不是应用程序控制台。 日志切割 - 能够根据文件大小、时间或间隔等来切割日志文件。 支持不同的日志级别。例如 INFO，DEBUG，ERROR 等。 能够打印基本信息，如调用文件 / 函数名和行号，日志时间等。 默认的 Go Logger 在介绍 Uber-go 的 zap 包之前，让我们先看看 Go 语言提供的基本日志功能。Go 语言提供的默认日志包是 https://golang.org/pkg/log/。
+实现 Go Logger 实现一个 Go 语言中的日志记录器非常简单——创建一个新的日志文件，然后设置它为日志的输出位置。
+设置 Logger 我们可以像下面的代码一样设置日志记录器
+func SetupLogger() { logFileLocation, _ := os.OpenFile(&amp;#34;/Users/q1mi/test.log&amp;#34;, os.O_CREATE|os.O_APPEND|os.O_RDWR, 0744) log.SetOutput(logFileLocation) } 使用 Logger 让我们来写一些虚拟的代码来使用这个日志记录器。
+在当前的示例中，我们将建立一个到 URL 的 HTTP 连接，并将状态代码 / 错误记录到日志文件中。
+func simpleHttpGet(url string) { resp, err := http.</description>
+    </item>
+    
+    <item>
+      <title>优雅关机与重启</title>
+      <link>https://augustus2345.github.io/post/-%E4%BC%98%E9%9B%85%E5%9C%B0%E5%85%B3%E6%9C%BA%E6%88%96%E9%87%8D%E5%90%AF-/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://augustus2345.github.io/post/-%E4%BC%98%E9%9B%85%E5%9C%B0%E5%85%B3%E6%9C%BA%E6%88%96%E9%87%8D%E5%90%AF-/</guid>
+      <description>我们编写的 Web 项目部署之后，经常会因为需要进行配置变更或功能迭代而重启服务，单纯的 kill -9 pid的方式会强制关闭进程，这样就会导致服务端当前正在处理的请求失败，那有没有更优雅的方式来实现关机或重启呢？
+优雅地关机 什么是优雅关机？ 优雅关机就是服务端关机命令发出后不是立即关机，而是等待当前还在处理的请求全部处理完毕后再退出程序，是一种对客户端友好的关机方式。而执行 Ctrl+C关闭服务端时，会强制结束进程导致正在访问的请求出现问题。
+如何实现优雅关机？ Go 1.8 版本之后， http.Server 内置的 Shutdown() 方法就支持优雅地关机，具体示例如下：
+// +build go1.8 package main import ( &amp;#34;context&amp;#34; &amp;#34;log&amp;#34; &amp;#34;net/http&amp;#34; &amp;#34;os&amp;#34; &amp;#34;os/signal&amp;#34; &amp;#34;syscall&amp;#34; &amp;#34;time&amp;#34; &amp;#34;github.com/gin-gonic/gin&amp;#34; ) func main() { router := gin.Default() router.GET(&amp;#34;/&amp;#34;, func(c *gin.Context) { time.Sleep(5 * time.Second) c.String(http.StatusOK, &amp;#34;Welcome Gin Server&amp;#34;) }) srv := &amp;amp;http.Server{ Addr: &amp;#34;:8080&amp;#34;, Handler: router, } go func() { // 开启一个goroutine启动服务 if err := srv.ListenAndServe(); err !</description>
+    </item>
+    
+    <item>
+      <title>利用 validator 库进行参数校验</title>
+      <link>https://augustus2345.github.io/post/-validator-%E5%BA%93%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C%E8%8B%A5%E5%B9%B2%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7-/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://augustus2345.github.io/post/-validator-%E5%BA%93%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C%E8%8B%A5%E5%B9%B2%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7-/</guid>
+      <description>gin 框架使用 github.com/go-playground/validator 进行参数校验，目前已经支持 github.com/go-playground/validator/v10了，我们需要在定义结构体时使用 binding tag 标识相关校验规则，可以查看 validator 文档查看支持的所有 tag。
+基本示例 首先来看 gin 框架内置使用 validator做参数校验的基本示例。
+package main import ( &amp;#34;net/http&amp;#34; &amp;#34;github.com/gin-gonic/gin&amp;#34; ) type SignUpParam struct { Age uint8 `json:&amp;#34;age&amp;#34; binding:&amp;#34;gte=1,lte=130&amp;#34;` Name string `json:&amp;#34;name&amp;#34; binding:&amp;#34;required&amp;#34;` Email string `json:&amp;#34;email&amp;#34; binding:&amp;#34;required,email&amp;#34;` Password string `json:&amp;#34;password&amp;#34; binding:&amp;#34;required&amp;#34;` RePassword string `json:&amp;#34;re_password&amp;#34; binding:&amp;#34;required,eqfield=Password&amp;#34;` } func main() { r := gin.Default() r.POST(&amp;#34;/signup&amp;#34;, func(c *gin.Context) { var u SignUpParam if err := c.ShouldBind(&amp;amp;u); err != nil { c.JSON(http.StatusOK, gin.</description>
     </item>
     
   </channel>

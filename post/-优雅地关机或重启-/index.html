@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>优雅关机与重启 | Augustus</title>
+<meta name="keywords" content="" />
+<meta name="description" content="我们编写的 Web 项目部署之后，经常会因为需要进行配置变更或功能迭代而重启服务，单纯的 kill -9 pid的方式会强制关闭进程，这样就会导致服务端当前正在处理的请求失败，那有没有更优雅的方式来实现关机或重启呢？
+优雅地关机 什么是优雅关机？ 优雅关机就是服务端关机命令发出后不是立即关机，而是等待当前还在处理的请求全部处理完毕后再退出程序，是一种对客户端友好的关机方式。而执行 Ctrl&#43;C关闭服务端时，会强制结束进程导致正在访问的请求出现问题。
+如何实现优雅关机？ Go 1.8 版本之后， http.Server 内置的 Shutdown() 方法就支持优雅地关机，具体示例如下：
+// &#43;build go1.8 package main import ( &#34;context&#34; &#34;log&#34; &#34;net/http&#34; &#34;os&#34; &#34;os/signal&#34; &#34;syscall&#34; &#34;time&#34; &#34;github.com/gin-gonic/gin&#34; ) func main() { router := gin.Default() router.GET(&#34;/&#34;, func(c *gin.Context) { time.Sleep(5 * time.Second) c.String(http.StatusOK, &#34;Welcome Gin Server&#34;) }) srv := &amp;http.Server{ Addr: &#34;:8080&#34;, Handler: router, } go func() { // 开启一个goroutine启动服务 if err := srv.ListenAndServe(); err !">
+<meta name="author" content="Augustus">
+<link rel="canonical" href="https://augustus2345.github.io/post/-%E4%BC%98%E9%9B%85%E5%9C%B0%E5%85%B3%E6%9C%BA%E6%88%96%E9%87%8D%E5%90%AF-/" />
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.a5ab32f1bb68fb0ae8f28914ef9f0da8dfc31c91a454154a325a727be950a856.css" integrity="sha256-pasy8bto&#43;wro8okU758NqN/DHJGkVBVKMlpye&#43;lQqFY=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.b95bacdc39e37a332a9f883b1e78be4abc1fdca2bc1f2641f55e3cd3dabd4d61.js" integrity="sha256-uVus3DnjejMqn4g7Hni&#43;Srwf3KK8HyZB9V4809q9TWE="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="icon" type="image/png" sizes="16x16" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="icon" type="image/png" sizes="32x32" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="apple-touch-icon" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="mask-icon" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.114.0">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><meta property="og:title" content="优雅关机与重启" />
+<meta property="og:description" content="我们编写的 Web 项目部署之后，经常会因为需要进行配置变更或功能迭代而重启服务，单纯的 kill -9 pid的方式会强制关闭进程，这样就会导致服务端当前正在处理的请求失败，那有没有更优雅的方式来实现关机或重启呢？
+优雅地关机 什么是优雅关机？ 优雅关机就是服务端关机命令发出后不是立即关机，而是等待当前还在处理的请求全部处理完毕后再退出程序，是一种对客户端友好的关机方式。而执行 Ctrl&#43;C关闭服务端时，会强制结束进程导致正在访问的请求出现问题。
+如何实现优雅关机？ Go 1.8 版本之后， http.Server 内置的 Shutdown() 方法就支持优雅地关机，具体示例如下：
+// &#43;build go1.8 package main import ( &#34;context&#34; &#34;log&#34; &#34;net/http&#34; &#34;os&#34; &#34;os/signal&#34; &#34;syscall&#34; &#34;time&#34; &#34;github.com/gin-gonic/gin&#34; ) func main() { router := gin.Default() router.GET(&#34;/&#34;, func(c *gin.Context) { time.Sleep(5 * time.Second) c.String(http.StatusOK, &#34;Welcome Gin Server&#34;) }) srv := &amp;http.Server{ Addr: &#34;:8080&#34;, Handler: router, } go func() { // 开启一个goroutine启动服务 if err := srv.ListenAndServe(); err !" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://augustus2345.github.io/post/-%E4%BC%98%E9%9B%85%E5%9C%B0%E5%85%B3%E6%9C%BA%E6%88%96%E9%87%8D%E5%90%AF-/" /><meta property="og:image" content="https://augustus2345.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"/><meta property="article:section" content="post" />
+
+<meta property="og:site_name" content="Augustus" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://augustus2345.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"/>
+
+<meta name="twitter:title" content="优雅关机与重启"/>
+<meta name="twitter:description" content="我们编写的 Web 项目部署之后，经常会因为需要进行配置变更或功能迭代而重启服务，单纯的 kill -9 pid的方式会强制关闭进程，这样就会导致服务端当前正在处理的请求失败，那有没有更优雅的方式来实现关机或重启呢？
+优雅地关机 什么是优雅关机？ 优雅关机就是服务端关机命令发出后不是立即关机，而是等待当前还在处理的请求全部处理完毕后再退出程序，是一种对客户端友好的关机方式。而执行 Ctrl&#43;C关闭服务端时，会强制结束进程导致正在访问的请求出现问题。
+如何实现优雅关机？ Go 1.8 版本之后， http.Server 内置的 Shutdown() 方法就支持优雅地关机，具体示例如下：
+// &#43;build go1.8 package main import ( &#34;context&#34; &#34;log&#34; &#34;net/http&#34; &#34;os&#34; &#34;os/signal&#34; &#34;syscall&#34; &#34;time&#34; &#34;github.com/gin-gonic/gin&#34; ) func main() { router := gin.Default() router.GET(&#34;/&#34;, func(c *gin.Context) { time.Sleep(5 * time.Second) c.String(http.StatusOK, &#34;Welcome Gin Server&#34;) }) srv := &amp;http.Server{ Addr: &#34;:8080&#34;, Handler: router, } go func() { // 开启一个goroutine启动服务 if err := srv.ListenAndServe(); err !"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://augustus2345.github.io/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "优雅关机与重启",
+      "item": "https://augustus2345.github.io/post/-%E4%BC%98%E9%9B%85%E5%9C%B0%E5%85%B3%E6%9C%BA%E6%88%96%E9%87%8D%E5%90%AF-/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "优雅关机与重启",
+  "name": "优雅关机与重启",
+  "description": "我们编写的 Web 项目部署之后，经常会因为需要进行配置变更或功能迭代而重启服务，单纯的 kill -9 pid的方式会强制关闭进程，这样就会导致服务端当前正在处理的请求失败，那有没有更优雅的方式来实现关机或重启呢？\n优雅地关机 什么是优雅关机？ 优雅关机就是服务端关机命令发出后不是立即关机，而是等待当前还在处理的请求全部处理完毕后再退出程序，是一种对客户端友好的关机方式。而执行 Ctrl+C关闭服务端时，会强制结束进程导致正在访问的请求出现问题。\n如何实现优雅关机？ Go 1.8 版本之后， http.Server 内置的 Shutdown() 方法就支持优雅地关机，具体示例如下：\n// +build go1.8 package main import ( \u0026#34;context\u0026#34; \u0026#34;log\u0026#34; \u0026#34;net/http\u0026#34; \u0026#34;os\u0026#34; \u0026#34;os/signal\u0026#34; \u0026#34;syscall\u0026#34; \u0026#34;time\u0026#34; \u0026#34;github.com/gin-gonic/gin\u0026#34; ) func main() { router := gin.Default() router.GET(\u0026#34;/\u0026#34;, func(c *gin.Context) { time.Sleep(5 * time.Second) c.String(http.StatusOK, \u0026#34;Welcome Gin Server\u0026#34;) }) srv := \u0026amp;http.Server{ Addr: \u0026#34;:8080\u0026#34;, Handler: router, } go func() { // 开启一个goroutine启动服务 if err := srv.ListenAndServe(); err !",
+  "keywords": [
+    
+  ],
+  "articleBody": "我们编写的 Web 项目部署之后，经常会因为需要进行配置变更或功能迭代而重启服务，单纯的 kill -9 pid的方式会强制关闭进程，这样就会导致服务端当前正在处理的请求失败，那有没有更优雅的方式来实现关机或重启呢？\n优雅地关机 什么是优雅关机？ 优雅关机就是服务端关机命令发出后不是立即关机，而是等待当前还在处理的请求全部处理完毕后再退出程序，是一种对客户端友好的关机方式。而执行 Ctrl+C关闭服务端时，会强制结束进程导致正在访问的请求出现问题。\n如何实现优雅关机？ Go 1.8 版本之后， http.Server 内置的 Shutdown() 方法就支持优雅地关机，具体示例如下：\n// +build go1.8 package main import ( \"context\" \"log\" \"net/http\" \"os\" \"os/signal\" \"syscall\" \"time\" \"github.com/gin-gonic/gin\" ) func main() { router := gin.Default() router.GET(\"/\", func(c *gin.Context) { time.Sleep(5 * time.Second) c.String(http.StatusOK, \"Welcome Gin Server\") }) srv := \u0026http.Server{ Addr: \":8080\", Handler: router, } go func() { // 开启一个goroutine启动服务 if err := srv.ListenAndServe(); err != nil \u0026\u0026 err != http.ErrServerClosed { log.Fatalf(\"listen: %s\\n\", err) } }() // 等待中断信号来优雅地关闭服务器，为关闭服务器操作设置一个5秒的超时 quit := make(chan os.Signal, 1) // 创建一个接收信号的通道 // kill 默认会发送 syscall.SIGTERM 信号 // kill -2 发送 syscall.SIGINT 信号，我们常用的Ctrl+C就是触发系统SIGINT信号 // kill -9 发送 syscall.SIGKILL 信号，但是不能被捕获，所以不需要添加它 // signal.Notify把收到的 syscall.SIGINT或syscall.SIGTERM 信号转发给quit signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM) // 此处不会阻塞 \u003c-quit // 阻塞在此，当接收到上述两种信号时才会往下执行 log.Println(\"Shutdown Server ...\") // 创建一个5秒超时的context ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second) defer cancel() // 5秒内优雅关闭服务（将未处理完的请求处理完再关闭服务），超过5秒就超时退出 if err := srv.Shutdown(ctx); err != nil { log.Fatal(\"Server Shutdown: \", err) } log.Println(\"Server exiting\") } 如何验证优雅关机的效果呢？\n上面的代码运行后会在本地的 8080端口开启一个 web 服务，它只注册了一条路由 /，后端服务会先 sleep 5 秒钟然后才返回响应信息。\n我们按下 Ctrl+C时会发送 syscall.SIGINT来通知程序优雅关机，具体做法如下：\n打开终端，编译并执行上面的代码 打开一个浏览器，访问 127.0.0.1:8080/，此时浏览器白屏等待服务端返回响应。 在终端迅速执行 Ctrl+C命令给程序发送 syscall.SIGINT信号 此时程序并不立即退出而是等我们第 2 步的响应返回之后再退出，从而实现优雅关机。 优雅地重启 优雅关机实现了，那么该如何实现优雅重启呢？\n我们可以使用 fvbock/endless 来替换默认的 ListenAndServe启动服务来实现， 示例代码如下：\npackage main import ( \"log\" \"net/http\" \"time\" \"github.com/fvbock/endless\" \"github.com/gin-gonic/gin\" ) func main() { router := gin.Default() router.GET(\"/\", func(c *gin.Context) { time.Sleep(5 * time.Second) c.String(http.StatusOK, \"hello gin!\") }) // 默认endless服务器会监听下列信号： // syscall.SIGHUP，syscall.SIGUSR1，syscall.SIGUSR2，syscall.SIGINT，syscall.SIGTERM和syscall.SIGTSTP // 接收到 SIGHUP 信号将触发`fork/restart` 实现优雅重启（kill -1 pid会发送SIGHUP信号） // 接收到 syscall.SIGINT或syscall.SIGTERM 信号将触发优雅关机 // 接收到 SIGUSR2 信号将触发HammerTime // SIGUSR1 和 SIGTSTP 被用来触发一些用户自定义的hook函数 if err := endless.ListenAndServe(\":8080\", router); err!=nil{ log.Fatalf(\"listen: %s\\n\", err) } log.Println(\"Server exiting\") } 如何验证优雅重启的效果呢？\n我们通过执行 kill -1 pid命令发送 syscall.SIGINT来通知程序优雅重启，具体做法如下：\n打开终端，go build -o graceful_restart编译并执行 ./graceful_restart, 终端输出当前 pid(假设为 43682) 将代码中处理请求函数返回的 hello gin!修改为 hello q1mi!，再次编译 go build -o graceful_restart 打开一个浏览器，访问 127.0.0.1:8080/，此时浏览器白屏等待服务端返回响应。 在终端迅速执行 kill -1 43682命令给程序发送 syscall.SIGHUP信号 等第 3 步浏览器收到响应信息 hello gin!后再次访问 127.0.0.1:8080/会收到 hello q1mi!的响应。 在不影响当前未处理完请求的同时完成了程序代码的替换，实现了优雅重启。 但是需要注意的是，此时程序的 PID 变化了，因为 endless 是通过 fork子进程处理新请求，待原进程处理完当前请求后再退出的方式实现优雅重启的。所以当你的项目是使用类似 supervisor的软件管理进程时就不适用这种方式了。\n总结 无论是优雅关机还是优雅重启归根结底都是通过监听特定系统信号，然后执行一定的逻辑处理保障当前系统正在处理的请求被正常处理后再关闭当前进程。使用优雅关机还是使用优雅重启以及怎么实现，这就需要根据项目实际情况来决定了。\n",
+  "wordCount" : "290",
+  "inLanguage": "en",
+  "datePublished": "0001-01-01T00:00:00Z",
+  "dateModified": "0001-01-01T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Augustus"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://augustus2345.github.io/post/-%E4%BC%98%E9%9B%85%E5%9C%B0%E5%85%B3%E6%9C%BA%E6%88%96%E9%87%8D%E5%90%AF-/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Augustus",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://augustus2345.github.io/" accesskey="h" title="Augustus (Alt + H)">Augustus</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://augustus2345.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://augustus2345.github.io/post/">Posts</a></div>
+    <h1 class="post-title">
+      优雅关机与重启
+    </h1>
+    <div class="post-meta">Augustus
+
+</div>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">Table of Contents</span>
+            </summary>
+
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#%e4%bc%98%e9%9b%85%e5%9c%b0%e5%85%b3%e6%9c%ba" aria-label="优雅地关机">优雅地关机</a><ul>
+                            
+                    <li>
+                        <a href="#%e4%bb%80%e4%b9%88%e6%98%af%e4%bc%98%e9%9b%85%e5%85%b3%e6%9c%ba" aria-label="什么是优雅关机？">什么是优雅关机？</a></li>
+                    <li>
+                        <a href="#%e5%a6%82%e4%bd%95%e5%ae%9e%e7%8e%b0%e4%bc%98%e9%9b%85%e5%85%b3%e6%9c%ba" aria-label="如何实现优雅关机？">如何实现优雅关机？</a></li>
+                    <li>
+                        <a href="#%e4%bc%98%e9%9b%85%e5%9c%b0%e9%87%8d%e5%90%af" aria-label="优雅地重启">优雅地重启</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#%e6%80%bb%e7%bb%93" aria-label="总结">总结</a>
+                    </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
+
+  <div class="post-content"><p>我们编写的 Web 项目部署之后，经常会因为需要进行配置变更或功能迭代而重启服务，单纯的 <code>kill -9 pid</code>的方式会强制关闭进程，这样就会导致服务端当前正在处理的请求失败，那有没有更优雅的方式来实现关机或重启呢？</p>
+<h2 id="优雅地关机">优雅地关机<a hidden class="anchor" aria-hidden="true" href="#优雅地关机">#</a></h2>
+<h3 id="什么是优雅关机">什么是优雅关机？<a hidden class="anchor" aria-hidden="true" href="#什么是优雅关机">#</a></h3>
+<p>优雅关机就是服务端关机命令发出后不是立即关机，而是等待当前还在处理的请求全部处理完毕后再退出程序，是一种对客户端友好的关机方式。而执行 <code>Ctrl+C</code>关闭服务端时，会强制结束进程导致正在访问的请求出现问题。</p>
+<h3 id="如何实现优雅关机">如何实现优雅关机？<a hidden class="anchor" aria-hidden="true" href="#如何实现优雅关机">#</a></h3>
+<p>Go 1.8 版本之后， http.Server 内置的 <a href="https://golang.org/pkg/net/http/#Server.Shutdown">Shutdown()</a> 方法就支持优雅地关机，具体示例如下：</p>
+<pre tabindex="0"><code>// +build go1.8
+
+package main
+
+import (
+	&#34;context&#34;
+	&#34;log&#34;
+	&#34;net/http&#34;
+	&#34;os&#34;
+	&#34;os/signal&#34;
+	&#34;syscall&#34;
+	&#34;time&#34;
+
+	&#34;github.com/gin-gonic/gin&#34;
+)
+
+func main() {
+	router := gin.Default()
+	router.GET(&#34;/&#34;, func(c *gin.Context) {
+		time.Sleep(5 * time.Second)
+		c.String(http.StatusOK, &#34;Welcome Gin Server&#34;)
+	})
+
+	srv := &amp;http.Server{
+		Addr:    &#34;:8080&#34;,
+		Handler: router,
+	}
+
+	go func() {
+		// 开启一个goroutine启动服务
+		if err := srv.ListenAndServe(); err != nil &amp;&amp; err != http.ErrServerClosed {
+			log.Fatalf(&#34;listen: %s\n&#34;, err)
+		}
+	}()
+
+	// 等待中断信号来优雅地关闭服务器，为关闭服务器操作设置一个5秒的超时
+	quit := make(chan os.Signal, 1) // 创建一个接收信号的通道
+	// kill 默认会发送 syscall.SIGTERM 信号
+	// kill -2 发送 syscall.SIGINT 信号，我们常用的Ctrl+C就是触发系统SIGINT信号
+	// kill -9 发送 syscall.SIGKILL 信号，但是不能被捕获，所以不需要添加它
+	// signal.Notify把收到的 syscall.SIGINT或syscall.SIGTERM 信号转发给quit
+	signal.Notify(quit, syscall.SIGINT, syscall.SIGTERM)  // 此处不会阻塞
+	&lt;-quit  // 阻塞在此，当接收到上述两种信号时才会往下执行
+	log.Println(&#34;Shutdown Server ...&#34;)
+	// 创建一个5秒超时的context
+	ctx, cancel := context.WithTimeout(context.Background(), 5*time.Second)
+	defer cancel()
+	// 5秒内优雅关闭服务（将未处理完的请求处理完再关闭服务），超过5秒就超时退出
+	if err := srv.Shutdown(ctx); err != nil {
+		log.Fatal(&#34;Server Shutdown: &#34;, err)
+	}
+
+	log.Println(&#34;Server exiting&#34;)
+}
+</code></pre><p>如何验证优雅关机的效果呢？</p>
+<p>上面的代码运行后会在本地的 <code>8080</code>端口开启一个 web 服务，它只注册了一条路由 <code>/</code>，后端服务会先 sleep 5 秒钟然后才返回响应信息。</p>
+<p>我们按下 <code>Ctrl+C</code>时会发送 <code>syscall.SIGINT</code>来通知程序优雅关机，具体做法如下：</p>
+<ol>
+<li>打开终端，编译并执行上面的代码</li>
+<li>打开一个浏览器，访问 <code>127.0.0.1:8080/</code>，此时浏览器白屏等待服务端返回响应。</li>
+<li>在终端<strong>迅速</strong>执行 <code>Ctrl+C</code>命令给程序发送 <code>syscall.SIGINT</code>信号</li>
+<li>此时程序并不立即退出而是等我们第 2 步的响应返回之后再退出，从而实现优雅关机。</li>
+</ol>
+<h3 id="优雅地重启">优雅地重启<a hidden class="anchor" aria-hidden="true" href="#优雅地重启">#</a></h3>
+<p>优雅关机实现了，那么该如何实现优雅重启呢？</p>
+<p>我们可以使用 <a href="https://github.com/fvbock/endless">fvbock/endless</a> 来替换默认的 <code>ListenAndServe</code>启动服务来实现， 示例代码如下：</p>
+<pre tabindex="0"><code>package main
+
+import (
+	&#34;log&#34;
+	&#34;net/http&#34;
+	&#34;time&#34;
+
+	&#34;github.com/fvbock/endless&#34;
+	&#34;github.com/gin-gonic/gin&#34;
+)
+
+func main() {
+	router := gin.Default()
+	router.GET(&#34;/&#34;, func(c *gin.Context) {
+		time.Sleep(5 * time.Second)
+		c.String(http.StatusOK, &#34;hello gin!&#34;)
+	})
+	// 默认endless服务器会监听下列信号：
+	// syscall.SIGHUP，syscall.SIGUSR1，syscall.SIGUSR2，syscall.SIGINT，syscall.SIGTERM和syscall.SIGTSTP
+	// 接收到 SIGHUP 信号将触发`fork/restart` 实现优雅重启（kill -1 pid会发送SIGHUP信号）
+	// 接收到 syscall.SIGINT或syscall.SIGTERM 信号将触发优雅关机
+	// 接收到 SIGUSR2 信号将触发HammerTime
+	// SIGUSR1 和 SIGTSTP 被用来触发一些用户自定义的hook函数
+	if err := endless.ListenAndServe(&#34;:8080&#34;, router); err!=nil{
+		log.Fatalf(&#34;listen: %s\n&#34;, err)
+	}
+
+	log.Println(&#34;Server exiting&#34;)
+}
+</code></pre><p>如何验证优雅重启的效果呢？</p>
+<p>我们通过执行 <code>kill -1 pid</code>命令发送 <code>syscall.SIGINT</code>来通知程序优雅重启，具体做法如下：</p>
+<ol>
+<li>打开终端，<code>go build -o graceful_restart</code>编译并执行 <code>./graceful_restart</code>, 终端输出当前 pid(假设为 43682)</li>
+<li>将代码中处理请求函数返回的 <code>hello gin!</code>修改为 <code>hello q1mi!</code>，再次编译 <code>go build -o graceful_restart</code></li>
+<li>打开一个浏览器，访问 <code>127.0.0.1:8080/</code>，此时浏览器白屏等待服务端返回响应。</li>
+<li>在终端<strong>迅速</strong>执行 <code>kill -1 43682</code>命令给程序发送 <code>syscall.SIGHUP</code>信号</li>
+<li>等第 3 步浏览器收到响应信息 <code>hello gin!</code>后再次访问 <code>127.0.0.1:8080/</code>会收到 <code>hello q1mi!</code>的响应。</li>
+<li>在不影响当前未处理完请求的同时完成了程序代码的替换，实现了优雅重启。</li>
+</ol>
+<p>但是需要注意的是，此时程序的 PID 变化了，因为 <code>endless</code> 是通过 <code>fork</code>子进程处理新请求，待原进程处理完当前请求后再退出的方式实现优雅重启的。所以当你的项目是使用类似 <code>supervisor</code>的软件管理进程时就<strong>不适用</strong>这种方式了。</p>
+<h2 id="总结">总结<a hidden class="anchor" aria-hidden="true" href="#总结">#</a></h2>
+<p>无论是优雅关机还是优雅重启归根结底都是通过监听特定系统信号，然后执行一定的逻辑处理保障当前系统正在处理的请求被正常处理后再关闭当前进程。使用优雅关机还是使用优雅重启以及怎么实现，这就需要根据项目实际情况来决定了。</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+  </footer>
+<div>    
+    <div class="pagination__title">
+        <span class="pagination__title-h" style="font-size: 20px;">评论</span>
+        <br/>
+    </div>
+    <div id="tcomment"></div>
+    <script src="https://utteranc.es/client.js"
+            repo="augustus2345/hugotalk" 
+            issue-term="title"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+</div>
+
+</article>
+    </main>
+    
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

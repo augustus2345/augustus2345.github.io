@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Error 接口和错误处理 | Augustus</title>
+<meta name="keywords" content="" />
+<meta name="description" content="Go 语言中的错误处理与其他语言不太一样，它把错误当成一种值来处理，更强调判断错误、处理错误，而不是一股脑的 catch 捕获异常。
+Error 接口 Go 语言中把错误当成一种特殊的值来处理，不支持其他语言中使用 try/catch捕获异常的方式。
+Error 接口 Go 语言中使用一个名为 error 接口来表示错误类型。
+type error interface { Error() string } error 接口只包含一个方法——Error，这个函数需要返回一个描述错误信息的字符串。
+当一个函数或方法需要返回错误时，我们通常是把错误作为最后一个返回值。例如下面标准库 os 中打开文件的函数。
+func Open(name string) (*File, error) { return OpenFile(name, O_RDONLY, 0) } 由于 error 是一个接口类型，默认零值为 nil。所以我们通常将调用函数返回的错误与 nil进行比较，以此来判断函数是否返回错误。例如你会经常看到类似下面的错误判断代码。
+file, err := os.Open(&#34;./xx.go&#34;) if err != nil { fmt.Println(&#34;打开文件失败,err:&#34;, err) return } 注意
+当我们使用 fmt包打印错误时会自动调用 error 类型的 Error 方法，也就是会打印出错误的描述信息。
+创建错误 我们可以根据需求自定义 error，最简单的方式是使用 errors 包提供的 New函数创建一个错误。
+errors.New 函数签名如下，">
+<meta name="author" content="Augustus">
+<link rel="canonical" href="https://augustus2345.github.io/post/-error-%E6%8E%A5%E5%8F%A3%E5%92%8C%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86-/" />
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.a5ab32f1bb68fb0ae8f28914ef9f0da8dfc31c91a454154a325a727be950a856.css" integrity="sha256-pasy8bto&#43;wro8okU758NqN/DHJGkVBVKMlpye&#43;lQqFY=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.b95bacdc39e37a332a9f883b1e78be4abc1fdca2bc1f2641f55e3cd3dabd4d61.js" integrity="sha256-uVus3DnjejMqn4g7Hni&#43;Srwf3KK8HyZB9V4809q9TWE="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="icon" type="image/png" sizes="16x16" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="icon" type="image/png" sizes="32x32" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="apple-touch-icon" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="mask-icon" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.114.0">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><meta property="og:title" content="Error 接口和错误处理" />
+<meta property="og:description" content="Go 语言中的错误处理与其他语言不太一样，它把错误当成一种值来处理，更强调判断错误、处理错误，而不是一股脑的 catch 捕获异常。
+Error 接口 Go 语言中把错误当成一种特殊的值来处理，不支持其他语言中使用 try/catch捕获异常的方式。
+Error 接口 Go 语言中使用一个名为 error 接口来表示错误类型。
+type error interface { Error() string } error 接口只包含一个方法——Error，这个函数需要返回一个描述错误信息的字符串。
+当一个函数或方法需要返回错误时，我们通常是把错误作为最后一个返回值。例如下面标准库 os 中打开文件的函数。
+func Open(name string) (*File, error) { return OpenFile(name, O_RDONLY, 0) } 由于 error 是一个接口类型，默认零值为 nil。所以我们通常将调用函数返回的错误与 nil进行比较，以此来判断函数是否返回错误。例如你会经常看到类似下面的错误判断代码。
+file, err := os.Open(&#34;./xx.go&#34;) if err != nil { fmt.Println(&#34;打开文件失败,err:&#34;, err) return } 注意
+当我们使用 fmt包打印错误时会自动调用 error 类型的 Error 方法，也就是会打印出错误的描述信息。
+创建错误 我们可以根据需求自定义 error，最简单的方式是使用 errors 包提供的 New函数创建一个错误。
+errors.New 函数签名如下，" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://augustus2345.github.io/post/-error-%E6%8E%A5%E5%8F%A3%E5%92%8C%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86-/" /><meta property="og:image" content="https://augustus2345.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"/><meta property="article:section" content="post" />
+
+<meta property="og:site_name" content="Augustus" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://augustus2345.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"/>
+
+<meta name="twitter:title" content="Error 接口和错误处理"/>
+<meta name="twitter:description" content="Go 语言中的错误处理与其他语言不太一样，它把错误当成一种值来处理，更强调判断错误、处理错误，而不是一股脑的 catch 捕获异常。
+Error 接口 Go 语言中把错误当成一种特殊的值来处理，不支持其他语言中使用 try/catch捕获异常的方式。
+Error 接口 Go 语言中使用一个名为 error 接口来表示错误类型。
+type error interface { Error() string } error 接口只包含一个方法——Error，这个函数需要返回一个描述错误信息的字符串。
+当一个函数或方法需要返回错误时，我们通常是把错误作为最后一个返回值。例如下面标准库 os 中打开文件的函数。
+func Open(name string) (*File, error) { return OpenFile(name, O_RDONLY, 0) } 由于 error 是一个接口类型，默认零值为 nil。所以我们通常将调用函数返回的错误与 nil进行比较，以此来判断函数是否返回错误。例如你会经常看到类似下面的错误判断代码。
+file, err := os.Open(&#34;./xx.go&#34;) if err != nil { fmt.Println(&#34;打开文件失败,err:&#34;, err) return } 注意
+当我们使用 fmt包打印错误时会自动调用 error 类型的 Error 方法，也就是会打印出错误的描述信息。
+创建错误 我们可以根据需求自定义 error，最简单的方式是使用 errors 包提供的 New函数创建一个错误。
+errors.New 函数签名如下，"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://augustus2345.github.io/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Error 接口和错误处理",
+      "item": "https://augustus2345.github.io/post/-error-%E6%8E%A5%E5%8F%A3%E5%92%8C%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86-/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Error 接口和错误处理",
+  "name": "Error 接口和错误处理",
+  "description": "Go 语言中的错误处理与其他语言不太一样，它把错误当成一种值来处理，更强调判断错误、处理错误，而不是一股脑的 catch 捕获异常。\nError 接口 Go 语言中把错误当成一种特殊的值来处理，不支持其他语言中使用 try/catch捕获异常的方式。\nError 接口 Go 语言中使用一个名为 error 接口来表示错误类型。\ntype error interface { Error() string } error 接口只包含一个方法——Error，这个函数需要返回一个描述错误信息的字符串。\n当一个函数或方法需要返回错误时，我们通常是把错误作为最后一个返回值。例如下面标准库 os 中打开文件的函数。\nfunc Open(name string) (*File, error) { return OpenFile(name, O_RDONLY, 0) } 由于 error 是一个接口类型，默认零值为 nil。所以我们通常将调用函数返回的错误与 nil进行比较，以此来判断函数是否返回错误。例如你会经常看到类似下面的错误判断代码。\nfile, err := os.Open(\u0026#34;./xx.go\u0026#34;) if err != nil { fmt.Println(\u0026#34;打开文件失败,err:\u0026#34;, err) return } 注意\n当我们使用 fmt包打印错误时会自动调用 error 类型的 Error 方法，也就是会打印出错误的描述信息。\n创建错误 我们可以根据需求自定义 error，最简单的方式是使用 errors 包提供的 New函数创建一个错误。\nerrors.New 函数签名如下，",
+  "keywords": [
+    
+  ],
+  "articleBody": "Go 语言中的错误处理与其他语言不太一样，它把错误当成一种值来处理，更强调判断错误、处理错误，而不是一股脑的 catch 捕获异常。\nError 接口 Go 语言中把错误当成一种特殊的值来处理，不支持其他语言中使用 try/catch捕获异常的方式。\nError 接口 Go 语言中使用一个名为 error 接口来表示错误类型。\ntype error interface { Error() string } error 接口只包含一个方法——Error，这个函数需要返回一个描述错误信息的字符串。\n当一个函数或方法需要返回错误时，我们通常是把错误作为最后一个返回值。例如下面标准库 os 中打开文件的函数。\nfunc Open(name string) (*File, error) { return OpenFile(name, O_RDONLY, 0) } 由于 error 是一个接口类型，默认零值为 nil。所以我们通常将调用函数返回的错误与 nil进行比较，以此来判断函数是否返回错误。例如你会经常看到类似下面的错误判断代码。\nfile, err := os.Open(\"./xx.go\") if err != nil { fmt.Println(\"打开文件失败,err:\", err) return } 注意\n当我们使用 fmt包打印错误时会自动调用 error 类型的 Error 方法，也就是会打印出错误的描述信息。\n创建错误 我们可以根据需求自定义 error，最简单的方式是使用 errors 包提供的 New函数创建一个错误。\nerrors.New 函数签名如下，\nfunc New(text string) error 它接收一个字符串参数返回包含该字符串的错误。我们可以在函数返回时快速创建一个错误。\nfunc queryById(id int64) (*Info, error) { if id \u003c= 0 { return nil, errors.New(\"无效的id\") } // ... } 或者用来定义一个错误变量，例如标准库 io.EOF错误定义如下。\nvar EOF = errors.New(\"EOF\") fmt.Errorf 当我们需要传入格式化的错误描述信息时，使用 fmt.Errorf是个更好的选择。\nfmt.Errorf(\"查询数据库失败，err:%v\", err) 但是上面的方式会丢失原有的错误类型，只拿到错误描述的文本信息。\n为了不丢失函数调用的错误链，使用 fmt.Errorf时搭配使用特殊的格式化动词 %w，可以实现基于已有的错误再包装得到一个新的错误。\nfmt.Errorf(\"查询数据库失败，err:%w\", err) 对于这种二次包装的错误，errors包中提供了以下三个方法。\nfunc Unwrap(err error) error // 获得err包含下一层错误 func Is(err, target error) bool // 判断err是否包含target func As(err error, target interface{}) bool // 判断err是否为target类型 错误结构体类型 此外我们还可以自己定义结构体类型，实现 ``error`接口。\n// OpError 自定义结构体类型 type OpError struct { Op string } // Error OpError 类型实现error接口 func (e *OpError) Error() string { return fmt.Sprintf(\"无权执行%s操作\", e.Op) } ",
+  "wordCount" : "160",
+  "inLanguage": "en",
+  "datePublished": "0001-01-01T00:00:00Z",
+  "dateModified": "0001-01-01T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Augustus"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://augustus2345.github.io/post/-error-%E6%8E%A5%E5%8F%A3%E5%92%8C%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86-/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Augustus",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://augustus2345.github.io/" accesskey="h" title="Augustus (Alt + H)">Augustus</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://augustus2345.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://augustus2345.github.io/post/">Posts</a></div>
+    <h1 class="post-title">
+      Error 接口和错误处理
+    </h1>
+    <div class="post-meta">Augustus
+
+</div>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">Table of Contents</span>
+            </summary>
+
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#error-%e6%8e%a5%e5%8f%a3" aria-label="Error 接口">Error 接口</a><ul>
+                            
+                    <li>
+                        <a href="#error-%e6%8e%a5%e5%8f%a3-1" aria-label="Error 接口">Error 接口</a></li>
+                    <li>
+                        <a href="#%e5%88%9b%e5%bb%ba%e9%94%99%e8%af%af" aria-label="创建错误">创建错误</a><ul>
+                            
+                    <li>
+                        <a href="#errorsnew" aria-label="errors.New">errors.New</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#fmterrorf" aria-label="fmt.Errorf">fmt.Errorf</a></li>
+                    <li>
+                        <a href="#%e9%94%99%e8%af%af%e7%bb%93%e6%9e%84%e4%bd%93%e7%b1%bb%e5%9e%8b" aria-label="错误结构体类型">错误结构体类型</a>
+                    </li>
+                </ul>
+                </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
+
+  <div class="post-content"><p>Go 语言中的错误处理与其他语言不太一样，它把错误当成一种值来处理，更强调判断错误、处理错误，而不是一股脑的 catch 捕获异常。</p>
+<h2 id="error-接口">Error 接口<a hidden class="anchor" aria-hidden="true" href="#error-接口">#</a></h2>
+<p>Go 语言中把错误当成一种特殊的值来处理，不支持其他语言中使用 <code>try/catch</code>捕获异常的方式。</p>
+<h3 id="error-接口-1">Error 接口<a hidden class="anchor" aria-hidden="true" href="#error-接口-1">#</a></h3>
+<p>Go 语言中使用一个名为 <code>error</code> 接口来表示错误类型。</p>
+<pre tabindex="0"><code>type error interface {
+    Error() string
+}
+</code></pre><p><code>error</code> 接口只包含一个方法——<code>Error</code>，这个函数需要返回一个描述错误信息的字符串。</p>
+<p>当一个函数或方法需要返回错误时，我们通常是把错误作为最后一个返回值。例如下面标准库 os 中打开文件的函数。</p>
+<pre tabindex="0"><code>func Open(name string) (*File, error) {
+	return OpenFile(name, O_RDONLY, 0)
+}
+</code></pre><p>由于 error 是一个接口类型，默认零值为 <code>nil</code>。所以我们通常将调用函数返回的错误与 <code>nil</code>进行比较，以此来判断函数是否返回错误。例如你会经常看到类似下面的错误判断代码。</p>
+<pre tabindex="0"><code>file, err := os.Open(&#34;./xx.go&#34;)
+if err != nil {
+	fmt.Println(&#34;打开文件失败,err:&#34;, err)
+	return
+}
+</code></pre><p><strong>注意</strong></p>
+<p>当我们使用 <code>fmt</code>包打印错误时会自动调用 error 类型的 Error 方法，也就是会打印出错误的描述信息。</p>
+<h3 id="创建错误">创建错误<a hidden class="anchor" aria-hidden="true" href="#创建错误">#</a></h3>
+<p>我们可以根据需求自定义 error，最简单的方式是使用 <code>errors</code> 包提供的 <code>New</code>函数创建一个错误。</p>
+<h4 id="errorsnew">errors.New<a hidden class="anchor" aria-hidden="true" href="#errorsnew">#</a></h4>
+<p>函数签名如下，</p>
+<pre tabindex="0"><code>func New(text string) error
+</code></pre><p>它接收一个字符串参数返回包含该字符串的错误。我们可以在函数返回时快速创建一个错误。</p>
+<pre tabindex="0"><code>func queryById(id int64) (*Info, error) {
+	if id &lt;= 0 {
+		return nil, errors.New(&#34;无效的id&#34;)
+	}
+
+	// ...
+}
+</code></pre><p>或者用来定义一个错误变量，例如标准库 <code>io.EOF</code>错误定义如下。</p>
+<pre tabindex="0"><code>var EOF = errors.New(&#34;EOF&#34;)
+</code></pre><h3 id="fmterrorf">fmt.Errorf<a hidden class="anchor" aria-hidden="true" href="#fmterrorf">#</a></h3>
+<p>当我们需要传入格式化的错误描述信息时，使用 <code>fmt.Errorf</code>是个更好的选择。</p>
+<pre tabindex="0"><code>fmt.Errorf(&#34;查询数据库失败，err:%v&#34;, err)
+</code></pre><p>但是上面的方式会丢失原有的错误类型，只拿到错误描述的文本信息。</p>
+<p>为了不丢失函数调用的错误链，使用 <code>fmt.Errorf</code>时搭配使用特殊的格式化动词 <code>%w</code>，可以实现基于已有的错误再包装得到一个新的错误。</p>
+<pre tabindex="0"><code>fmt.Errorf(&#34;查询数据库失败，err:%w&#34;, err)
+</code></pre><p>对于这种二次包装的错误，<code>errors</code>包中提供了以下三个方法。</p>
+<pre tabindex="0"><code>func Unwrap(err error) error                 // 获得err包含下一层错误
+func Is(err, target error) bool              // 判断err是否包含target
+func As(err error, target interface{}) bool  // 判断err是否为target类型
+</code></pre><h3 id="错误结构体类型">错误结构体类型<a hidden class="anchor" aria-hidden="true" href="#错误结构体类型">#</a></h3>
+<p>此外我们还可以自己定义结构体类型，实现 ``error`接口。</p>
+<pre tabindex="0"><code>// OpError 自定义结构体类型
+type OpError struct {
+	Op string
+}
+
+// Error OpError 类型实现error接口
+func (e *OpError) Error() string {
+	return fmt.Sprintf(&#34;无权执行%s操作&#34;, e.Op)
+}
+</code></pre>
+
+  </div>
+
+  <footer class="post-footer">
+  </footer>
+<div>    
+    <div class="pagination__title">
+        <span class="pagination__title-h" style="font-size: 20px;">评论</span>
+        <br/>
+    </div>
+    <div id="tcomment"></div>
+    <script src="https://utteranc.es/client.js"
+            repo="augustus2345/hugotalk" 
+            issue-term="title"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+</div>
+
+</article>
+    </main>
+    
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

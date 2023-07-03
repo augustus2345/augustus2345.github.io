@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>web 项目限流策略-漏桶与令牌桶 | Augustus</title>
+<meta name="keywords" content="" />
+<meta name="description" content="限流又称为流量控制（流控），通常是指限制到达系统的并发请求数，本文列举了常见的限流策略，并以 gin 框架为例演示了如何为项目添加限流组件。
+限流 限流又称为流量控制（流控），通常是指限制到达系统的并发请求数。
+我们生活中也会经常遇到限流的场景，比如：某景区限制每日进入景区的游客数量为 8 万人；沙河地铁站早高峰通过站外排队逐一放行的方式限制同一时间进入车站的旅客数量等。
+限流虽然会影响部分用户的使用体验，但是却能在一定程度上报障系统的稳定性，不至于崩溃（大家都没了用户体验）。
+而互联网上类似需要限流的业务场景也有很多，比如电商系统的秒杀、微博上突发热点新闻、双十一购物节、12306 抢票等等。这些场景下的用户请求量通常会激增，远远超过平时正常的请求量，此时如果不加任何限制很容易就会将后端服务打垮，影响服务的稳定性。
+此外，一些厂商公开的 API 服务通常也会限制用户的请求次数，比如百度地图开放平台等会根据用户的付费情况来限制用户的请求数等。 常用的限流策略 漏桶 漏桶法限流很好理解，假设我们有一个水桶按固定的速率向下方滴落一滴水，无论有多少请求，请求的速率有多大，都按照固定的速率流出，对应到系统中就是按照固定的速率处理请求。
+漏桶法的关键点在于漏桶始终按照固定的速率运行，但是它并不能很好的处理有大量突发请求的场景，毕竟在某些场景下我们可能需要提高系统的处理效率，而不是一味的按照固定速率处理请求。
+关于漏桶的实现，uber 团队有一个开源的 github.com/uber-go/ratelimit 库。 这个库的使用方法比较简单，Take() 方法会返回漏桶下一次滴水的时间。
+import ( &#34;fmt&#34; &#34;time&#34; &#34;go.uber.org/ratelimit&#34; ) func main() { rl := ratelimit.New(100) // per second prev := time.Now() for i := 0; i &lt; 10; i&#43;&#43; { now := rl.Take() fmt.Println(i, now.Sub(prev)) prev = now } // Output: // 0 0 // 1 10ms // 2 10ms // 3 10ms // 4 10ms // 5 10ms // 6 10ms // 7 10ms // 8 10ms // 9 10ms } 它的源码实现也比较简单，这里大致说一下关键的地方，有兴趣的同学可以自己去看一下完整的源码。">
+<meta name="author" content="Augustus">
+<link rel="canonical" href="https://augustus2345.github.io/post/-%E5%B8%B8%E7%94%A8%E9%99%90%E6%B5%81%E7%AD%96%E7%95%A5%E6%BC%8F%E6%A1%B6%E4%B8%8E%E4%BB%A4%E7%89%8C%E6%A1%B6%E4%BB%8B%E7%BB%8D-/" />
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.a5ab32f1bb68fb0ae8f28914ef9f0da8dfc31c91a454154a325a727be950a856.css" integrity="sha256-pasy8bto&#43;wro8okU758NqN/DHJGkVBVKMlpye&#43;lQqFY=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.b95bacdc39e37a332a9f883b1e78be4abc1fdca2bc1f2641f55e3cd3dabd4d61.js" integrity="sha256-uVus3DnjejMqn4g7Hni&#43;Srwf3KK8HyZB9V4809q9TWE="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="icon" type="image/png" sizes="16x16" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="icon" type="image/png" sizes="32x32" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="apple-touch-icon" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="mask-icon" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.114.0">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><meta property="og:title" content="web 项目限流策略-漏桶与令牌桶" />
+<meta property="og:description" content="限流又称为流量控制（流控），通常是指限制到达系统的并发请求数，本文列举了常见的限流策略，并以 gin 框架为例演示了如何为项目添加限流组件。
+限流 限流又称为流量控制（流控），通常是指限制到达系统的并发请求数。
+我们生活中也会经常遇到限流的场景，比如：某景区限制每日进入景区的游客数量为 8 万人；沙河地铁站早高峰通过站外排队逐一放行的方式限制同一时间进入车站的旅客数量等。
+限流虽然会影响部分用户的使用体验，但是却能在一定程度上报障系统的稳定性，不至于崩溃（大家都没了用户体验）。
+而互联网上类似需要限流的业务场景也有很多，比如电商系统的秒杀、微博上突发热点新闻、双十一购物节、12306 抢票等等。这些场景下的用户请求量通常会激增，远远超过平时正常的请求量，此时如果不加任何限制很容易就会将后端服务打垮，影响服务的稳定性。
+此外，一些厂商公开的 API 服务通常也会限制用户的请求次数，比如百度地图开放平台等会根据用户的付费情况来限制用户的请求数等。 常用的限流策略 漏桶 漏桶法限流很好理解，假设我们有一个水桶按固定的速率向下方滴落一滴水，无论有多少请求，请求的速率有多大，都按照固定的速率流出，对应到系统中就是按照固定的速率处理请求。
+漏桶法的关键点在于漏桶始终按照固定的速率运行，但是它并不能很好的处理有大量突发请求的场景，毕竟在某些场景下我们可能需要提高系统的处理效率，而不是一味的按照固定速率处理请求。
+关于漏桶的实现，uber 团队有一个开源的 github.com/uber-go/ratelimit 库。 这个库的使用方法比较简单，Take() 方法会返回漏桶下一次滴水的时间。
+import ( &#34;fmt&#34; &#34;time&#34; &#34;go.uber.org/ratelimit&#34; ) func main() { rl := ratelimit.New(100) // per second prev := time.Now() for i := 0; i &lt; 10; i&#43;&#43; { now := rl.Take() fmt.Println(i, now.Sub(prev)) prev = now } // Output: // 0 0 // 1 10ms // 2 10ms // 3 10ms // 4 10ms // 5 10ms // 6 10ms // 7 10ms // 8 10ms // 9 10ms } 它的源码实现也比较简单，这里大致说一下关键的地方，有兴趣的同学可以自己去看一下完整的源码。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://augustus2345.github.io/post/-%E5%B8%B8%E7%94%A8%E9%99%90%E6%B5%81%E7%AD%96%E7%95%A5%E6%BC%8F%E6%A1%B6%E4%B8%8E%E4%BB%A4%E7%89%8C%E6%A1%B6%E4%BB%8B%E7%BB%8D-/" /><meta property="og:image" content="https://augustus2345.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"/><meta property="article:section" content="post" />
+
+<meta property="og:site_name" content="Augustus" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://augustus2345.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"/>
+
+<meta name="twitter:title" content="web 项目限流策略-漏桶与令牌桶"/>
+<meta name="twitter:description" content="限流又称为流量控制（流控），通常是指限制到达系统的并发请求数，本文列举了常见的限流策略，并以 gin 框架为例演示了如何为项目添加限流组件。
+限流 限流又称为流量控制（流控），通常是指限制到达系统的并发请求数。
+我们生活中也会经常遇到限流的场景，比如：某景区限制每日进入景区的游客数量为 8 万人；沙河地铁站早高峰通过站外排队逐一放行的方式限制同一时间进入车站的旅客数量等。
+限流虽然会影响部分用户的使用体验，但是却能在一定程度上报障系统的稳定性，不至于崩溃（大家都没了用户体验）。
+而互联网上类似需要限流的业务场景也有很多，比如电商系统的秒杀、微博上突发热点新闻、双十一购物节、12306 抢票等等。这些场景下的用户请求量通常会激增，远远超过平时正常的请求量，此时如果不加任何限制很容易就会将后端服务打垮，影响服务的稳定性。
+此外，一些厂商公开的 API 服务通常也会限制用户的请求次数，比如百度地图开放平台等会根据用户的付费情况来限制用户的请求数等。 常用的限流策略 漏桶 漏桶法限流很好理解，假设我们有一个水桶按固定的速率向下方滴落一滴水，无论有多少请求，请求的速率有多大，都按照固定的速率流出，对应到系统中就是按照固定的速率处理请求。
+漏桶法的关键点在于漏桶始终按照固定的速率运行，但是它并不能很好的处理有大量突发请求的场景，毕竟在某些场景下我们可能需要提高系统的处理效率，而不是一味的按照固定速率处理请求。
+关于漏桶的实现，uber 团队有一个开源的 github.com/uber-go/ratelimit 库。 这个库的使用方法比较简单，Take() 方法会返回漏桶下一次滴水的时间。
+import ( &#34;fmt&#34; &#34;time&#34; &#34;go.uber.org/ratelimit&#34; ) func main() { rl := ratelimit.New(100) // per second prev := time.Now() for i := 0; i &lt; 10; i&#43;&#43; { now := rl.Take() fmt.Println(i, now.Sub(prev)) prev = now } // Output: // 0 0 // 1 10ms // 2 10ms // 3 10ms // 4 10ms // 5 10ms // 6 10ms // 7 10ms // 8 10ms // 9 10ms } 它的源码实现也比较简单，这里大致说一下关键的地方，有兴趣的同学可以自己去看一下完整的源码。"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://augustus2345.github.io/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "web 项目限流策略-漏桶与令牌桶",
+      "item": "https://augustus2345.github.io/post/-%E5%B8%B8%E7%94%A8%E9%99%90%E6%B5%81%E7%AD%96%E7%95%A5%E6%BC%8F%E6%A1%B6%E4%B8%8E%E4%BB%A4%E7%89%8C%E6%A1%B6%E4%BB%8B%E7%BB%8D-/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "web 项目限流策略-漏桶与令牌桶",
+  "name": "web 项目限流策略-漏桶与令牌桶",
+  "description": "限流又称为流量控制（流控），通常是指限制到达系统的并发请求数，本文列举了常见的限流策略，并以 gin 框架为例演示了如何为项目添加限流组件。\n限流 限流又称为流量控制（流控），通常是指限制到达系统的并发请求数。\n我们生活中也会经常遇到限流的场景，比如：某景区限制每日进入景区的游客数量为 8 万人；沙河地铁站早高峰通过站外排队逐一放行的方式限制同一时间进入车站的旅客数量等。\n限流虽然会影响部分用户的使用体验，但是却能在一定程度上报障系统的稳定性，不至于崩溃（大家都没了用户体验）。\n而互联网上类似需要限流的业务场景也有很多，比如电商系统的秒杀、微博上突发热点新闻、双十一购物节、12306 抢票等等。这些场景下的用户请求量通常会激增，远远超过平时正常的请求量，此时如果不加任何限制很容易就会将后端服务打垮，影响服务的稳定性。\n此外，一些厂商公开的 API 服务通常也会限制用户的请求次数，比如百度地图开放平台等会根据用户的付费情况来限制用户的请求数等。 常用的限流策略 漏桶 漏桶法限流很好理解，假设我们有一个水桶按固定的速率向下方滴落一滴水，无论有多少请求，请求的速率有多大，都按照固定的速率流出，对应到系统中就是按照固定的速率处理请求。\n漏桶法的关键点在于漏桶始终按照固定的速率运行，但是它并不能很好的处理有大量突发请求的场景，毕竟在某些场景下我们可能需要提高系统的处理效率，而不是一味的按照固定速率处理请求。\n关于漏桶的实现，uber 团队有一个开源的 github.com/uber-go/ratelimit 库。 这个库的使用方法比较简单，Take() 方法会返回漏桶下一次滴水的时间。\nimport ( \u0026#34;fmt\u0026#34; \u0026#34;time\u0026#34; \u0026#34;go.uber.org/ratelimit\u0026#34; ) func main() { rl := ratelimit.New(100) // per second prev := time.Now() for i := 0; i \u0026lt; 10; i++ { now := rl.Take() fmt.Println(i, now.Sub(prev)) prev = now } // Output: // 0 0 // 1 10ms // 2 10ms // 3 10ms // 4 10ms // 5 10ms // 6 10ms // 7 10ms // 8 10ms // 9 10ms } 它的源码实现也比较简单，这里大致说一下关键的地方，有兴趣的同学可以自己去看一下完整的源码。",
+  "keywords": [
+    
+  ],
+  "articleBody": "限流又称为流量控制（流控），通常是指限制到达系统的并发请求数，本文列举了常见的限流策略，并以 gin 框架为例演示了如何为项目添加限流组件。\n限流 限流又称为流量控制（流控），通常是指限制到达系统的并发请求数。\n我们生活中也会经常遇到限流的场景，比如：某景区限制每日进入景区的游客数量为 8 万人；沙河地铁站早高峰通过站外排队逐一放行的方式限制同一时间进入车站的旅客数量等。\n限流虽然会影响部分用户的使用体验，但是却能在一定程度上报障系统的稳定性，不至于崩溃（大家都没了用户体验）。\n而互联网上类似需要限流的业务场景也有很多，比如电商系统的秒杀、微博上突发热点新闻、双十一购物节、12306 抢票等等。这些场景下的用户请求量通常会激增，远远超过平时正常的请求量，此时如果不加任何限制很容易就会将后端服务打垮，影响服务的稳定性。\n此外，一些厂商公开的 API 服务通常也会限制用户的请求次数，比如百度地图开放平台等会根据用户的付费情况来限制用户的请求数等。 常用的限流策略 漏桶 漏桶法限流很好理解，假设我们有一个水桶按固定的速率向下方滴落一滴水，无论有多少请求，请求的速率有多大，都按照固定的速率流出，对应到系统中就是按照固定的速率处理请求。\n漏桶法的关键点在于漏桶始终按照固定的速率运行，但是它并不能很好的处理有大量突发请求的场景，毕竟在某些场景下我们可能需要提高系统的处理效率，而不是一味的按照固定速率处理请求。\n关于漏桶的实现，uber 团队有一个开源的 github.com/uber-go/ratelimit 库。 这个库的使用方法比较简单，Take() 方法会返回漏桶下一次滴水的时间。\nimport ( \"fmt\" \"time\" \"go.uber.org/ratelimit\" ) func main() { rl := ratelimit.New(100) // per second prev := time.Now() for i := 0; i \u003c 10; i++ { now := rl.Take() fmt.Println(i, now.Sub(prev)) prev = now } // Output: // 0 0 // 1 10ms // 2 10ms // 3 10ms // 4 10ms // 5 10ms // 6 10ms // 7 10ms // 8 10ms // 9 10ms } 它的源码实现也比较简单，这里大致说一下关键的地方，有兴趣的同学可以自己去看一下完整的源码。\n限制器是一个接口类型，其要求实现一个 Take()方法：\ntype Limiter interface { // Take方法应该阻塞已确保满足 RPS Take() time.Time } 实现限制器接口的结构体定义如下，这里可以重点留意下 maxSlack字段，它在后面的 Take()方法中的处理。\ntype limiter struct { sync.Mutex // 锁 last time.Time // 上一次的时刻 sleepFor time.Duration // 需要等待的时间 perRequest time.Duration // 每次的时间间隔 maxSlack time.Duration // 最大的富余量 clock Clock // 时钟 } limiter结构体实现 Limiter接口的 Take()方法内容如下：\n// Take 会阻塞确保两次请求之间的时间走完 // Take 调用平均数为 time.Second/rate. func (t *limiter) Take() time.Time { t.Lock() defer t.Unlock() now := t.clock.Now() // 如果是第一次请求就直接放行 if t.last.IsZero() { t.last = now return t.last } // sleepFor 根据 perRequest 和上一次请求的时刻计算应该sleep的时间 // 由于每次请求间隔的时间可能会超过perRequest, 所以这个数字可能为负数，并在多个请求之间累加 t.sleepFor += t.perRequest - now.Sub(t.last) // 我们不应该让sleepFor负的太多，因为这意味着一个服务在短时间内慢了很多随后会得到更高的RPS。 if t.sleepFor \u003c t.maxSlack { t.sleepFor = t.maxSlack } // 如果 sleepFor 是正值那么就 sleep if t.sleepFor \u003e 0 { t.clock.Sleep(t.sleepFor) t.last = now.Add(t.sleepFor) t.sleepFor = 0 } else { t.last = now } return t.last } 上面的代码根据记录每次请求的间隔时间和上一次请求的时刻来计算当次请求需要阻塞的时间——sleepFor，这里需要留意的是 sleepFor的值可能为负，在经过间隔时间长的两次访问之后会导致随后大量的请求被放行，所以代码中针对这个场景有专门的优化处理。创建限制器的 New()函数中会为 maxSlack设置初始值，也可以通过 WithoutSlack这个 Option 取消这个默认值。\nfunc New(rate int, opts ...Option) Limiter { l := \u0026limiter{ perRequest: time.Second / time.Duration(rate), maxSlack: -10 * time.Second / time.Duration(rate), } for _, opt := range opts { opt(l) } if l.clock == nil { l.clock = clock.New() } return l } 令牌桶 令牌桶其实和漏桶的原理类似，令牌桶按固定的速率往桶里放入令牌，并且只要能从桶里取出令牌就能通过，令牌桶支持突发流量的快速处理。\n对于从桶里取不到令牌的场景，我们可以选择等待也可以直接拒绝并返回。\n对于令牌桶的 Go 语言实现，大家可以参照 github.com/juju/ratelimit 库。这个库支持多种令牌桶模式，并且使用起来也比较简单。\n创建令牌桶的方法：\n// 创建指定填充速率和容量大小的令牌桶 func NewBucket(fillInterval time.Duration, capacity int64) *Bucket // 创建指定填充速率、容量大小和每次填充的令牌数的令牌桶 func NewBucketWithQuantum(fillInterval time.Duration, capacity, quantum int64) *Bucket // 创建填充速度为指定速率和容量大小的令牌桶 // NewBucketWithRate(0.1, 200) 表示每秒填充20个令牌 func NewBucketWithRate(rate float64, capacity int64) *Bucket 取出令牌的方法如下：\n// 取token（非阻塞） func (tb *Bucket) Take(count int64) time.Duration func (tb *Bucket) TakeAvailable(count int64) int64 // 最多等maxWait时间取token func (tb *Bucket) TakeMaxDuration(count int64, maxWait time.Duration) (time.Duration, bool) // 取token（阻塞） func (tb *Bucket) Wait(count int64) func (tb *Bucket) WaitMaxDuration(count int64, maxWait time.Duration) bool 虽说是令牌桶，但是我们没有必要真的去生成令牌放到桶里，我们只需要每次来取令牌的时候计算一下，当前是否有足够的令牌就可以了，具体的计算方式可以总结为下面的公式：\n当前令牌数 = 上一次剩余的令牌数 + (本次取令牌的时刻-上一次取令牌的时刻)/放置令牌的时间间隔 * 每次放置的令牌数 github.com/juju/ratelimit 这个库中关于令牌数计算的源代码如下：\nfunc (tb *Bucket) currentTick(now time.Time) int64 { return int64(now.Sub(tb.startTime) / tb.fillInterval) } func (tb *Bucket) adjustavailableTokens(tick int64) { if tb.availableTokens \u003e= tb.capacity { return } tb.availableTokens += (tick - tb.latestTick) * tb.quantum if tb.availableTokens \u003e tb.capacity { tb.availableTokens = tb.capacity } tb.latestTick = tick return } 获取令牌的 TakeAvailable()函数关键部分的源代码如下：\nfunc (tb *Bucket) takeAvailable(now time.Time, count int64) int64 { if count \u003c= 0 { return 0 } tb.adjustavailableTokens(tb.currentTick(now)) if tb.availableTokens \u003c= 0 { return 0 } if count \u003e tb.availableTokens { count = tb.availableTokens } tb.availableTokens -= count return count } 大家从代码中也可以看到其实令牌桶的实现并没有很复杂。\ngin 框架中使用限流中间件 在 gin 框架构建的项目中，我们可以将限流组件定义成中间件。\n这里使用令牌桶作为限流策略，编写一个限流中间件如下：\nfunc RateLimitMiddleware(fillInterval time.Duration, cap int64) func(c *gin.Context) { bucket := ratelimit.NewBucket(fillInterval, cap) return func(c *gin.Context) { // 如果取不到令牌就中断本次请求返回 rate limit... if bucket.TakeAvailable(1) \u003c 1 { c.String(http.StatusOK, \"rate limit...\") c.Abort() return } c.Next() } } 对于该限流中间件的注册位置，我们可以按照不同的限流策略将其注册到不同的位置，例如：\n如果要对全站限流就可以注册成全局的中间件。 如果是某一组路由需要限流，那么就只需将该限流中间件注册到对应的路由组即可。 ",
+  "wordCount" : "492",
+  "inLanguage": "en",
+  "datePublished": "0001-01-01T00:00:00Z",
+  "dateModified": "0001-01-01T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Augustus"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://augustus2345.github.io/post/-%E5%B8%B8%E7%94%A8%E9%99%90%E6%B5%81%E7%AD%96%E7%95%A5%E6%BC%8F%E6%A1%B6%E4%B8%8E%E4%BB%A4%E7%89%8C%E6%A1%B6%E4%BB%8B%E7%BB%8D-/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Augustus",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://augustus2345.github.io/" accesskey="h" title="Augustus (Alt + H)">Augustus</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://augustus2345.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://augustus2345.github.io/post/">Posts</a></div>
+    <h1 class="post-title">
+      web 项目限流策略-漏桶与令牌桶
+    </h1>
+    <div class="post-meta">Augustus
+
+</div>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">Table of Contents</span>
+            </summary>
+
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#%e9%99%90%e6%b5%81" aria-label="限流">限流</a></li>
+                    <li>
+                        <a href="#%e5%b8%b8%e7%94%a8%e7%9a%84%e9%99%90%e6%b5%81%e7%ad%96%e7%95%a5" aria-label="常用的限流策略">常用的限流策略</a><ul>
+                            
+                    <li>
+                        <a href="#%e6%bc%8f%e6%a1%b6" aria-label="漏桶">漏桶</a></li>
+                    <li>
+                        <a href="#%e4%bb%a4%e7%89%8c%e6%a1%b6" aria-label="令牌桶">令牌桶</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#gin-%e6%a1%86%e6%9e%b6%e4%b8%ad%e4%bd%bf%e7%94%a8%e9%99%90%e6%b5%81%e4%b8%ad%e9%97%b4%e4%bb%b6" aria-label="gin 框架中使用限流中间件">gin 框架中使用限流中间件</a>
+                    </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
+
+  <div class="post-content"><p>限流又称为流量控制（流控），通常是指限制到达系统的并发请求数，本文列举了常见的限流策略，并以 gin 框架为例演示了如何为项目添加限流组件。</p>
+<h2 id="限流">限流<a hidden class="anchor" aria-hidden="true" href="#限流">#</a></h2>
+<p>限流又称为流量控制（流控），通常是指限制到达系统的并发请求数。</p>
+<p>我们生活中也会经常遇到限流的场景，比如：某景区限制每日进入景区的游客数量为 8 万人；沙河地铁站早高峰通过站外排队逐一放行的方式限制同一时间进入车站的旅客数量等。</p>
+<p>限流虽然会影响部分用户的使用体验，但是却能在一定程度上报障系统的稳定性，不至于崩溃（大家都没了用户体验）。</p>
+<p>而互联网上类似需要限流的业务场景也有很多，比如电商系统的秒杀、微博上突发热点新闻、双十一购物节、12306 抢票等等。这些场景下的用户请求量通常会激增，远远超过平时正常的请求量，此时如果不加任何限制很容易就会将后端服务打垮，影响服务的稳定性。</p>
+<p>此外，一些厂商公开的 API 服务通常也会限制用户的请求次数，比如百度地图开放平台等会根据用户的付费情况来限制用户的请求数等。 <img loading="lazy" src="https://www.liwenzhou.com/images/Go/ratelimit/baidumap_ratelimit.jpg" alt=""  />
+</p>
+<h2 id="常用的限流策略">常用的限流策略<a hidden class="anchor" aria-hidden="true" href="#常用的限流策略">#</a></h2>
+<h3 id="漏桶">漏桶<a hidden class="anchor" aria-hidden="true" href="#漏桶">#</a></h3>
+<p>漏桶法限流很好理解，假设我们有一个水桶按固定的速率向下方滴落一滴水，无论有多少请求，请求的速率有多大，都按照固定的速率流出，对应到系统中就是按照固定的速率处理请求。</p>
+<p><img loading="lazy" src="https://www.liwenzhou.com/images/Go/ratelimit/loutong.jpg" alt=""  />
+</p>
+<p>漏桶法的关键点在于漏桶始终按照固定的速率运行，但是它并不能很好的处理有大量突发请求的场景，毕竟在某些场景下我们可能需要提高系统的处理效率，而不是一味的按照固定速率处理请求。</p>
+<p>关于漏桶的实现，uber 团队有一个开源的 <a href="https://github.com/uber-go/ratelimit">github.com/uber-go/ratelimit</a> 库。 这个库的使用方法比较简单，<code>Take()</code> 方法会返回漏桶下一次滴水的时间。</p>
+<pre tabindex="0"><code>import (
+	&#34;fmt&#34;
+	&#34;time&#34;
+
+	&#34;go.uber.org/ratelimit&#34;
+)
+
+func main() {
+    rl := ratelimit.New(100) // per second
+
+    prev := time.Now()
+    for i := 0; i &lt; 10; i++ {
+        now := rl.Take()
+        fmt.Println(i, now.Sub(prev))
+        prev = now
+    }
+
+    // Output:
+    // 0 0
+    // 1 10ms
+    // 2 10ms
+    // 3 10ms
+    // 4 10ms
+    // 5 10ms
+    // 6 10ms
+    // 7 10ms
+    // 8 10ms
+    // 9 10ms
+}
+</code></pre><p>它的源码实现也比较简单，这里大致说一下关键的地方，有兴趣的同学可以自己去看一下完整的源码。</p>
+<p>限制器是一个接口类型，其要求实现一个 <code>Take()</code>方法：</p>
+<pre tabindex="0"><code>type Limiter interface {
+	// Take方法应该阻塞已确保满足 RPS
+	Take() time.Time
+}
+</code></pre><p>实现限制器接口的结构体定义如下，这里可以重点留意下 <code>maxSlack</code>字段，它在后面的 <code>Take()</code>方法中的处理。</p>
+<pre tabindex="0"><code>type limiter struct {
+	sync.Mutex                // 锁
+	last       time.Time      // 上一次的时刻
+	sleepFor   time.Duration  // 需要等待的时间
+	perRequest time.Duration  // 每次的时间间隔
+	maxSlack   time.Duration  // 最大的富余量
+	clock      Clock          // 时钟
+}
+</code></pre><p><code>limiter</code>结构体实现 <code>Limiter</code>接口的 <code>Take()</code>方法内容如下：</p>
+<pre tabindex="0"><code>// Take 会阻塞确保两次请求之间的时间走完
+// Take 调用平均数为 time.Second/rate.
+func (t *limiter) Take() time.Time {
+	t.Lock()
+	defer t.Unlock()
+
+	now := t.clock.Now()
+
+	// 如果是第一次请求就直接放行
+	if t.last.IsZero() {
+		t.last = now
+		return t.last
+	}
+
+	// sleepFor 根据 perRequest 和上一次请求的时刻计算应该sleep的时间
+	// 由于每次请求间隔的时间可能会超过perRequest, 所以这个数字可能为负数，并在多个请求之间累加
+	t.sleepFor += t.perRequest - now.Sub(t.last)
+
+	// 我们不应该让sleepFor负的太多，因为这意味着一个服务在短时间内慢了很多随后会得到更高的RPS。
+	if t.sleepFor &lt; t.maxSlack {
+		t.sleepFor = t.maxSlack
+	}
+
+	// 如果 sleepFor 是正值那么就 sleep
+	if t.sleepFor &gt; 0 {
+		t.clock.Sleep(t.sleepFor)
+		t.last = now.Add(t.sleepFor)
+		t.sleepFor = 0
+	} else {
+		t.last = now
+	}
+
+	return t.last
+}
+</code></pre><p>上面的代码根据记录每次请求的间隔时间和上一次请求的时刻来计算当次请求需要阻塞的时间——<code>sleepFor</code>，这里需要留意的是 <code>sleepFor</code>的值可能为负，在经过间隔时间长的两次访问之后会导致随后大量的请求被放行，所以代码中针对这个场景有专门的优化处理。创建限制器的 <code>New()</code>函数中会为 <code>maxSlack</code>设置初始值，也可以通过 <code>WithoutSlack</code>这个 Option 取消这个默认值。</p>
+<pre tabindex="0"><code>func New(rate int, opts ...Option) Limiter {
+	l := &amp;limiter{
+		perRequest: time.Second / time.Duration(rate),
+		maxSlack:   -10 * time.Second / time.Duration(rate),
+	}
+	for _, opt := range opts {
+		opt(l)
+	}
+	if l.clock == nil {
+		l.clock = clock.New()
+	}
+	return l
+}
+</code></pre><h3 id="令牌桶">令牌桶<a hidden class="anchor" aria-hidden="true" href="#令牌桶">#</a></h3>
+<p>令牌桶其实和漏桶的原理类似，令牌桶按固定的速率往桶里放入令牌，并且只要能从桶里取出令牌就能通过，令牌桶支持突发流量的快速处理。</p>
+<p><img loading="lazy" src="https://www.liwenzhou.com/images/Go/ratelimit/lingpaitong.jpg" alt=""  />
+</p>
+<p>对于从桶里取不到令牌的场景，我们可以选择等待也可以直接拒绝并返回。</p>
+<p>对于令牌桶的 Go 语言实现，大家可以参照 <a href="https://github.com/juju/ratelimit">github.com/juju/ratelimit</a> 库。这个库支持多种令牌桶模式，并且使用起来也比较简单。</p>
+<p>创建令牌桶的方法：</p>
+<pre tabindex="0"><code>// 创建指定填充速率和容量大小的令牌桶
+func NewBucket(fillInterval time.Duration, capacity int64) *Bucket
+// 创建指定填充速率、容量大小和每次填充的令牌数的令牌桶
+func NewBucketWithQuantum(fillInterval time.Duration, capacity, quantum int64) *Bucket
+// 创建填充速度为指定速率和容量大小的令牌桶
+// NewBucketWithRate(0.1, 200) 表示每秒填充20个令牌
+func NewBucketWithRate(rate float64, capacity int64) *Bucket
+</code></pre><p>取出令牌的方法如下：</p>
+<pre tabindex="0"><code>// 取token（非阻塞）
+func (tb *Bucket) Take(count int64) time.Duration
+func (tb *Bucket) TakeAvailable(count int64) int64
+
+// 最多等maxWait时间取token
+func (tb *Bucket) TakeMaxDuration(count int64, maxWait time.Duration) (time.Duration, bool)
+
+// 取token（阻塞）
+func (tb *Bucket) Wait(count int64)
+func (tb *Bucket) WaitMaxDuration(count int64, maxWait time.Duration) bool
+</code></pre><p>虽说是令牌桶，但是我们没有必要真的去生成令牌放到桶里，我们只需要每次来取令牌的时候计算一下，当前是否有足够的令牌就可以了，具体的计算方式可以总结为下面的公式：</p>
+<pre tabindex="0"><code>当前令牌数 = 上一次剩余的令牌数 + (本次取令牌的时刻-上一次取令牌的时刻)/放置令牌的时间间隔 * 每次放置的令牌数
+</code></pre><p><a href="https://github.com/juju/ratelimit">github.com/juju/ratelimit</a> 这个库中关于令牌数计算的源代码如下：</p>
+<pre tabindex="0"><code>func (tb *Bucket) currentTick(now time.Time) int64 {
+	return int64(now.Sub(tb.startTime) / tb.fillInterval)
+}
+</code></pre><pre tabindex="0"><code>func (tb *Bucket) adjustavailableTokens(tick int64) {
+	if tb.availableTokens &gt;= tb.capacity {
+		return
+	}
+	tb.availableTokens += (tick - tb.latestTick) * tb.quantum
+	if tb.availableTokens &gt; tb.capacity {
+		tb.availableTokens = tb.capacity
+	}
+	tb.latestTick = tick
+	return
+}
+</code></pre><p>获取令牌的 <code>TakeAvailable()</code>函数关键部分的源代码如下：</p>
+<pre tabindex="0"><code>func (tb *Bucket) takeAvailable(now time.Time, count int64) int64 {
+	if count &lt;= 0 {
+		return 0
+	}
+	tb.adjustavailableTokens(tb.currentTick(now))
+	if tb.availableTokens &lt;= 0 {
+		return 0
+	}
+	if count &gt; tb.availableTokens {
+		count = tb.availableTokens
+	}
+	tb.availableTokens -= count
+	return count
+}
+</code></pre><p>大家从代码中也可以看到其实令牌桶的实现并没有很复杂。</p>
+<h2 id="gin-框架中使用限流中间件">gin 框架中使用限流中间件<a hidden class="anchor" aria-hidden="true" href="#gin-框架中使用限流中间件">#</a></h2>
+<p>在 gin 框架构建的项目中，我们可以将限流组件定义成中间件。</p>
+<p>这里使用令牌桶作为限流策略，编写一个限流中间件如下：</p>
+<pre tabindex="0"><code>func RateLimitMiddleware(fillInterval time.Duration, cap int64) func(c *gin.Context) {
+	bucket := ratelimit.NewBucket(fillInterval, cap)
+	return func(c *gin.Context) {
+		// 如果取不到令牌就中断本次请求返回 rate limit...
+		if bucket.TakeAvailable(1) &lt; 1 {
+			c.String(http.StatusOK, &#34;rate limit...&#34;)
+			c.Abort()
+			return
+		}
+		c.Next()
+	}
+}
+</code></pre><p>对于该限流中间件的注册位置，我们可以按照不同的限流策略将其注册到不同的位置，例如：</p>
+<ol>
+<li>如果要对全站限流就可以注册成全局的中间件。</li>
+<li>如果是某一组路由需要限流，那么就只需将该限流中间件注册到对应的路由组即可。</li>
+</ol>
+
+
+  </div>
+
+  <footer class="post-footer">
+  </footer>
+<div>    
+    <div class="pagination__title">
+        <span class="pagination__title-h" style="font-size: 20px;">评论</span>
+        <br/>
+    </div>
+    <div id="tcomment"></div>
+    <script src="https://utteranc.es/client.js"
+            repo="augustus2345/hugotalk" 
+            issue-term="title"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+</div>
+
+</article>
+    </main>
+    
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

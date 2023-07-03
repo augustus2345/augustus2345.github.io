@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Augustus</title>
+<meta name="keywords" content="Blog" />
+<meta name="description" content="  ">
+<meta name="author" content="Augustus">
+<link rel="canonical" href="https://augustus2345.github.io/" />
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.a5ab32f1bb68fb0ae8f28914ef9f0da8dfc31c91a454154a325a727be950a856.css" integrity="sha256-pasy8bto&#43;wro8okU758NqN/DHJGkVBVKMlpye&#43;lQqFY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="icon" type="image/png" sizes="16x16" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="icon" type="image/png" sizes="32x32" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="apple-touch-icon" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="mask-icon" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.114.0">
+<link rel="alternate" type="application/rss+xml" href="https://augustus2345.github.io/index.xml">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><meta property="og:title" content="Augustus" />
+<meta property="og:description" content="  " />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://augustus2345.github.io/" /><meta property="og:image" content="https://augustus2345.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"/><meta property="og:site_name" content="Augustus" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://augustus2345.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"/>
+
+<meta name="twitter:title" content="Augustus"/>
+<meta name="twitter:description" content="  "/>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Augustus",
+  "url": "https://augustus2345.github.io/",
+  "description": "  ",
+  "thumbnailUrl": "https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E",
+  "sameAs": [
+      "index.xml", "mailto: im.augustus@proton.me", "https://t.me/kkkkrose"
+  ]
+}
+</script>
+</head>
+
+<body class="list" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://augustus2345.github.io/" accesskey="h" title="Augustus (Alt + H)">Augustus</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>Error 接口和错误处理
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>Go 语言中的错误处理与其他语言不太一样，它把错误当成一种值来处理，更强调判断错误、处理错误，而不是一股脑的 catch 捕获异常。
+Error 接口 Go 语言中把错误当成一种特殊的值来处理，不支持其他语言中使用 try/catch捕获异常的方式。
+Error 接口 Go 语言中使用一个名为 error 接口来表示错误类型。
+type error interface { Error() string } error 接口只包含一个方法——Error，这个函数需要返回一个描述错误信息的字符串。
+当一个函数或方法需要返回错误时，我们通常是把错误作为最后一个返回值。例如下面标准库 os 中打开文件的函数。
+func Open(name string) (*File, error) { return OpenFile(name, O_RDONLY, 0) } 由于 error 是一个接口类型，默认零值为 nil。所以我们通常将调用函数返回的错误与 nil进行比较，以此来判断函数是否返回错误。例如你会经常看到类似下面的错误判断代码。
+file, err := os.Open(&#34;./xx.go&#34;) if err != nil { fmt.Println(&#34;打开文件失败,err:&#34;, err) return } 注意
+当我们使用 fmt包打印错误时会自动调用 error 类型的 Error 方法，也就是会打印出错误的描述信息。
+创建错误 我们可以根据需求自定义 error，最简单的方式是使用 errors 包提供的 New函数创建一个错误。
+errors.New 函数签名如下，...</p>
+  </section>
+  <footer class="entry-footer">Augustus</footer>
+  <a class="entry-link" aria-label="post link to Error 接口和错误处理" href="https://augustus2345.github.io/post/-error-%E6%8E%A5%E5%8F%A3%E5%92%8C%E9%94%99%E8%AF%AF%E5%A4%84%E7%90%86-/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>go 语言 flag 库
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>Go 语言内置的 flag包实现了命令行参数的解析，flag包使得开发命令行工具更为简单。
+如果你只是简单的想要获取命令行参数，可以像下面的代码示例一样使用 os.Args来获取命令行参数。
+package main import ( &#34;fmt&#34; &#34;os&#34; ) //os.Args demo func main() { //os.Args是一个[]string if len(os.Args) &gt; 0 { for index, arg := range os.Args { fmt.Printf(&#34;args[%d]=%v\n&#34;, index, arg) } } } 将上面的代码执行 go build -o &#34;args_demo&#34;编译之后，执行：
+$ ./args_demo a b c d args[0]=./args_demo args[1]=a args[2]=b args[3]=c args[4]=d os.Args是一个存储命令行参数的字符串切片，它的第一个元素是执行文件的名称。
+本文介绍了 flag 包的常用函数和基本用法，更详细的内容请查看官方文档。
+导入 flag 包 import flag flag 参数类型 flag 包支持的命令行参数类型有 bool、int、int64、uint、uint64、float float64、string、duration。
+定义命令行 flag 参数 有以下两种常用的定义命令行 flag参数的方法。...</p>
+  </section>
+  <footer class="entry-footer">Augustus</footer>
+  <a class="entry-link" aria-label="post link to go 语言 flag 库" href="https://augustus2345.github.io/post/-go-%E8%AF%AD%E8%A8%80%E6%A0%87%E5%87%86%E5%BA%93-flag-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8-/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>go 语言 log 库
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>无论是软件开发的调试阶段还是软件上线之后的运行阶段，日志一直都是非常重要的一个环节，我们也应该养成在程序中记录日志的好习惯。
+Go 语言内置的 log包实现了简单的日志服务。本文介绍了标准库 log的基本使用。
+使用 Logger log 包定义了 Logger 类型，该类型提供了一些格式化输出的方法。本包也提供了一个预定义的 “标准”logger，可以通过调用函数 Print系列(Print|Printf|Println）、Fatal系列（Fatal|Fatalf|Fatalln）、和 Panic系列（Panic|Panicf|Panicln）来使用，比自行创建一个 logger 对象更容易使用。
+例如，我们可以像下面的代码一样直接通过 log包来调用上面提到的方法，默认它们会将日志信息打印到终端界面：
+package main import ( &#34;log&#34; ) func main() { log.Println(&#34;这是一条很普通的日志。&#34;) v := &#34;很普通的&#34; log.Printf(&#34;这是一条%s日志。\n&#34;, v) log.Fatalln(&#34;这是一条会触发fatal的日志。&#34;) log.Panicln(&#34;这是一条会触发panic的日志。&#34;) } 编译并执行上面的代码会得到如下输出：
+2017/06/19 14:04:17 这是一条很普通的日志。 2017/06/19 14:04:17 这是一条很普通的日志。 2017/06/19 14:04:17 这是一条会触发fatal的日志。 logger 会打印每条日志信息的日期、时间，默认输出到系统的标准错误。Fatal 系列函数会在写入日志信息后调用 os.Exit(1)。Panic 系列函数会在写入日志信息后 panic。
+配置 logger 标准 logger 的配置 默认情况下的 logger 只会提供日志的时间信息，但是很多情况下我们希望得到更多信息，比如记录该日志的文件名和行号等。log标准库中为我们提供了定制这些设置的方法。
+log标准库中的 Flags函数会返回标准 logger 的输出配置，而 SetFlags函数用来设置标准 logger 的输出配置。
+func Flags() int func SetFlags(flag int) flag 选项 log标准库提供了如下的 flag 选项，它们是一系列定义好的常量。...</p>
+  </section>
+  <footer class="entry-footer">Augustus</footer>
+  <a class="entry-link" aria-label="post link to go 语言 log 库" href="https://augustus2345.github.io/post/-go-%E8%AF%AD%E8%A8%80%E6%A0%87%E5%87%86%E5%BA%93-log-%E4%BB%8B%E7%BB%8D-/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>go 语言 map
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>Go 语言中提供的映射关系容器为 map，其内部使用 散列表（hash）实现。
+map 是一种无序的基于 key-value的数据结构，Go 语言中的 map 是引用类型，必须初始化才能使用。
+map 定义 Go 语言中 map的定义语法如下：
+map[KeyType]ValueType 其中，
+KeyType: 表示键的类型。 ValueType: 表示键对应的值的类型。 map 类型的变量默认初始值为 nil，需要使用 make() 函数来分配内存。语法为：
+make(map[KeyType]ValueType, [cap]) 其中 cap 表示 map 的容量，该参数虽然不是必须的，但是我们应该在初始化 map 的时候就为其指定一个合适的容量。
+map 基本使用 map 中的数据都是成对出现的，map 的基本使用示例代码如下：
+func main() { scoreMap := make(map[string]int, 8) scoreMap[&#34;张三&#34;] = 90 scoreMap[&#34;小明&#34;] = 100 fmt.Println(scoreMap) fmt.Println(scoreMap[&#34;小明&#34;]) fmt.Printf(&#34;type of a:%T\n&#34;, scoreMap) } 输出：
+map[小明:100 张三:90] type of a:map[string]int map 也支持在声明的时候填充元素，例如：
+func main() { userInfo := map[string]string{ &#34;username&#34;: &#34;沙河小王子&#34;, &#34;password&#34;: &#34;123456&#34;, } fmt....</p>
+  </section>
+  <footer class="entry-footer">Augustus</footer>
+  <a class="entry-link" aria-label="post link to go 语言 map" href="https://augustus2345.github.io/post/-go-map-/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>go 语言 strconv 包
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>string 与 int 类型转换 这一组函数是我们平时编程中用的最多的。
+Atoi() Atoi()函数用于将字符串类型的整数转换为 int 类型，函数签名如下。
+func Atoi(s string) (i int, err error) 如果传入的字符串参数无法转换为 int 类型，就会返回错误。
+s1 := &#34;100&#34; i1, err := strconv.Atoi(s1) if err != nil { fmt.Println(&#34;can&#39;t convert to int&#34;) } else { fmt.Printf(&#34;type:%T value:%#v\n&#34;, i1, i1) //type:int value:100 } Itoa() Itoa()函数用于将 int 类型数据转换为对应的字符串表示，具体的函数签名如下。
+func Itoa(i int) string 示例代码如下：
+i2 := 200 s2 := strconv.Itoa(i2) fmt.Printf(&#34;type:%T value:%#v\n&#34;, s2, s2) //type:string value:&#34;200&#34; a 的典故 【扩展阅读】这是 C 语言遗留下的典故。C 语言中没有 string 类型而是用字符数组 (array) 表示字符串，所以 Itoa对很多 C 系的程序员很好理解。...</p>
+  </section>
+  <footer class="entry-footer">Augustus</footer>
+  <a class="entry-link" aria-label="post link to go 语言 strconv 包" href="https://augustus2345.github.io/post/-go-%E8%AF%AD%E8%A8%80%E5%86%85%E7%BD%AE%E5%8C%85%E4%B9%8B-strconv-/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>go 语言 time 包
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>我们在编程中经常会用到时间和日期数据，本文主要介绍了 Go 语言内置的 time 包的基本用法。
+时间和日期是我们编程中经常会用到的，本文主要介绍了 Go 语言内置的 time 包的基本用法。time 包提供了一些关于时间显示和测量用的函数。time 包中日历的计算采用的是公历，不考虑润秒。
+时间类型 Go 语言中使用 time.Time类型表示时间。我们可以通过 time.Now函数获取当前的时间对象，然后从时间对象中可以获取到年、月、日、时、分、秒等信息。
+// timeDemo 时间对象的年月日时分秒 func timeDemo() { now := time.Now() // 获取当前时间 fmt.Printf(&#34;current time:%v\n&#34;, now) year := now.Year() // 年 month := now.Month() // 月 day := now.Day() // 日 hour := now.Hour() // 小时 minute := now.Minute() // 分钟 second := now.Second() // 秒 fmt.Println(year, month, day, hour, minute, second) } Location 和 time zone Go 语言中使用 location 来映射具体的时区。时区（Time Zone）是根据世界各国家与地区不同的经度而划分的时间定义，全球共分为 24 个时区。中国差不多跨 5 个时区，但为了使用方便只用东八时区的标准时即北京时间为准。...</p>
+  </section>
+  <footer class="entry-footer">Augustus</footer>
+  <a class="entry-link" aria-label="post link to go 语言 time 包" href="https://augustus2345.github.io/post/-go-time-%E5%8C%85-/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="prev" href="https://augustus2345.github.io/">« </a>
+    <a class="next" href="https://augustus2345.github.io/page/3/"> »</a>
+  </nav>
+</footer>
+    </main>
+    
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>go 语言 flag 库 | Augustus</title>
+<meta name="keywords" content="" />
+<meta name="description" content="Go 语言内置的 flag包实现了命令行参数的解析，flag包使得开发命令行工具更为简单。
+如果你只是简单的想要获取命令行参数，可以像下面的代码示例一样使用 os.Args来获取命令行参数。
+package main import ( &#34;fmt&#34; &#34;os&#34; ) //os.Args demo func main() { //os.Args是一个[]string if len(os.Args) &gt; 0 { for index, arg := range os.Args { fmt.Printf(&#34;args[%d]=%v\n&#34;, index, arg) } } } 将上面的代码执行 go build -o &quot;args_demo&quot;编译之后，执行：
+$ ./args_demo a b c d args[0]=./args_demo args[1]=a args[2]=b args[3]=c args[4]=d os.Args是一个存储命令行参数的字符串切片，它的第一个元素是执行文件的名称。
+本文介绍了 flag 包的常用函数和基本用法，更详细的内容请查看官方文档。
+导入 flag 包 import flag flag 参数类型 flag 包支持的命令行参数类型有 bool、int、int64、uint、uint64、float float64、string、duration。
+定义命令行 flag 参数 有以下两种常用的定义命令行 flag参数的方法。">
+<meta name="author" content="Augustus">
+<link rel="canonical" href="https://augustus2345.github.io/post/-go-%E8%AF%AD%E8%A8%80%E6%A0%87%E5%87%86%E5%BA%93-flag-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8-/" />
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.a5ab32f1bb68fb0ae8f28914ef9f0da8dfc31c91a454154a325a727be950a856.css" integrity="sha256-pasy8bto&#43;wro8okU758NqN/DHJGkVBVKMlpye&#43;lQqFY=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.b95bacdc39e37a332a9f883b1e78be4abc1fdca2bc1f2641f55e3cd3dabd4d61.js" integrity="sha256-uVus3DnjejMqn4g7Hni&#43;Srwf3KK8HyZB9V4809q9TWE="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="icon" type="image/png" sizes="16x16" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="icon" type="image/png" sizes="32x32" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="apple-touch-icon" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="mask-icon" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.114.0">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><meta property="og:title" content="go 语言 flag 库" />
+<meta property="og:description" content="Go 语言内置的 flag包实现了命令行参数的解析，flag包使得开发命令行工具更为简单。
+如果你只是简单的想要获取命令行参数，可以像下面的代码示例一样使用 os.Args来获取命令行参数。
+package main import ( &#34;fmt&#34; &#34;os&#34; ) //os.Args demo func main() { //os.Args是一个[]string if len(os.Args) &gt; 0 { for index, arg := range os.Args { fmt.Printf(&#34;args[%d]=%v\n&#34;, index, arg) } } } 将上面的代码执行 go build -o &quot;args_demo&quot;编译之后，执行：
+$ ./args_demo a b c d args[0]=./args_demo args[1]=a args[2]=b args[3]=c args[4]=d os.Args是一个存储命令行参数的字符串切片，它的第一个元素是执行文件的名称。
+本文介绍了 flag 包的常用函数和基本用法，更详细的内容请查看官方文档。
+导入 flag 包 import flag flag 参数类型 flag 包支持的命令行参数类型有 bool、int、int64、uint、uint64、float float64、string、duration。
+定义命令行 flag 参数 有以下两种常用的定义命令行 flag参数的方法。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://augustus2345.github.io/post/-go-%E8%AF%AD%E8%A8%80%E6%A0%87%E5%87%86%E5%BA%93-flag-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8-/" /><meta property="og:image" content="https://augustus2345.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"/><meta property="article:section" content="post" />
+
+<meta property="og:site_name" content="Augustus" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://augustus2345.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"/>
+
+<meta name="twitter:title" content="go 语言 flag 库"/>
+<meta name="twitter:description" content="Go 语言内置的 flag包实现了命令行参数的解析，flag包使得开发命令行工具更为简单。
+如果你只是简单的想要获取命令行参数，可以像下面的代码示例一样使用 os.Args来获取命令行参数。
+package main import ( &#34;fmt&#34; &#34;os&#34; ) //os.Args demo func main() { //os.Args是一个[]string if len(os.Args) &gt; 0 { for index, arg := range os.Args { fmt.Printf(&#34;args[%d]=%v\n&#34;, index, arg) } } } 将上面的代码执行 go build -o &quot;args_demo&quot;编译之后，执行：
+$ ./args_demo a b c d args[0]=./args_demo args[1]=a args[2]=b args[3]=c args[4]=d os.Args是一个存储命令行参数的字符串切片，它的第一个元素是执行文件的名称。
+本文介绍了 flag 包的常用函数和基本用法，更详细的内容请查看官方文档。
+导入 flag 包 import flag flag 参数类型 flag 包支持的命令行参数类型有 bool、int、int64、uint、uint64、float float64、string、duration。
+定义命令行 flag 参数 有以下两种常用的定义命令行 flag参数的方法。"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://augustus2345.github.io/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "go 语言 flag 库",
+      "item": "https://augustus2345.github.io/post/-go-%E8%AF%AD%E8%A8%80%E6%A0%87%E5%87%86%E5%BA%93-flag-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8-/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "go 语言 flag 库",
+  "name": "go 语言 flag 库",
+  "description": "Go 语言内置的 flag包实现了命令行参数的解析，flag包使得开发命令行工具更为简单。\n如果你只是简单的想要获取命令行参数，可以像下面的代码示例一样使用 os.Args来获取命令行参数。\npackage main import ( \u0026#34;fmt\u0026#34; \u0026#34;os\u0026#34; ) //os.Args demo func main() { //os.Args是一个[]string if len(os.Args) \u0026gt; 0 { for index, arg := range os.Args { fmt.Printf(\u0026#34;args[%d]=%v\\n\u0026#34;, index, arg) } } } 将上面的代码执行 go build -o \u0026quot;args_demo\u0026quot;编译之后，执行：\n$ ./args_demo a b c d args[0]=./args_demo args[1]=a args[2]=b args[3]=c args[4]=d os.Args是一个存储命令行参数的字符串切片，它的第一个元素是执行文件的名称。\n本文介绍了 flag 包的常用函数和基本用法，更详细的内容请查看官方文档。\n导入 flag 包 import flag flag 参数类型 flag 包支持的命令行参数类型有 bool、int、int64、uint、uint64、float float64、string、duration。\n定义命令行 flag 参数 有以下两种常用的定义命令行 flag参数的方法。",
+  "keywords": [
+    
+  ],
+  "articleBody": "Go 语言内置的 flag包实现了命令行参数的解析，flag包使得开发命令行工具更为简单。\n如果你只是简单的想要获取命令行参数，可以像下面的代码示例一样使用 os.Args来获取命令行参数。\npackage main import ( \"fmt\" \"os\" ) //os.Args demo func main() { //os.Args是一个[]string if len(os.Args) \u003e 0 { for index, arg := range os.Args { fmt.Printf(\"args[%d]=%v\\n\", index, arg) } } } 将上面的代码执行 go build -o \"args_demo\"编译之后，执行：\n$ ./args_demo a b c d args[0]=./args_demo args[1]=a args[2]=b args[3]=c args[4]=d os.Args是一个存储命令行参数的字符串切片，它的第一个元素是执行文件的名称。\n本文介绍了 flag 包的常用函数和基本用法，更详细的内容请查看官方文档。\n导入 flag 包 import flag flag 参数类型 flag 包支持的命令行参数类型有 bool、int、int64、uint、uint64、float float64、string、duration。\n定义命令行 flag 参数 有以下两种常用的定义命令行 flag参数的方法。\nflag.Type() 基本格式如下：\nflag.Type(flag名, 默认值, 帮助信息)*Type 例如我们要定义姓名、年龄、婚否三个命令行参数，我们可以按如下方式定义：\nname := flag.String(\"name\", \"张三\", \"姓名\") age := flag.Int(\"age\", 18, \"年龄\") married := flag.Bool(\"married\", false, \"婚否\") delay := flag.Duration(\"d\", 0, \"时间间隔\") 需要注意的是，此时 name、age、married、delay均为对应类型的指针。\nflag.TypeVar() 基本格式如下： flag.TypeVar(Type指针, flag名, 默认值, 帮助信息) 例如我们要定义姓名、年龄、婚否三个命令行参数，我们可以按如下方式定义：\nvar name string var age int var married bool var delay time.Duration flag.StringVar(\u0026name, \"name\", \"张三\", \"姓名\") flag.IntVar(\u0026age, \"age\", 18, \"年龄\") flag.BoolVar(\u0026married, \"married\", false, \"婚否\") flag.DurationVar(\u0026delay, \"d\", 0, \"时间间隔\") flag.Parse() 通过以上两种方法定义好命令行 flag 参数后，需要通过调用 flag.Parse()来对命令行参数进行解析。\n支持的命令行参数格式有以下几种：\n-flag xxx （使用空格，一个 -符号） --flag xxx （使用空格，两个 -符号） -flag=xxx （使用等号，一个 -符号） --flag=xxx （使用等号，两个 -符号） 其中，布尔类型的参数必须使用等号的方式指定。\nFlag 解析在第一个非 flag 参数（单个”-“不是 flag 参数）之前停止，或者在终止符”–“之后停止。\nflag 其他函数 flag.Args() ////返回命令行参数后的其他参数，以[]string类型 flag.NArg() //返回命令行参数后的其他参数个数 flag.NFlag() //返回使用的命令行参数个数 完整示例 定义 func main() { //定义命令行参数方式1 var name string var age int var married bool var delay time.Duration flag.StringVar(\u0026name, \"name\", \"张三\", \"姓名\") flag.IntVar(\u0026age, \"age\", 18, \"年龄\") flag.BoolVar(\u0026married, \"married\", false, \"婚否\") flag.DurationVar(\u0026delay, \"d\", 0, \"延迟的时间间隔\") //解析命令行参数 flag.Parse() fmt.Println(name, age, married, delay) //返回命令行参数后的其他参数 fmt.Println(flag.Args()) //返回命令行参数后的其他参数个数 fmt.Println(flag.NArg()) //返回使用的命令行参数个数 fmt.Println(flag.NFlag()) } 使用 命令行参数使用提示：\n$ ./flag_demo -help Usage of ./flag_demo: -age int 年龄 (default 18) -d duration 时间间隔 -married 婚否 -name string 姓名 (default \"张三\") 正常使用命令行 flag 参数：\n$ ./flag_demo -name 沙河娜扎 --age 28 -married=false -d=1h30m 沙河娜扎 28 false 1h30m0s [] 使用非 flag 命令行参数：\n$ ./flag_demo a b c 张三 18 false 0s [a b c] ",
+  "wordCount" : "271",
+  "inLanguage": "en",
+  "datePublished": "0001-01-01T00:00:00Z",
+  "dateModified": "0001-01-01T00:00:00Z",
+  "author":{
+    "@type": "Person",
+    "name": "Augustus"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://augustus2345.github.io/post/-go-%E8%AF%AD%E8%A8%80%E6%A0%87%E5%87%86%E5%BA%93-flag-%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8-/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Augustus",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://augustus2345.github.io/" accesskey="h" title="Augustus (Alt + H)">Augustus</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://augustus2345.github.io/">Home</a>&nbsp;»&nbsp;<a href="https://augustus2345.github.io/post/">Posts</a></div>
+    <h1 class="post-title">
+      go 语言 flag 库
+    </h1>
+    <div class="post-meta">Augustus
+
+</div>
+  </header> <aside id="toc-container" class="toc-container wide">
+    <div class="toc">
+        <details  open>
+            <summary accesskey="c" title="(Alt + C)">
+                <span class="details">Table of Contents</span>
+            </summary>
+
+            <div class="inner"><ul>
+                    <li>
+                        <a href="#%e5%af%bc%e5%85%a5-flag-%e5%8c%85" aria-label="导入 flag 包">导入 flag 包</a></li>
+                    <li>
+                        <a href="#flag-%e5%8f%82%e6%95%b0%e7%b1%bb%e5%9e%8b" aria-label="flag 参数类型">flag 参数类型</a></li>
+                    <li>
+                        <a href="#%e5%ae%9a%e4%b9%89%e5%91%bd%e4%bb%a4%e8%a1%8c-flag-%e5%8f%82%e6%95%b0" aria-label="定义命令行 flag 参数">定义命令行 flag 参数</a><ul>
+                            
+                    <li>
+                        <a href="#flagtype" aria-label="flag.Type()">flag.Type()</a></li>
+                    <li>
+                        <a href="#flagtypevar" aria-label="flag.TypeVar()">flag.TypeVar()</a></li></ul>
+                    </li>
+                    <li>
+                        <a href="#flagparse" aria-label="flag.Parse()">flag.Parse()</a></li>
+                    <li>
+                        <a href="#flag-%e5%85%b6%e4%bb%96%e5%87%bd%e6%95%b0" aria-label="flag 其他函数">flag 其他函数</a></li>
+                    <li>
+                        <a href="#%e5%ae%8c%e6%95%b4%e7%a4%ba%e4%be%8b" aria-label="完整示例">完整示例</a><ul>
+                            
+                    <li>
+                        <a href="#%e5%ae%9a%e4%b9%89" aria-label="定义">定义</a></li>
+                    <li>
+                        <a href="#%e4%bd%bf%e7%94%a8" aria-label="使用">使用</a>
+                    </li>
+                </ul>
+                </li>
+                </ul>
+            </div>
+        </details>
+    </div>
+</aside>
+<script>
+    let activeElement;
+    let elements;
+    window.addEventListener('DOMContentLoaded', function (event) {
+        checkTocPosition();
+
+        elements = document.querySelectorAll('h1[id],h2[id],h3[id],h4[id],h5[id],h6[id]');
+         
+         activeElement = elements[0];
+         const id = encodeURI(activeElement.getAttribute('id')).toLowerCase();
+         document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+     }, false);
+
+    window.addEventListener('resize', function(event) {
+        checkTocPosition();
+    }, false);
+
+    window.addEventListener('scroll', () => {
+        
+        activeElement = Array.from(elements).find((element) => {
+            if ((getOffsetTop(element) - window.pageYOffset) > 0 && 
+                (getOffsetTop(element) - window.pageYOffset) < window.innerHeight/2) {
+                return element;
+            }
+        }) || activeElement
+
+        elements.forEach(element => {
+             const id = encodeURI(element.getAttribute('id')).toLowerCase();
+             if (element === activeElement){
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.add('active');
+             } else {
+                 document.querySelector(`.inner ul li a[href="#${id}"]`).classList.remove('active');
+             }
+         })
+     }, false);
+
+    const main = parseInt(getComputedStyle(document.body).getPropertyValue('--article-width'), 10);
+    const toc = parseInt(getComputedStyle(document.body).getPropertyValue('--toc-width'), 10);
+    const gap = parseInt(getComputedStyle(document.body).getPropertyValue('--gap'), 10);
+
+    function checkTocPosition() {
+        const width = document.body.scrollWidth;
+
+        if (width - main - (toc * 2) - (gap * 4) > 0) {
+            document.getElementById("toc-container").classList.add("wide");
+        } else {
+            document.getElementById("toc-container").classList.remove("wide");
+        }
+    }
+
+    function getOffsetTop(element) {
+        if (!element.getClientRects().length) {
+            return 0;
+        }
+        let rect = element.getBoundingClientRect();
+        let win = element.ownerDocument.defaultView;
+        return rect.top + win.pageYOffset;   
+    }
+</script>
+
+  <div class="post-content"><p>Go 语言内置的 <code>flag</code>包实现了命令行参数的解析，<code>flag</code>包使得开发命令行工具更为简单。</p>
+<p>如果你只是简单的想要获取命令行参数，可以像下面的代码示例一样使用 <code>os.Args</code>来获取命令行参数。</p>
+<pre tabindex="0"><code>package main
+
+import (
+	&#34;fmt&#34;
+	&#34;os&#34;
+)
+
+//os.Args demo
+func main() {
+	//os.Args是一个[]string
+	if len(os.Args) &gt; 0 {
+		for index, arg := range os.Args {
+			fmt.Printf(&#34;args[%d]=%v\n&#34;, index, arg)
+		}
+	}
+}
+</code></pre><p>将上面的代码执行 <code>go build -o &quot;args_demo&quot;</code>编译之后，执行：</p>
+<pre tabindex="0"><code>$ ./args_demo a b c d
+args[0]=./args_demo
+args[1]=a
+args[2]=b
+args[3]=c
+args[4]=d
+</code></pre><p><code>os.Args</code>是一个存储命令行参数的字符串切片，它的第一个元素是执行文件的名称。</p>
+<p>本文介绍了 flag 包的常用函数和基本用法，更详细的内容请查看<a href="https://studygolang.com/pkgdoc">官方文档</a>。</p>
+<h2 id="导入-flag-包">导入 flag 包<a hidden class="anchor" aria-hidden="true" href="#导入-flag-包">#</a></h2>
+<pre tabindex="0"><code>import flag
+</code></pre><h2 id="flag-参数类型">flag 参数类型<a hidden class="anchor" aria-hidden="true" href="#flag-参数类型">#</a></h2>
+<p>flag 包支持的命令行参数类型有 <code>bool</code>、<code>int</code>、<code>int64</code>、<code>uint</code>、<code>uint64</code>、<code>float</code> <code>float64</code>、<code>string</code>、<code>duration</code>。</p>
+<!-- raw HTML omitted -->
+<h2 id="定义命令行-flag-参数">定义命令行 flag 参数<a hidden class="anchor" aria-hidden="true" href="#定义命令行-flag-参数">#</a></h2>
+<p>有以下两种常用的定义命令行 <code>flag</code>参数的方法。</p>
+<h3 id="flagtype">flag.Type()<a hidden class="anchor" aria-hidden="true" href="#flagtype">#</a></h3>
+<p>基本格式如下：</p>
+<p><code>flag.Type(flag名, 默认值, 帮助信息)*Type</code> 例如我们要定义姓名、年龄、婚否三个命令行参数，我们可以按如下方式定义：</p>
+<pre tabindex="0"><code>name := flag.String(&#34;name&#34;, &#34;张三&#34;, &#34;姓名&#34;)
+age := flag.Int(&#34;age&#34;, 18, &#34;年龄&#34;)
+married := flag.Bool(&#34;married&#34;, false, &#34;婚否&#34;)
+delay := flag.Duration(&#34;d&#34;, 0, &#34;时间间隔&#34;)
+</code></pre><p>需要注意的是，此时 <code>name</code>、<code>age</code>、<code>married</code>、<code>delay</code>均为对应类型的指针。</p>
+<h3 id="flagtypevar">flag.TypeVar()<a hidden class="anchor" aria-hidden="true" href="#flagtypevar">#</a></h3>
+<p>基本格式如下： <code>flag.TypeVar(Type指针, flag名, 默认值, 帮助信息)</code> 例如我们要定义姓名、年龄、婚否三个命令行参数，我们可以按如下方式定义：</p>
+<pre tabindex="0"><code>var name string
+var age int
+var married bool
+var delay time.Duration
+flag.StringVar(&amp;name, &#34;name&#34;, &#34;张三&#34;, &#34;姓名&#34;)
+flag.IntVar(&amp;age, &#34;age&#34;, 18, &#34;年龄&#34;)
+flag.BoolVar(&amp;married, &#34;married&#34;, false, &#34;婚否&#34;)
+flag.DurationVar(&amp;delay, &#34;d&#34;, 0, &#34;时间间隔&#34;)
+</code></pre><h2 id="flagparse">flag.Parse()<a hidden class="anchor" aria-hidden="true" href="#flagparse">#</a></h2>
+<p>通过以上两种方法定义好命令行 flag 参数后，需要通过调用 <code>flag.Parse()</code>来对命令行参数进行解析。</p>
+<p>支持的命令行参数格式有以下几种：</p>
+<ul>
+<li><code>-flag xxx</code> （使用空格，一个 <code>-</code>符号）</li>
+<li><code>--flag xxx</code> （使用空格，两个 <code>-</code>符号）</li>
+<li><code>-flag=xxx</code> （使用等号，一个 <code>-</code>符号）</li>
+<li><code>--flag=xxx</code> （使用等号，两个 <code>-</code>符号）</li>
+</ul>
+<p>其中，布尔类型的参数必须使用等号的方式指定。</p>
+<p>Flag 解析在第一个非 flag 参数（单个”-“不是 flag 参数）之前停止，或者在终止符”–“之后停止。</p>
+<h2 id="flag-其他函数">flag 其他函数<a hidden class="anchor" aria-hidden="true" href="#flag-其他函数">#</a></h2>
+<pre tabindex="0"><code>flag.Args()  ////返回命令行参数后的其他参数，以[]string类型
+flag.NArg()  //返回命令行参数后的其他参数个数
+flag.NFlag() //返回使用的命令行参数个数
+</code></pre><h2 id="完整示例">完整示例<a hidden class="anchor" aria-hidden="true" href="#完整示例">#</a></h2>
+<h3 id="定义">定义<a hidden class="anchor" aria-hidden="true" href="#定义">#</a></h3>
+<pre tabindex="0"><code>func main() {
+	//定义命令行参数方式1
+	var name string
+	var age int
+	var married bool
+	var delay time.Duration
+	flag.StringVar(&amp;name, &#34;name&#34;, &#34;张三&#34;, &#34;姓名&#34;)
+	flag.IntVar(&amp;age, &#34;age&#34;, 18, &#34;年龄&#34;)
+	flag.BoolVar(&amp;married, &#34;married&#34;, false, &#34;婚否&#34;)
+	flag.DurationVar(&amp;delay, &#34;d&#34;, 0, &#34;延迟的时间间隔&#34;)
+
+	//解析命令行参数
+	flag.Parse()
+	fmt.Println(name, age, married, delay)
+	//返回命令行参数后的其他参数
+	fmt.Println(flag.Args())
+	//返回命令行参数后的其他参数个数
+	fmt.Println(flag.NArg())
+	//返回使用的命令行参数个数
+	fmt.Println(flag.NFlag())
+}
+</code></pre><h3 id="使用">使用<a hidden class="anchor" aria-hidden="true" href="#使用">#</a></h3>
+<p>命令行参数使用提示：</p>
+<pre tabindex="0"><code>$ ./flag_demo -help
+Usage of ./flag_demo:
+  -age int
+        年龄 (default 18)
+  -d duration
+        时间间隔
+  -married
+        婚否
+  -name string
+        姓名 (default &#34;张三&#34;)
+</code></pre><p>正常使用命令行 flag 参数：</p>
+<pre tabindex="0"><code>$ ./flag_demo -name 沙河娜扎 --age 28 -married=false -d=1h30m
+沙河娜扎 28 false 1h30m0s
+[]
+</code></pre><p>使用非 flag 命令行参数：</p>
+<pre tabindex="0"><code>$ ./flag_demo a b c
+张三 18 false 0s
+[a b c]
+</code></pre>
+
+  </div>
+
+  <footer class="post-footer">
+  </footer>
+<div>    
+    <div class="pagination__title">
+        <span class="pagination__title-h" style="font-size: 20px;">评论</span>
+        <br/>
+    </div>
+    <div id="tcomment"></div>
+    <script src="https://utteranc.es/client.js"
+            repo="augustus2345/hugotalk" 
+            issue-term="title"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+</div>
+
+</article>
+    </main>
+    
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>

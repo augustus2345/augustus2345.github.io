@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>Posts | Augustus</title>
+<meta name="keywords" content="" />
+<meta name="description" content="Posts - Augustus">
+<meta name="author" content="Augustus">
+<link rel="canonical" href="https://augustus2345.github.io/post/" />
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.a5ab32f1bb68fb0ae8f28914ef9f0da8dfc31c91a454154a325a727be950a856.css" integrity="sha256-pasy8bto&#43;wro8okU758NqN/DHJGkVBVKMlpye&#43;lQqFY=" rel="preload stylesheet" as="style">
+<link rel="icon" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="icon" type="image/png" sizes="16x16" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="icon" type="image/png" sizes="32x32" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="apple-touch-icon" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
+<link rel="mask-icon" href="https://augustus2345.github.io/%3Clink%20/%20abs%20url%3E">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.114.0">
+<link rel="alternate" type="application/rss+xml" href="https://augustus2345.github.io/post/index.xml">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><meta property="og:title" content="Posts" />
+<meta property="og:description" content="  " />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://augustus2345.github.io/post/" /><meta property="og:image" content="https://augustus2345.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"/><meta property="og:site_name" content="Augustus" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://augustus2345.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"/>
+
+<meta name="twitter:title" content="Posts"/>
+<meta name="twitter:description" content="  "/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position":  1 ,
+      "name": "Posts",
+      "item": "https://augustus2345.github.io/post/"
+    }
+  ]
+}
+</script>
+</head>
+
+<body class="list" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://augustus2345.github.io/" accesskey="h" title="Augustus (Alt + H)">Augustus</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main"> 
+<header class="page-header"><div class="breadcrumbs"><a href="https://augustus2345.github.io/">Home</a></div>
+  <h1>Posts</h1>
+</header>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>go 项目配置文件管理 viper
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>Viper 是适用于 Go 应用程序的完整配置解决方案。它被设计用于在应用程序中工作，并且可以处理所有类型的配置需求和格式。
+鉴于 viper库本身的 README 已经写得十分详细，这里就将其翻译成中文，并在最后附上两个项目中使用 viper的示例代码以供参考。
+安装 go get github.com/spf13/viper 什么是 Viper？ Viper 是适用于 Go 应用程序（包括 Twelve-Factor App）的完整配置解决方案。它被设计用于在应用程序中工作，并且可以处理所有类型的配置需求和格式。它支持以下特性：
+设置默认值 从 JSON、TOML、YAML、HCL、envfile和 Java properties格式的配置文件读取配置信息 实时监控和重新读取配置文件（可选） 从环境变量中读取 从远程配置系统（etcd 或 Consul）读取并监控配置变化 从命令行参数读取配置 从 buffer 读取配置 显式配置值 为什么选择 Viper? 在构建现代应用程序时，你无需担心配置文件格式；你想要专注于构建出色的软件。Viper 的出现就是为了在这方面帮助你的。
+Viper 能够为你执行下列操作：
+查找、加载和反序列化 JSON、TOML、YAML、HCL、INI、envfile和 Java properties格式的配置文件。 提供一种机制为你的不同配置选项设置默认值。 提供一种机制来通过命令行参数覆盖指定选项的值。 提供别名系统，以便在不破坏现有代码的情况下轻松重命名参数。 当用户提供了与默认值相同的命令行或配置文件时，可以很容易地分辨出它们之间的区别。 Viper 会按照下面的优先级。每个项目的优先级都高于它下面的项目:
+显示调用 Set设置值 命令行参数（flag） 环境变量 配置文件 key/value 存储 默认值 重要： 目前 Viper 配置的键（Key）是大小写不敏感的。目前正在讨论是否将这一选项设为可选。
+把值存入 Viper 建立默认值 一个好的配置系统应该支持默认值。键不需要默认值，但如果没有通过配置文件、环境变量、远程配置或命令行标志（flag）设置键，则默认值非常有用。
+例如：
+viper.SetDefault(&#34;ContentDir&#34;, &#34;content&#34;) viper....</p>
+  </section>
+  <footer class="entry-footer">Augustus</footer>
+  <a class="entry-link" aria-label="post link to go 项目配置文件管理 viper" href="https://augustus2345.github.io/post/-go-%E8%AF%AD%E8%A8%80%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E7%A5%9E%E5%99%A8viper-%E4%B8%AD%E6%96%87%E6%95%99%E7%A8%8B-/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>swagger 生成接口文档
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>swagger 介绍 Swagger 本质上是一种用于描述使用 JSON 表示的 RESTful API 的接口描述语言。Swagger 与一组开源软件工具一起使用，以设计、构建、记录和使用 RESTful Web 服务。Swagger 包括自动文档，代码生成和测试用例生成。
+在前后端分离的项目开发过程中，如果后端同学能够提供一份清晰明了的接口文档，那么就能极大地提高大家的沟通效率和开发效率。可是编写接口文档历来都是令人头痛的，而且后续接口文档的维护也十分耗费精力。
+最好是有一种方案能够既满足我们输出文档的需要又能随代码的变更自动更新，而 Swagger 正是那种能帮我们解决接口文档问题的工具。
+这里以 gin 框架为例，使用 gin-swagger 库以使用 Swagger 2.0 自动生成 RESTful API 文档。
+gin-swagger 实战 想要使用 gin-swagger为你的代码自动生成接口文档，一般需要下面三个步骤：
+按照 swagger 要求给接口代码添加声明式注释，具体参照声明式注释格式。 使用 swag 工具扫描代码自动生成 API 接口文档数据 使用 gin-swagger 渲染在线接口文档页面 第一步：添加注释 在程序入口 main 函数上以注释的方式写下项目相关介绍信息。
+在你代码中处理请求的接口函数（通常位于 controller 层）按如下方式写上注释：
+上面注释中参数类型使用了 object，models.ParamPostList具体定义如下：
+响应数据类型也使用的 object，我个人习惯在 controller 层专门定义一个 docs_models.go文件来存储文档中使用的响应数据 model。
+第二步：生成接口文档数据 编写完注释后，使用以下命令安装 swag 工具：
+go get -u github.com/swaggo/swag/cmd/swag 在项目根目录执行以下命令，使用 swag 工具生成接口文档数据。...</p>
+  </section>
+  <footer class="entry-footer">Augustus</footer>
+  <a class="entry-link" aria-label="post link to swagger 生成接口文档" href="https://augustus2345.github.io/post/-%E4%BD%BF%E7%94%A8-swagger-%E7%94%9F%E6%88%90%E6%8E%A5%E5%8F%A3%E6%96%87%E6%A1%A3-/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>web 项目限流策略-漏桶与令牌桶
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>限流又称为流量控制（流控），通常是指限制到达系统的并发请求数，本文列举了常见的限流策略，并以 gin 框架为例演示了如何为项目添加限流组件。
+限流 限流又称为流量控制（流控），通常是指限制到达系统的并发请求数。
+我们生活中也会经常遇到限流的场景，比如：某景区限制每日进入景区的游客数量为 8 万人；沙河地铁站早高峰通过站外排队逐一放行的方式限制同一时间进入车站的旅客数量等。
+限流虽然会影响部分用户的使用体验，但是却能在一定程度上报障系统的稳定性，不至于崩溃（大家都没了用户体验）。
+而互联网上类似需要限流的业务场景也有很多，比如电商系统的秒杀、微博上突发热点新闻、双十一购物节、12306 抢票等等。这些场景下的用户请求量通常会激增，远远超过平时正常的请求量，此时如果不加任何限制很容易就会将后端服务打垮，影响服务的稳定性。
+此外，一些厂商公开的 API 服务通常也会限制用户的请求次数，比如百度地图开放平台等会根据用户的付费情况来限制用户的请求数等。 常用的限流策略 漏桶 漏桶法限流很好理解，假设我们有一个水桶按固定的速率向下方滴落一滴水，无论有多少请求，请求的速率有多大，都按照固定的速率流出，对应到系统中就是按照固定的速率处理请求。
+漏桶法的关键点在于漏桶始终按照固定的速率运行，但是它并不能很好的处理有大量突发请求的场景，毕竟在某些场景下我们可能需要提高系统的处理效率，而不是一味的按照固定速率处理请求。
+关于漏桶的实现，uber 团队有一个开源的 github.com/uber-go/ratelimit 库。 这个库的使用方法比较简单，Take() 方法会返回漏桶下一次滴水的时间。
+import ( &#34;fmt&#34; &#34;time&#34; &#34;go.uber.org/ratelimit&#34; ) func main() { rl := ratelimit.New(100) // per second prev := time.Now() for i := 0; i &lt; 10; i&#43;&#43; { now := rl.Take() fmt.Println(i, now.Sub(prev)) prev = now } // Output: // 0 0 // 1 10ms // 2 10ms // 3 10ms // 4 10ms // 5 10ms // 6 10ms // 7 10ms // 8 10ms // 9 10ms } 它的源码实现也比较简单，这里大致说一下关键的地方，有兴趣的同学可以自己去看一下完整的源码。...</p>
+  </section>
+  <footer class="entry-footer">Augustus</footer>
+  <a class="entry-link" aria-label="post link to web 项目限流策略-漏桶与令牌桶" href="https://augustus2345.github.io/post/-%E5%B8%B8%E7%94%A8%E9%99%90%E6%B5%81%E7%AD%96%E7%95%A5%E6%BC%8F%E6%A1%B6%E4%B8%8E%E4%BB%A4%E7%89%8C%E6%A1%B6%E4%BB%8B%E7%BB%8D-/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>zap 日志库的使用
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>本文先介绍了 Go 语言原生的日志库的使用，然后详细介绍了非常流行的 Uber 开源的 zap 日志库，同时介绍了如何搭配 Lumberjack 实现日志的切割和归档。
+介绍 在许多 Go 语言项目中，我们需要一个好的日志记录器能够提供下面这些功能：
+能够将事件记录到文件中，而不是应用程序控制台。 日志切割 - 能够根据文件大小、时间或间隔等来切割日志文件。 支持不同的日志级别。例如 INFO，DEBUG，ERROR 等。 能够打印基本信息，如调用文件 / 函数名和行号，日志时间等。 默认的 Go Logger 在介绍 Uber-go 的 zap 包之前，让我们先看看 Go 语言提供的基本日志功能。Go 语言提供的默认日志包是 https://golang.org/pkg/log/。
+实现 Go Logger 实现一个 Go 语言中的日志记录器非常简单——创建一个新的日志文件，然后设置它为日志的输出位置。
+设置 Logger 我们可以像下面的代码一样设置日志记录器
+func SetupLogger() { logFileLocation, _ := os.OpenFile(&#34;/Users/q1mi/test.log&#34;, os.O_CREATE|os.O_APPEND|os.O_RDWR, 0744) log.SetOutput(logFileLocation) } 使用 Logger 让我们来写一些虚拟的代码来使用这个日志记录器。
+在当前的示例中，我们将建立一个到 URL 的 HTTP 连接，并将状态代码 / 错误记录到日志文件中。
+func simpleHttpGet(url string) { resp, err := http....</p>
+  </section>
+  <footer class="entry-footer">Augustus</footer>
+  <a class="entry-link" aria-label="post link to zap 日志库的使用" href="https://augustus2345.github.io/post/-%E5%9C%A8-go-%E8%AF%AD%E8%A8%80%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8-zap-%E6%97%A5%E5%BF%97%E5%BA%93-/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>优雅关机与重启
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>我们编写的 Web 项目部署之后，经常会因为需要进行配置变更或功能迭代而重启服务，单纯的 kill -9 pid的方式会强制关闭进程，这样就会导致服务端当前正在处理的请求失败，那有没有更优雅的方式来实现关机或重启呢？
+优雅地关机 什么是优雅关机？ 优雅关机就是服务端关机命令发出后不是立即关机，而是等待当前还在处理的请求全部处理完毕后再退出程序，是一种对客户端友好的关机方式。而执行 Ctrl&#43;C关闭服务端时，会强制结束进程导致正在访问的请求出现问题。
+如何实现优雅关机？ Go 1.8 版本之后， http.Server 内置的 Shutdown() 方法就支持优雅地关机，具体示例如下：
+// &#43;build go1.8 package main import ( &#34;context&#34; &#34;log&#34; &#34;net/http&#34; &#34;os&#34; &#34;os/signal&#34; &#34;syscall&#34; &#34;time&#34; &#34;github.com/gin-gonic/gin&#34; ) func main() { router := gin.Default() router.GET(&#34;/&#34;, func(c *gin.Context) { time.Sleep(5 * time.Second) c.String(http.StatusOK, &#34;Welcome Gin Server&#34;) }) srv := &amp;http.Server{ Addr: &#34;:8080&#34;, Handler: router, } go func() { // 开启一个goroutine启动服务 if err := srv.ListenAndServe(); err !...</p>
+  </section>
+  <footer class="entry-footer">Augustus</footer>
+  <a class="entry-link" aria-label="post link to 优雅关机与重启" href="https://augustus2345.github.io/post/-%E4%BC%98%E9%9B%85%E5%9C%B0%E5%85%B3%E6%9C%BA%E6%88%96%E9%87%8D%E5%90%AF-/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>利用 validator 库进行参数校验
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>gin 框架使用 github.com/go-playground/validator 进行参数校验，目前已经支持 github.com/go-playground/validator/v10了，我们需要在定义结构体时使用 binding tag 标识相关校验规则，可以查看 validator 文档查看支持的所有 tag。
+基本示例 首先来看 gin 框架内置使用 validator做参数校验的基本示例。
+package main import ( &#34;net/http&#34; &#34;github.com/gin-gonic/gin&#34; ) type SignUpParam struct { Age uint8 `json:&#34;age&#34; binding:&#34;gte=1,lte=130&#34;` Name string `json:&#34;name&#34; binding:&#34;required&#34;` Email string `json:&#34;email&#34; binding:&#34;required,email&#34;` Password string `json:&#34;password&#34; binding:&#34;required&#34;` RePassword string `json:&#34;re_password&#34; binding:&#34;required,eqfield=Password&#34;` } func main() { r := gin.Default() r.POST(&#34;/signup&#34;, func(c *gin.Context) { var u SignUpParam if err := c.ShouldBind(&amp;u); err != nil { c.JSON(http.StatusOK, gin....</p>
+  </section>
+  <footer class="entry-footer">Augustus</footer>
+  <a class="entry-link" aria-label="post link to 利用 validator 库进行参数校验" href="https://augustus2345.github.io/post/-validator-%E5%BA%93%E5%8F%82%E6%95%B0%E6%A0%A1%E9%AA%8C%E8%8B%A5%E5%B9%B2%E5%AE%9E%E7%94%A8%E6%8A%80%E5%B7%A7-/"></a>
+</article>
+<footer class="page-footer">
+  <nav class="pagination">
+    <a class="prev" href="https://augustus2345.github.io/post/page/3/">« </a>
+  </nav>
+</footer>
+    </main>
+    
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
