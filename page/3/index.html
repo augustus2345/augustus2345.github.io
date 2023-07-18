@@ -97,6 +97,27 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>go 语言切片
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>本文主要介绍 Go 语言中切片（slice）及它的基本使用。
+因为数组的长度是固定的并且数组长度属于类型的一部分，所以数组有很多的局限性。 例如：
+func arraySum(x [3]int) int{ sum := 0 for _, v := range x{ sum = sum &#43; v } return sum } 这个求和函数只能接受 [3]int类型，其他的都不支持。 再比如，
+a := [3]int{1, 2, 3} 数组 a 中已经有三个元素了，我们不能再继续往数组 a 中添加新元素了。
+切片（Slice）是一个拥有相同类型元素的可变长度的序列。它是基于数组类型做的一层封装。它非常灵活，支持自动扩容。
+切片是一个引用类型，它的内部结构包含 地址、长度和 容量。切片一般用于快速地操作一块数据集合。
+切片的定义 声明切片类型的基本语法如下：
+var name []T 其中，
+name: 表示变量名 T: 表示切片中的元素类型 举个例子：
+func main() { // 声明切片类型 var a []string //声明一个字符串切片 var b = []int{} //声明一个整型切片并初始化 var c = []bool{false, true} //声明一个布尔切片并初始化 var d = []bool{false, true} //声明一个布尔切片并初始化 fmt....</p>
+  </section>
+  <footer class="entry-footer">Augustus</footer>
+  <a class="entry-link" aria-label="post link to go 语言切片" href="https://cjy.ink/post/-go%E5%88%87%E7%89%87-/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>go 语言单元测试
     </h2>
   </header>
@@ -183,27 +204,6 @@ sarama Go 语言中连接 kafka 使用第三方库:github.com/Shopify/sarama。
   </section>
   <footer class="entry-footer">Augustus</footer>
   <a class="entry-link" aria-label="post link to go 语言操作 kafka" href="https://cjy.ink/post/-go-%E6%93%8D%E4%BD%9C-kafka-/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>go 项目配置文件管理 viper
-    </h2>
-  </header>
-  <section class="entry-content">
-    <p>Viper 是适用于 Go 应用程序的完整配置解决方案。它被设计用于在应用程序中工作，并且可以处理所有类型的配置需求和格式。
-鉴于 viper库本身的 README 已经写得十分详细，这里就将其翻译成中文，并在最后附上两个项目中使用 viper的示例代码以供参考。
-安装 go get github.com/spf13/viper 什么是 Viper？ Viper 是适用于 Go 应用程序（包括 Twelve-Factor App）的完整配置解决方案。它被设计用于在应用程序中工作，并且可以处理所有类型的配置需求和格式。它支持以下特性：
-设置默认值 从 JSON、TOML、YAML、HCL、envfile和 Java properties格式的配置文件读取配置信息 实时监控和重新读取配置文件（可选） 从环境变量中读取 从远程配置系统（etcd 或 Consul）读取并监控配置变化 从命令行参数读取配置 从 buffer 读取配置 显式配置值 为什么选择 Viper? 在构建现代应用程序时，你无需担心配置文件格式；你想要专注于构建出色的软件。Viper 的出现就是为了在这方面帮助你的。
-Viper 能够为你执行下列操作：
-查找、加载和反序列化 JSON、TOML、YAML、HCL、INI、envfile和 Java properties格式的配置文件。 提供一种机制为你的不同配置选项设置默认值。 提供一种机制来通过命令行参数覆盖指定选项的值。 提供别名系统，以便在不破坏现有代码的情况下轻松重命名参数。 当用户提供了与默认值相同的命令行或配置文件时，可以很容易地分辨出它们之间的区别。 Viper 会按照下面的优先级。每个项目的优先级都高于它下面的项目:
-显示调用 Set设置值 命令行参数（flag） 环境变量 配置文件 key/value 存储 默认值 重要： 目前 Viper 配置的键（Key）是大小写不敏感的。目前正在讨论是否将这一选项设为可选。
-把值存入 Viper 建立默认值 一个好的配置系统应该支持默认值。键不需要默认值，但如果没有通过配置文件、环境变量、远程配置或命令行标志（flag）设置键，则默认值非常有用。
-例如：
-viper.SetDefault(&#34;ContentDir&#34;, &#34;content&#34;) viper....</p>
-  </section>
-  <footer class="entry-footer">Augustus</footer>
-  <a class="entry-link" aria-label="post link to go 项目配置文件管理 viper" href="https://cjy.ink/post/-go-%E8%AF%AD%E8%A8%80%E9%85%8D%E7%BD%AE%E7%AE%A1%E7%90%86%E7%A5%9E%E5%99%A8viper-%E4%B8%AD%E6%96%87%E6%95%99%E7%A8%8B-/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">

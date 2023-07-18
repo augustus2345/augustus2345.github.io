@@ -10,7 +10,16 @@
     </image>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 20 Mar 2023 15:58:26 +0800</lastBuildDate><atom:link href="https://cjy.ink/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 18 Jul 2023 21:43:20 +0800</lastBuildDate><atom:link href="https://cjy.ink/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>脱离鼠标</title>
+      <link>https://cjy.ink/post/%E8%84%B1%E7%A6%BB%E9%BC%A0%E6%A0%87/</link>
+      <pubDate>Tue, 18 Jul 2023 21:43:20 +0800</pubDate>
+      
+      <guid>https://cjy.ink/post/%E8%84%B1%E7%A6%BB%E9%BC%A0%E6%A0%87/</guid>
+      <description>在半年前，我绝对想象不到，我在90%的场景下脱离了鼠标。 当时我对我的鼠标配合 Quicker 这套工具打造的一套工具那是十分满意，各种手势可以轻松实现各种常用的操作。然后搭配 Wegesture 这个手势工具，可以实现在浏览器里面轻松实现脱离键盘。 直到在上学期经常把电脑带到教室刷 leetcode 题目和浏览网页。因为我的电脑是游戏本，实在是太重了，而且我老是忘记带鼠标再加上教室的桌面实在是太小了，放个电脑几乎没有位置放鼠标了。这一度让我十分苦恼。后来我决定脱离鼠标，放弃我曾经喜欢的那一套逻辑。然后我就在 V2EX 上看看有没有同样想法的人，以及他们是如何做的。 没想到还真让我找到了，这个让我知道了 Chrome 浏览器上有一个插件&amp;mdash;-&amp;ldquo;Vimium C&amp;rdquo;,使用这个插件，浏览网页完全不需要使用鼠标。再加上我电脑上，大多数时间都是使用 IDE 和浏览器。IDE 里面可以装上 VIM 的插件，这样直接让整个电脑 80% 的场景都可以脱离鼠标。不得不说这个插件的功能实在是太强大了。 在这之前我有时候需要写一些笔记和文章，一直使用 typora 这个专门写 markdown 编辑器。后来我发现 Obsidian 这个工具不仅原生提供了 VIM 操作，还有很多实用的插件，功能比 Typora 还要多，缺陷是有些臃肿。不过总体上我十分满意。 对于 Quicker 这个工具，我发现了 utool 这个工具作为替代。它可以使用 alt + 空格快捷提供很多功能，如遇到不会的单词，只需要安装 Utool 里面的翻译和词典这两个插件，就可以轻松搞定。 最后再熟记一些 Windows 常用的快捷键，如 alt + tab，alt + f4，win + tab，然后将经常使用的软件固定在任务栏上。这样就可以做到 win + 数字快捷打开常用软件，对于不常用的使用 utool 搜索。 这些几乎做到了 90% 的脱离了鼠标。到现在我才彻底明白，脱离鼠标多有爽，做到了使用电脑就像在谈钢琴一样优雅，可以让你完全专注于你在做的事情，无论是在编程，或者浏览文章。真心希望能出现一个系统级的软件，可以让操作系统层面实现类似于 &amp;ldquo;Vimium C&amp;rdquo; 这个插件一样功能，从而让电脑里面安装的所有软件都可以脱离鼠标。</description>
+    </item>
+    
     <item>
       <title>makefile 在 go 语言中使用</title>
       <link>https://cjy.ink/post/-%E4%B8%BA-go-%E9%A1%B9%E7%9B%AE%E7%BC%96%E5%86%99-makefile-/</link>

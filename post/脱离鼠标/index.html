@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="index, follow">
+<title>脱离鼠标 | Augustus</title>
+<meta name="keywords" content="" />
+<meta name="description" content="在半年前，我绝对想象不到，我在90%的场景下脱离了鼠标。 当时我对我的鼠标配合 Quicker 这套工具打造的一套工具那是十分满意，各种手势可以轻松实现各种常用的操作。然后搭配 Wegesture 这个手势工具，可以实现在浏览器里面轻松实现脱离键盘。 直到在上学期经常把电脑带到教室刷 leetcode 题目和浏览网页。因为我的电脑是游戏本，实在是太重了，而且我老是忘记带鼠标再加上教室的桌面实在是太小了，放个电脑几乎没有位置放鼠标了。这一度让我十分苦恼。后来我决定脱离鼠标，放弃我曾经喜欢的那一套逻辑。然后我就在 V2EX 上看看有没有同样想法的人，以及他们是如何做的。 没想到还真让我找到了，这个让我知道了 Chrome 浏览器上有一个插件&mdash;-&ldquo;Vimium C&rdquo;,使用这个插件，浏览网页完全不需要使用鼠标。再加上我电脑上，大多数时间都是使用 IDE 和浏览器。IDE 里面可以装上 VIM 的插件，这样直接让整个电脑 80% 的场景都可以脱离鼠标。不得不说这个插件的功能实在是太强大了。 在这之前我有时候需要写一些笔记和文章，一直使用 typora 这个专门写 markdown 编辑器。后来我发现 Obsidian 这个工具不仅原生提供了 VIM 操作，还有很多实用的插件，功能比 Typora 还要多，缺陷是有些臃肿。不过总体上我十分满意。 对于 Quicker 这个工具，我发现了 utool 这个工具作为替代。它可以使用 alt &#43; 空格快捷提供很多功能，如遇到不会的单词，只需要安装 Utool 里面的翻译和词典这两个插件，就可以轻松搞定。 最后再熟记一些 Windows 常用的快捷键，如 alt &#43; tab，alt &#43; f4，win &#43; tab，然后将经常使用的软件固定在任务栏上。这样就可以做到 win &#43; 数字快捷打开常用软件，对于不常用的使用 utool 搜索。 这些几乎做到了 90% 的脱离了鼠标。到现在我才彻底明白，脱离鼠标多有爽，做到了使用电脑就像在谈钢琴一样优雅，可以让你完全专注于你在做的事情，无论是在编程，或者浏览文章。真心希望能出现一个系统级的软件，可以让操作系统层面实现类似于 &ldquo;Vimium C&rdquo; 这个插件一样功能，从而让电脑里面安装的所有软件都可以脱离鼠标。">
+<meta name="author" content="Augustus">
+<link rel="canonical" href="https://cjy.ink/post/%E8%84%B1%E7%A6%BB%E9%BC%A0%E6%A0%87/" />
+<link crossorigin="anonymous" href="/assets/css/stylesheet.min.a5ab32f1bb68fb0ae8f28914ef9f0da8dfc31c91a454154a325a727be950a856.css" integrity="sha256-pasy8bto&#43;wro8okU758NqN/DHJGkVBVKMlpye&#43;lQqFY=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/assets/js/highlight.min.b95bacdc39e37a332a9f883b1e78be4abc1fdca2bc1f2641f55e3cd3dabd4d61.js" integrity="sha256-uVus3DnjejMqn4g7Hni&#43;Srwf3KK8HyZB9V4809q9TWE="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="https://cjy.ink/%3Clink%20/%20abs%20url%3E">
+<link rel="icon" type="image/png" sizes="16x16" href="https://cjy.ink/%3Clink%20/%20abs%20url%3E">
+<link rel="icon" type="image/png" sizes="32x32" href="https://cjy.ink/%3Clink%20/%20abs%20url%3E">
+<link rel="apple-touch-icon" href="https://cjy.ink/%3Clink%20/%20abs%20url%3E">
+<link rel="mask-icon" href="https://cjy.ink/%3Clink%20/%20abs%20url%3E">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<meta name="generator" content="Hugo 0.114.0">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+</noscript><meta property="og:title" content="脱离鼠标" />
+<meta property="og:description" content="在半年前，我绝对想象不到，我在90%的场景下脱离了鼠标。 当时我对我的鼠标配合 Quicker 这套工具打造的一套工具那是十分满意，各种手势可以轻松实现各种常用的操作。然后搭配 Wegesture 这个手势工具，可以实现在浏览器里面轻松实现脱离键盘。 直到在上学期经常把电脑带到教室刷 leetcode 题目和浏览网页。因为我的电脑是游戏本，实在是太重了，而且我老是忘记带鼠标再加上教室的桌面实在是太小了，放个电脑几乎没有位置放鼠标了。这一度让我十分苦恼。后来我决定脱离鼠标，放弃我曾经喜欢的那一套逻辑。然后我就在 V2EX 上看看有没有同样想法的人，以及他们是如何做的。 没想到还真让我找到了，这个让我知道了 Chrome 浏览器上有一个插件&mdash;-&ldquo;Vimium C&rdquo;,使用这个插件，浏览网页完全不需要使用鼠标。再加上我电脑上，大多数时间都是使用 IDE 和浏览器。IDE 里面可以装上 VIM 的插件，这样直接让整个电脑 80% 的场景都可以脱离鼠标。不得不说这个插件的功能实在是太强大了。 在这之前我有时候需要写一些笔记和文章，一直使用 typora 这个专门写 markdown 编辑器。后来我发现 Obsidian 这个工具不仅原生提供了 VIM 操作，还有很多实用的插件，功能比 Typora 还要多，缺陷是有些臃肿。不过总体上我十分满意。 对于 Quicker 这个工具，我发现了 utool 这个工具作为替代。它可以使用 alt &#43; 空格快捷提供很多功能，如遇到不会的单词，只需要安装 Utool 里面的翻译和词典这两个插件，就可以轻松搞定。 最后再熟记一些 Windows 常用的快捷键，如 alt &#43; tab，alt &#43; f4，win &#43; tab，然后将经常使用的软件固定在任务栏上。这样就可以做到 win &#43; 数字快捷打开常用软件，对于不常用的使用 utool 搜索。 这些几乎做到了 90% 的脱离了鼠标。到现在我才彻底明白，脱离鼠标多有爽，做到了使用电脑就像在谈钢琴一样优雅，可以让你完全专注于你在做的事情，无论是在编程，或者浏览文章。真心希望能出现一个系统级的软件，可以让操作系统层面实现类似于 &ldquo;Vimium C&rdquo; 这个插件一样功能，从而让电脑里面安装的所有软件都可以脱离鼠标。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://cjy.ink/post/%E8%84%B1%E7%A6%BB%E9%BC%A0%E6%A0%87/" /><meta property="og:image" content="https://cjy.ink/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"/><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2023-07-18T21:43:20&#43;08:00" />
+<meta property="article:modified_time" content="2023-07-18T21:43:20&#43;08:00" /><meta property="og:site_name" content="Augustus" />
+
+<meta name="twitter:card" content="summary_large_image"/>
+<meta name="twitter:image" content="https://cjy.ink/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E"/>
+
+<meta name="twitter:title" content="脱离鼠标"/>
+<meta name="twitter:description" content="在半年前，我绝对想象不到，我在90%的场景下脱离了鼠标。 当时我对我的鼠标配合 Quicker 这套工具打造的一套工具那是十分满意，各种手势可以轻松实现各种常用的操作。然后搭配 Wegesture 这个手势工具，可以实现在浏览器里面轻松实现脱离键盘。 直到在上学期经常把电脑带到教室刷 leetcode 题目和浏览网页。因为我的电脑是游戏本，实在是太重了，而且我老是忘记带鼠标再加上教室的桌面实在是太小了，放个电脑几乎没有位置放鼠标了。这一度让我十分苦恼。后来我决定脱离鼠标，放弃我曾经喜欢的那一套逻辑。然后我就在 V2EX 上看看有没有同样想法的人，以及他们是如何做的。 没想到还真让我找到了，这个让我知道了 Chrome 浏览器上有一个插件&mdash;-&ldquo;Vimium C&rdquo;,使用这个插件，浏览网页完全不需要使用鼠标。再加上我电脑上，大多数时间都是使用 IDE 和浏览器。IDE 里面可以装上 VIM 的插件，这样直接让整个电脑 80% 的场景都可以脱离鼠标。不得不说这个插件的功能实在是太强大了。 在这之前我有时候需要写一些笔记和文章，一直使用 typora 这个专门写 markdown 编辑器。后来我发现 Obsidian 这个工具不仅原生提供了 VIM 操作，还有很多实用的插件，功能比 Typora 还要多，缺陷是有些臃肿。不过总体上我十分满意。 对于 Quicker 这个工具，我发现了 utool 这个工具作为替代。它可以使用 alt &#43; 空格快捷提供很多功能，如遇到不会的单词，只需要安装 Utool 里面的翻译和词典这两个插件，就可以轻松搞定。 最后再熟记一些 Windows 常用的快捷键，如 alt &#43; tab，alt &#43; f4，win &#43; tab，然后将经常使用的软件固定在任务栏上。这样就可以做到 win &#43; 数字快捷打开常用软件，对于不常用的使用 utool 搜索。 这些几乎做到了 90% 的脱离了鼠标。到现在我才彻底明白，脱离鼠标多有爽，做到了使用电脑就像在谈钢琴一样优雅，可以让你完全专注于你在做的事情，无论是在编程，或者浏览文章。真心希望能出现一个系统级的软件，可以让操作系统层面实现类似于 &ldquo;Vimium C&rdquo; 这个插件一样功能，从而让电脑里面安装的所有软件都可以脱离鼠标。"/>
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [, 
+    {
+      "@type": "ListItem",
+      "position":  2 ,
+      "name": "Posts",
+      "item": "https://cjy.ink/post/"
+    }, 
+    {
+      "@type": "ListItem",
+      "position":  3 ,
+      "name": "脱离鼠标",
+      "item": "https://cjy.ink/post/%E8%84%B1%E7%A6%BB%E9%BC%A0%E6%A0%87/"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "脱离鼠标",
+  "name": "脱离鼠标",
+  "description": "在半年前，我绝对想象不到，我在90%的场景下脱离了鼠标。 当时我对我的鼠标配合 Quicker 这套工具打造的一套工具那是十分满意，各种手势可以轻松实现各种常用的操作。然后搭配 Wegesture 这个手势工具，可以实现在浏览器里面轻松实现脱离键盘。 直到在上学期经常把电脑带到教室刷 leetcode 题目和浏览网页。因为我的电脑是游戏本，实在是太重了，而且我老是忘记带鼠标再加上教室的桌面实在是太小了，放个电脑几乎没有位置放鼠标了。这一度让我十分苦恼。后来我决定脱离鼠标，放弃我曾经喜欢的那一套逻辑。然后我就在 V2EX 上看看有没有同样想法的人，以及他们是如何做的。 没想到还真让我找到了，这个让我知道了 Chrome 浏览器上有一个插件\u0026mdash;-\u0026ldquo;Vimium C\u0026rdquo;,使用这个插件，浏览网页完全不需要使用鼠标。再加上我电脑上，大多数时间都是使用 IDE 和浏览器。IDE 里面可以装上 VIM 的插件，这样直接让整个电脑 80% 的场景都可以脱离鼠标。不得不说这个插件的功能实在是太强大了。 在这之前我有时候需要写一些笔记和文章，一直使用 typora 这个专门写 markdown 编辑器。后来我发现 Obsidian 这个工具不仅原生提供了 VIM 操作，还有很多实用的插件，功能比 Typora 还要多，缺陷是有些臃肿。不过总体上我十分满意。 对于 Quicker 这个工具，我发现了 utool 这个工具作为替代。它可以使用 alt + 空格快捷提供很多功能，如遇到不会的单词，只需要安装 Utool 里面的翻译和词典这两个插件，就可以轻松搞定。 最后再熟记一些 Windows 常用的快捷键，如 alt + tab，alt + f4，win + tab，然后将经常使用的软件固定在任务栏上。这样就可以做到 win + 数字快捷打开常用软件，对于不常用的使用 utool 搜索。 这些几乎做到了 90% 的脱离了鼠标。到现在我才彻底明白，脱离鼠标多有爽，做到了使用电脑就像在谈钢琴一样优雅，可以让你完全专注于你在做的事情，无论是在编程，或者浏览文章。真心希望能出现一个系统级的软件，可以让操作系统层面实现类似于 \u0026ldquo;Vimium C\u0026rdquo; 这个插件一样功能，从而让电脑里面安装的所有软件都可以脱离鼠标。",
+  "keywords": [
+    
+  ],
+  "articleBody": "在半年前，我绝对想象不到，我在90%的场景下脱离了鼠标。 当时我对我的鼠标配合 Quicker 这套工具打造的一套工具那是十分满意，各种手势可以轻松实现各种常用的操作。然后搭配 Wegesture 这个手势工具，可以实现在浏览器里面轻松实现脱离键盘。 直到在上学期经常把电脑带到教室刷 leetcode 题目和浏览网页。因为我的电脑是游戏本，实在是太重了，而且我老是忘记带鼠标再加上教室的桌面实在是太小了，放个电脑几乎没有位置放鼠标了。这一度让我十分苦恼。后来我决定脱离鼠标，放弃我曾经喜欢的那一套逻辑。然后我就在 V2EX 上看看有没有同样想法的人，以及他们是如何做的。 没想到还真让我找到了，这个让我知道了 Chrome 浏览器上有一个插件—-“Vimium C”,使用这个插件，浏览网页完全不需要使用鼠标。再加上我电脑上，大多数时间都是使用 IDE 和浏览器。IDE 里面可以装上 VIM 的插件，这样直接让整个电脑 80% 的场景都可以脱离鼠标。不得不说这个插件的功能实在是太强大了。 在这之前我有时候需要写一些笔记和文章，一直使用 typora 这个专门写 markdown 编辑器。后来我发现 Obsidian 这个工具不仅原生提供了 VIM 操作，还有很多实用的插件，功能比 Typora 还要多，缺陷是有些臃肿。不过总体上我十分满意。 对于 Quicker 这个工具，我发现了 utool 这个工具作为替代。它可以使用 alt + 空格快捷提供很多功能，如遇到不会的单词，只需要安装 Utool 里面的翻译和词典这两个插件，就可以轻松搞定。 最后再熟记一些 Windows 常用的快捷键，如 alt + tab，alt + f4，win + tab，然后将经常使用的软件固定在任务栏上。这样就可以做到 win + 数字快捷打开常用软件，对于不常用的使用 utool 搜索。 这些几乎做到了 90% 的脱离了鼠标。到现在我才彻底明白，脱离鼠标多有爽，做到了使用电脑就像在谈钢琴一样优雅，可以让你完全专注于你在做的事情，无论是在编程，或者浏览文章。真心希望能出现一个系统级的软件，可以让操作系统层面实现类似于 “Vimium C” 这个插件一样功能，从而让电脑里面安装的所有软件都可以脱离鼠标。\n",
+  "wordCount" : "64",
+  "inLanguage": "en",
+  "datePublished": "2023-07-18T21:43:20+08:00",
+  "dateModified": "2023-07-18T21:43:20+08:00",
+  "author":{
+    "@type": "Person",
+    "name": "Augustus"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://cjy.ink/post/%E8%84%B1%E7%A6%BB%E9%BC%A0%E6%A0%87/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Augustus",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://cjy.ink/%3Clink%20/%20abs%20url%3E"
+    }
+  }
+}
+</script>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="https://cjy.ink" accesskey="h" title="Augustus (Alt + H)">Augustus</a>
+            <span class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </span>
+        </div>
+        <ul id="menu">
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="https://cjy.ink">Home</a>&nbsp;»&nbsp;<a href="https://cjy.ink/post/">Posts</a></div>
+    <h1 class="post-title">
+      脱离鼠标
+    </h1>
+    <div class="post-meta"><span title='2023-07-18 21:43:20 +0800 CST'>July 18, 2023</span>&nbsp;·&nbsp;Augustus
+
+</div>
+  </header> 
+
+  <div class="post-content"><p>在半年前，我绝对想象不到，我在90%的场景下脱离了鼠标。
+当时我对我的鼠标配合 Quicker 这套工具打造的一套工具那是十分满意，各种手势可以轻松实现各种常用的操作。然后搭配 Wegesture 这个手势工具，可以实现在浏览器里面轻松实现脱离键盘。
+直到在上学期经常把电脑带到教室刷 leetcode 题目和浏览网页。因为我的电脑是游戏本，实在是太重了，而且我老是忘记带鼠标再加上教室的桌面实在是太小了，放个电脑几乎没有位置放鼠标了。这一度让我十分苦恼。后来我决定脱离鼠标，放弃我曾经喜欢的那一套逻辑。然后我就在 V2EX 上看看有没有同样想法的人，以及他们是如何做的。
+没想到还真让我找到了，这个让我知道了 Chrome 浏览器上有一个插件&mdash;-&ldquo;Vimium C&rdquo;,使用这个插件，浏览网页完全不需要使用鼠标。再加上我电脑上，大多数时间都是使用 IDE 和浏览器。IDE 里面可以装上 VIM 的插件，这样直接让整个电脑 80% 的场景都可以脱离鼠标。不得不说这个插件的功能实在是太强大了。
+在这之前我有时候需要写一些笔记和文章，一直使用 typora 这个专门写 markdown 编辑器。后来我发现 Obsidian 这个工具不仅原生提供了 VIM 操作，还有很多实用的插件，功能比 Typora 还要多，缺陷是有些臃肿。不过总体上我十分满意。
+对于 Quicker 这个工具，我发现了 utool 这个工具作为替代。它可以使用 alt + 空格快捷提供很多功能，如遇到不会的单词，只需要安装 Utool 里面的翻译和词典这两个插件，就可以轻松搞定。
+最后再熟记一些 Windows 常用的快捷键，如 alt + tab，alt + f4，win + tab，然后将经常使用的软件固定在任务栏上。这样就可以做到 win + 数字快捷打开常用软件，对于不常用的使用 utool 搜索。
+这些几乎做到了 90% 的脱离了鼠标。到现在我才彻底明白，脱离鼠标多有爽，做到了使用电脑就像在谈钢琴一样优雅，可以让你完全专注于你在做的事情，无论是在编程，或者浏览文章。真心希望能出现一个系统级的软件，可以让操作系统层面实现类似于 &ldquo;Vimium C&rdquo; 这个插件一样功能，从而让电脑里面安装的所有软件都可以脱离鼠标。</p>
+
+
+  </div>
+
+  <footer class="post-footer">
+  </footer>
+<div>    
+    <div class="pagination__title">
+        <span class="pagination__title-h" style="font-size: 20px;">评论</span>
+        <br/>
+    </div>
+    <div id="tcomment"></div>
+    <script src="https://utteranc.es/client.js"
+            repo="augustus2345/hugotalk" 
+            issue-term="title"
+            theme="github-light"
+            crossorigin="anonymous"
+            async>
+    </script>
+</div>
+
+</article>
+    </main>
+    
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerText = 'copy';
+
+        function copyingDone() {
+            copybutton.innerText = 'copied!';
+            setTimeout(() => {
+                copybutton.innerText = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
