@@ -132,6 +132,21 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>关于blog的一些想法
+    </h2>
+  </header>
+  <section class="entry-content">
+    <p>不知不觉，大学时光只剩下大四的最后一年了。
+在过去的大学时光，这已经是我折腾的第三个 Blog ， 从 Hexo 到 Google blogspot ，再到现在的 Hugo。
+也写过很多博文，当时我的想法是，希望能快速填充自己的 Blog ，让它看起来内容更加丰富。我本身是很喜欢 V2EX 这个网站，在一次偶然的几乎，我看到了 V2EX 的作者的 Blog。在看到这个 blog 之前，我已经看过很多 Blog 后，但是从没有一个 Blog 给我的这样的感觉。我仔细分析这个 blog 。我注意到，这个 Blog 的第一篇文章是在 2011.2.14 的时候发布的。到目前也就 24 篇博文，平均下来每年是 2 篇博文。然后我又翻阅了很多其他我使用的 RSS 订阅的 Blog，我发现他们在我现在的年龄，更新的频率大约也大差不差。我意识到，我的积累还是太少了，现阶段是无法做到高产。同时博文的质量高于数量。
+基于以上，我决定把以前写的令我不满意的博文全部删掉，只留下我满意的几篇博文。并且以后每篇博文写完后，不立马就推送，而是留在本地保留 3 天。过了 3 天后，再决定这篇文章的去留。我希望给中文互联网留下经得起时间考验的内容。</p>
+  </section>
+  <footer class="entry-footer"><span title='2023-07-28 21:06:16 +0800 CST'>July 28, 2023</span>&nbsp;·&nbsp;Augustus</footer>
+  <a class="entry-link" aria-label="post link to 关于blog的一些想法" href="https://cjy.ink/post/%E5%85%B3%E4%BA%8Eblog%E7%9A%84%E4%B8%80%E4%BA%9B%E6%83%B3%E6%B3%95/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>脱离鼠标
     </h2>
   </header>
@@ -146,26 +161,6 @@
   </section>
   <footer class="entry-footer"><span title='2023-07-18 21:43:20 +0800 CST'>July 18, 2023</span>&nbsp;·&nbsp;Augustus</footer>
   <a class="entry-link" aria-label="post link to 脱离鼠标" href="https://cjy.ink/post/%E8%84%B1%E7%A6%BB%E9%BC%A0%E6%A0%87/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>makefile 在 go 语言中使用
-    </h2>
-  </header>
-  <section class="entry-content">
-    <p>借助 Makefile我们在编译过程中不再需要每次手动输入编译的命令和编译的参数，可以极大简化项目编译过程。
-make 介绍 make是一个构建自动化工具，会在当前目录下寻找 Makefile或 makefile文件。如果存在相应的文件，它就会依据其中定义好的规则完成构建任务。
-Makefile 介绍 我们可以把 Makefile简单理解为它定义了一个项目文件的编译规则。借助 Makefile我们在编译过程中不再需要每次手动输入编译的命令和编译的参数，可以极大简化项目编译过程。同时使用 Makefile也可以在项目中确定具体的编译规则和流程，很多开源项目中都会定义 Makefile文件。
-本文不会详细介绍 Makefile的各种规则，只会给出 Go 项目中常用的 Makefile示例。关于 Makefile的详细内容推荐阅读 Makefile 教程。
-规则概述 Makefile由多条规则组成，每条规则主要由两个部分组成，分别是依赖的关系和执行的命令。
-其结构如下所示：
-[target] ... : [prerequisites] ... &lt;tab&gt;[command] ... ... 其中：
-targets：规则的目标 prerequisites：可选的要生成 targets 需要的文件或者是目标。 command：make 需要执行的命令（任意的 shell 命令）。可以有多条命令，每一条命令占一行。 举个例子：
-build: CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o xx 示例 .PHONY: all build run gotool clean help BINARY=&#34;bluebell&#34; all: gotool build build: CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o ${BINARY} run: @go run ....</p>
-  </section>
-  <footer class="entry-footer"><span title='2023-03-20 15:58:26 +0800 CST'>March 20, 2023</span>&nbsp;·&nbsp;Augustus</footer>
-  <a class="entry-link" aria-label="post link to makefile 在 go 语言中使用" href="https://cjy.ink/post/-%E4%B8%BA-go-%E9%A1%B9%E7%9B%AE%E7%BC%96%E5%86%99-makefile-/"></a>
 </article>
 
 <article class="post-entry"> 
@@ -272,27 +267,6 @@ build: CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o xx 示例 .PHONY: all b
   <footer class="entry-footer">Augustus</footer>
   <a class="entry-link" aria-label="post link to 《自控力》书评以及思考如何控制自己" href="https://cjy.ink/post/%E8%87%AA%E6%8E%A7%E5%8A%9B%E5%A6%82%E4%BD%95%E6%8E%A7%E5%88%B6%E8%87%AA%E5%B7%B1/"></a>
 </article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>air 热加载
-    </h2>
-  </header>
-  <section class="entry-content">
-    <p>为什么需要实时加载？ 在使用 HUGO 搭建 Blog 的时候，我发现修改了一些文件内容后，就可以实现实时加载，而不需要关掉服务，然后重新启动程序，使用起来十分方便。
-Air 介绍 Github 上有一个工具：Air。它支持以下特性：
-彩色日志输出 自定义构建或二进制命令 支持忽略子目录 启动后支持监听新目录 更好的构建过程 安装 Air Go 这也是最经典的安装方式：
-go get -u github.com/cosmtrek/air Windows curl -fLo air.exe https://git.io/windows_air Docker docker run -it --rm \ -w &#34;&lt;PROJECT&gt;&#34; \ -e &#34;air_wd=&lt;PROJECT&gt;&#34; \ -v $(pwd):&lt;PROJECT&gt; \ -p &lt;PORT&gt;:&lt;APP SERVER PORT&gt; \ cosmtrek/air -c &lt;CONF&gt; 然后按照下面的方式在 docker 中运行你的项目：
-docker run -it --rm \ -w &#34;/go/src/github.com/cosmtrek/hub&#34; \ -v $(pwd):/go/src/github.com/cosmtrek/hub \ -p 9090:9090 \ cosmtrek/air 使用 Air 为了敲命令时更简单更方便，你应该把 alias air=&#39;~/....</p>
-  </section>
-  <footer class="entry-footer">Augustus</footer>
-  <a class="entry-link" aria-label="post link to air 热加载" href="https://cjy.ink/post/-%E4%BD%BF%E7%94%A8-air-%E5%AE%9E%E7%8E%B0-go-%E7%A8%8B%E5%BA%8F%E5%AE%9E%E6%97%B6%E7%83%AD%E9%87%8D%E8%BD%BD-/"></a>
-</article>
-<footer class="page-footer">
-  <nav class="pagination">
-    <a class="next" href="https://cjy.ink/page/2/"> »</a>
-  </nav>
-</footer>
     </main>
     
 
