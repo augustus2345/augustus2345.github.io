@@ -6,8 +6,15 @@
     <description>Recent content in Posts on Augusuts</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 06 Jan 2025 17:04:26 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 07 Jan 2025 17:04:26 +0800</lastBuildDate>
     <atom:link href="https://augustus2345.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>hello world</title>
+      <link>https://augustus2345.github.io/posts/test/</link>
+      <pubDate>Tue, 07 Jan 2025 17:04:26 +0800</pubDate>
+      <guid>https://augustus2345.github.io/posts/test/</guid>
+      <description>&lt;p&gt;test&lt;/p&gt;&#xA;&lt;p&gt;dss&lt;/p&gt;</description>
+    </item>
     <item>
       <title>hello world</title>
       <link>https://augustus2345.github.io/posts/my-first-post/</link>
