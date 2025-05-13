@@ -2,25 +2,11 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Augusuts</title>
-    <link>http://localhost:1313/</link>
+    <link>https://augustus2345.github.io/</link>
     <description>Recent content on Augusuts</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 07 Jan 2025 17:04:26 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>hello world</title>
-      <link>http://localhost:1313/posts/test/</link>
-      <pubDate>Tue, 07 Jan 2025 17:04:26 +0800</pubDate>
-      <guid>http://localhost:1313/posts/test/</guid>
-      <description>&lt;p&gt;test&lt;/p&gt;&#xA;&lt;p&gt;dss&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>hello world</title>
-      <link>http://localhost:1313/posts/my-first-post/</link>
-      <pubDate>Mon, 06 Jan 2025 17:04:26 +0800</pubDate>
-      <guid>http://localhost:1313/posts/my-first-post/</guid>
-      <description>&lt;p&gt;test&lt;/p&gt;</description>
-    </item>
+    <lastBuildDate></lastBuildDate>
+    <atom:link href="https://augustus2345.github.io/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
