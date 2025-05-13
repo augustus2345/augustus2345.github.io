@@ -2,25 +2,18 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Augusuts</title>
-    <link>http://localhost:1313/posts/</link>
+    <link>https://augustus2345.github.io/posts/</link>
     <description>Recent content in Posts on Augusuts</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 07 Jan 2025 17:04:26 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 07 Jan 2025 16:35:39 +0800</lastBuildDate>
+    <atom:link href="https://augustus2345.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>hello world</title>
-      <link>http://localhost:1313/posts/test/</link>
-      <pubDate>Tue, 07 Jan 2025 17:04:26 +0800</pubDate>
-      <guid>http://localhost:1313/posts/test/</guid>
-      <description>&lt;p&gt;test&lt;/p&gt;&#xA;&lt;p&gt;dss&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>hello world</title>
-      <link>http://localhost:1313/posts/my-first-post/</link>
-      <pubDate>Mon, 06 Jan 2025 17:04:26 +0800</pubDate>
-      <guid>http://localhost:1313/posts/my-first-post/</guid>
-      <description>&lt;p&gt;test&lt;/p&gt;</description>
+      <title>关于我对blog的思考</title>
+      <link>https://augustus2345.github.io/posts/%E5%85%B3%E4%BA%8E%E6%88%91%E5%AF%B9blog%E7%9A%84%E6%80%9D%E8%80%83/</link>
+      <pubDate>Tue, 07 Jan 2025 16:35:39 +0800</pubDate>
+      <guid>https://augustus2345.github.io/posts/%E5%85%B3%E4%BA%8E%E6%88%91%E5%AF%B9blog%E7%9A%84%E6%80%9D%E8%80%83/</guid>
+      <description>&lt;h3 id=&#34;我与-blog-的历史&#34;&gt;我与 blog 的历史&lt;/h3&gt;&#xA;&lt;p&gt;我一直相信，写作是与世界、也与自我最真诚的对话。从最早在 QQ空间稚嫩地写下一句句青涩的心情语录，到后来使用 Hexo + Github Pages , 折腾各种主题和插件搭建自己的小站点，再到用 Hugo + GitHub Pages 静态部署，我的 blog，一路更迭，像是一次次数字迁徙，也像是一次次对“表达”的重新定义。&lt;/p&gt;&#xA;&lt;p&gt;但折腾过后，终究发现：比起工具，我更在意内容；比起形式，我更在意思想。&lt;/p&gt;&#xA;&lt;p&gt;于是我又一次归零，从复杂回到简单，从绚烂归于纯粹。这一次，我希望它不仅是一个 blog，而是我思考的延伸，是我思想的副本，是我在这个数字世界中的一间小屋，灯亮着，为自己，也为路过的人。&lt;/p&gt;&#xA;&lt;h3 id=&#34;关于对这个-blog-的设计&#34;&gt;关于对这个 blog 的设计&lt;/h3&gt;&#xA;&lt;p&gt;当你看到这篇文章时,我看你应该已经注意到了，这个 blog 是极致简约的。没有评论区，没有点赞，没有任何动画,没有任何多余的设计。这个 blog 的读者是我自己，是未来的我，是偶尔路过，却愿意静静读一段文字的人。我想在喧嚣的网络中，留下一点不那么“算法驱动”的声音。&lt;/p&gt;&#xA;&lt;p&gt;我的 blog 参考了很多 Hacker News 的创始人 Paul Graham 的思想.&lt;/p&gt;&#xA;&lt;p&gt;我特别喜欢 Paul Graham 在 &lt;a href=&#34;https://www.paulgraham.com/hackernews.html&#34;&gt;What I&amp;rsquo;ve Learned From HACKER NEWS&lt;/a&gt; 中的一段话&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;So the most important thing a community site can do is attract the kind of people it wants. A site trying to be as big as possible wants to attract everyone. But a site aiming at a particular subset of users has to attract just those—and just as importantly, repel everyone else. I&amp;rsquo;ve made a conscious effort to do this on HN. The graphic design is as plain as possible, and the site rules discourage dramatic link titles. The goal is that the only thing to interest someone arriving at HN for the first time should be the ideas expressed there.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
